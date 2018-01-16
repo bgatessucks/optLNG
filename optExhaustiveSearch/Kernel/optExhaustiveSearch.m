@@ -16,7 +16,7 @@ Begin["`Private`"]
 vessel[params_Association, t_, status_Association] := 1 
 
 (* Need to update the state of the world *)
-(*cashflowTrip[v_Association, Missing[], Missing[]] := -Infinity (* TODO: really consider ? *)
+cashflowTrip[v_Association, Missing[], Missing[]] := -Infinity (* TODO: really consider ? *)
 cashflowTrip[v_Association, Missing[], m_Association] :=
     Module[ {tripTime, dischargeVolume, cashflow},
         tripTime = GeoDistance[{v["Position"], m["LatLong"]}, UnitSystem -> "NauticalMiles"] / UnitConvert[v["Speed"], "NauticalMiles"/"Days"];
@@ -25,7 +25,7 @@ cashflowTrip[v_Association, Missing[], m_Association] :=
         cashflow
     ]  
 cashflowTrip[v_Association, p_Association, m_Association] :=
-    Module[ {lV, lP, lM},
+    Module[ {lV, lP, lM, toLoadTripTime, loadingVolume, loadingTime, toDischargeTripTime, dischargeVolume, dischargingTime, cashflow},
     	lV = v;
     	lP = p;
     	lM = m;
@@ -49,7 +49,7 @@ cashflowTrip[v_Association, p_Association, m_Association] :=
     	
    		{lV, lP, lM, cashflow}
         
-    ]*)
+    ]
 
 
 End[]
