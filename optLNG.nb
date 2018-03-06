@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[   1422229,      26696]
-NotebookOptionsPosition[   1411921,      26519]
-NotebookOutlinePosition[   1412268,      26534]
-CellTagsIndexPosition[   1412225,      26531]
+NotebookDataLength[   1472427,      27783]
+NotebookOptionsPosition[   1461234,      27592]
+NotebookOutlinePosition[   1461582,      27607]
+CellTagsIndexPosition[   1461539,      27604]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -140,8 +140,11 @@ Cell[BoxData[
           TypeSystem`Atom[String], 
           
           TypeSystem`Struct[{
-           "LatLong", "Currency", "Type", "Total Terminal Storage Capacity", 
-            "Daily Production", "Inventory", "Price"}, {
+           "Timestamp", "Status", "LatLong", "Currency", "Type", 
+            "Total Terminal Storage Capacity", "Daily Production", 
+            "Inventory", "Price"}, {
+            TypeSystem`Atom[DateObject], 
+            TypeSystem`Atom[String], 
             TypeSystem`Atom[GeoPosition], 
             TypeSystem`Atom[String], 
             TypeSystem`Atom[String], 
@@ -155,9 +158,9 @@ Cell[BoxData[
              Quantity[1, "Meters"^(-3) "USDollars"]]}], 5], "Shape" -> 
         TypeSystem`PackageScope`HeaderShape[
           Association[{All, 
-             TypeSystem`PackageScope`KeyDummy[0]} -> 1, {All, "LatLong"} -> 
-           1, {All, "Currency"} -> 1, {All, "Type"} -> 
-           1, {All, "Total Terminal Storage Capacity"} -> 
+             TypeSystem`PackageScope`KeyDummy[1]} -> 1, {All, "Timestamp"} -> 
+           1, {All, "Status"} -> 1, {All, "LatLong"} -> 1, {All, "Currency"} -> 
+           1, {All, "Type"} -> 1, {All, "Total Terminal Storage Capacity"} -> 
            1, {All, "Daily Production"} -> 1, {All, "Inventory"} -> 
            1, {All, "Price"} -> 1], 
           TypeSystem`PackageScope`Limited[
@@ -166,7 +169,10 @@ Cell[BoxData[
              TypeSystem`PackageScope`AtomShape[355.20000000000005`], 
              TypeSystem`PackageScope`RowShape[
               Association[
-              "LatLong" -> TypeSystem`PackageScope`AtomShape[106], "Currency" -> 
+              "Timestamp" -> TypeSystem`PackageScope`AtomShape[75], "Status" -> 
+               TypeSystem`PackageScope`AtomShape[38.400000000000006`], 
+               "LatLong" -> TypeSystem`PackageScope`AtomShape[106], 
+               "Currency" -> 
                TypeSystem`PackageScope`AtomShape[124.80000000000001`], "Type" -> 
                TypeSystem`PackageScope`AtomShape[249.60000000000002`], 
                "Total Terminal Storage Capacity" -> 
@@ -174,13 +180,16 @@ Cell[BoxData[
                TypeSystem`PackageScope`AtomShape[75], "Inventory" -> 
                TypeSystem`PackageScope`AtomShape[75], "Price" -> 
                TypeSystem`PackageScope`AtomShape[75]]]]], 5, {}]], 
-        "InitialData" -> TypeSystem`PackageScope`CacheHandle[466784357], 
+        "InitialData" -> TypeSystem`PackageScope`CacheHandle[1635287069], 
         "Type" -> TypeSystem`Assoc[
           TypeSystem`Atom[String], 
           
           TypeSystem`Struct[{
-           "LatLong", "Currency", "Type", "Total Terminal Storage Capacity", 
-            "Daily Production", "Inventory", "Price"}, {
+           "Timestamp", "Status", "LatLong", "Currency", "Type", 
+            "Total Terminal Storage Capacity", "Daily Production", 
+            "Inventory", "Price"}, {
+            TypeSystem`Atom[DateObject], 
+            TypeSystem`Atom[String], 
             TypeSystem`Atom[GeoPosition], 
             TypeSystem`Atom[String], 
             TypeSystem`Atom[String], 
@@ -193,7 +202,7 @@ Cell[BoxData[
             TypeSystem`Atom[
              Quantity[1, "Meters"^(-3) "USDollars"]]}], 5], "HandleQ" -> True,
          "RowTarget" -> 20, "Data" -> 
-        TypeSystem`PackageScope`CacheHandle[466784357]], 
+        TypeSystem`PackageScope`CacheHandle[1635287069]], 
       TypeSystem`NestedGrid`PackagePrivate`$path$$ = {}, 
       TypeSystem`NestedGrid`PackagePrivate`$pos$$ = 1, 
       TypeSystem`NestedGrid`PackagePrivate`$grid$$ = 
@@ -228,11 +237,70 @@ Cell[BoxData[
                    TypeSystem`NestedGrid`PackagePrivate`$state$$, 
                     TypeSystem`NestedGrid`PackagePrivate`$path$$, 
                     TypeSystem`NestedGrid`PackagePrivate`$pos$$, 
-                    TypeSystem`NestedGrid`PackagePrivate`$grid$$, 979983566][{
+                    TypeSystem`NestedGrid`PackagePrivate`$grid$$, 274351536][{
                     All, Keys}]], 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[979983566][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[274351536][
                   GeneralUtilities`Slice[All, Keys]], "Mouse"], Background -> 
                 GrayLevel[0.95], Alignment -> {Left, Baseline}], 
+               Item[
+                Annotation[
+                 EventHandler[
+                  MouseAppearance[
+                   Mouseover[
+                    Pane[
+                    RawBoxes[
+                    StyleBox[
+                    "\"Timestamp\"", FontColor -> GrayLevel[0.4]]], {{
+                    20, Full}, 15}], 
+                    Style[
+                    Pane[
+                    RawBoxes[
+                    StyleBox[
+                    "\"Timestamp\"", FontColor -> 
+                    RGBColor[
+                    0.27450980392156865`, 0.5372549019607843, 
+                    0.792156862745098]]], {{20, Full}, 15}], FontColor -> 
+                    RGBColor[
+                    0.27450980392156865`, 0.5372549019607843, 
+                    0.792156862745098]]], "LinkHand"], {"MouseClicked", 1} :> 
+                  TypeSystem`NestedGrid`PackagePrivate`updateState[
+                   TypeSystem`NestedGrid`PackagePrivate`$state$$, 
+                    TypeSystem`NestedGrid`PackagePrivate`$path$$, 
+                    TypeSystem`NestedGrid`PackagePrivate`$pos$$, 
+                    TypeSystem`NestedGrid`PackagePrivate`$grid$$, 274351536][{
+                    All, "Timestamp"}]], 
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[274351536][
+                  GeneralUtilities`Slice[All, "Timestamp"]], "Mouse"], 
+                Background -> GrayLevel[0.95], Alignment -> {Left, Baseline}], 
+               Item[
+                Annotation[
+                 EventHandler[
+                  MouseAppearance[
+                   Mouseover[
+                    Pane[
+                    RawBoxes[
+                    StyleBox["\"Status\"", FontColor -> GrayLevel[0.4]]], {{
+                    20, Full}, 15}], 
+                    Style[
+                    Pane[
+                    RawBoxes[
+                    StyleBox[
+                    "\"Status\"", FontColor -> 
+                    RGBColor[
+                    0.27450980392156865`, 0.5372549019607843, 
+                    0.792156862745098]]], {{20, Full}, 15}], FontColor -> 
+                    RGBColor[
+                    0.27450980392156865`, 0.5372549019607843, 
+                    0.792156862745098]]], "LinkHand"], {"MouseClicked", 1} :> 
+                  TypeSystem`NestedGrid`PackagePrivate`updateState[
+                   TypeSystem`NestedGrid`PackagePrivate`$state$$, 
+                    TypeSystem`NestedGrid`PackagePrivate`$path$$, 
+                    TypeSystem`NestedGrid`PackagePrivate`$pos$$, 
+                    TypeSystem`NestedGrid`PackagePrivate`$grid$$, 274351536][{
+                    All, "Status"}]], 
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[274351536][
+                  GeneralUtilities`Slice[All, "Status"]], "Mouse"], 
+                Background -> GrayLevel[0.95], Alignment -> {Left, Baseline}], 
                Item[
                 Annotation[
                  EventHandler[
@@ -257,9 +325,9 @@ Cell[BoxData[
                    TypeSystem`NestedGrid`PackagePrivate`$state$$, 
                     TypeSystem`NestedGrid`PackagePrivate`$path$$, 
                     TypeSystem`NestedGrid`PackagePrivate`$pos$$, 
-                    TypeSystem`NestedGrid`PackagePrivate`$grid$$, 979983566][{
+                    TypeSystem`NestedGrid`PackagePrivate`$grid$$, 274351536][{
                     All, "LatLong"}]], 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[979983566][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[274351536][
                   GeneralUtilities`Slice[All, "LatLong"]], "Mouse"], 
                 Background -> GrayLevel[0.95], Alignment -> {Left, Baseline}], 
                Item[
@@ -286,9 +354,9 @@ Cell[BoxData[
                    TypeSystem`NestedGrid`PackagePrivate`$state$$, 
                     TypeSystem`NestedGrid`PackagePrivate`$path$$, 
                     TypeSystem`NestedGrid`PackagePrivate`$pos$$, 
-                    TypeSystem`NestedGrid`PackagePrivate`$grid$$, 979983566][{
+                    TypeSystem`NestedGrid`PackagePrivate`$grid$$, 274351536][{
                     All, "Currency"}]], 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[979983566][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[274351536][
                   GeneralUtilities`Slice[All, "Currency"]], "Mouse"], 
                 Background -> GrayLevel[0.95], Alignment -> {Left, Baseline}], 
                Item[
@@ -315,9 +383,9 @@ Cell[BoxData[
                    TypeSystem`NestedGrid`PackagePrivate`$state$$, 
                     TypeSystem`NestedGrid`PackagePrivate`$path$$, 
                     TypeSystem`NestedGrid`PackagePrivate`$pos$$, 
-                    TypeSystem`NestedGrid`PackagePrivate`$grid$$, 979983566][{
+                    TypeSystem`NestedGrid`PackagePrivate`$grid$$, 274351536][{
                     All, "Type"}]], 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[979983566][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[274351536][
                   GeneralUtilities`Slice[All, "Type"]], "Mouse"], Background -> 
                 GrayLevel[0.95], Alignment -> {Left, Baseline}], 
                Item[
@@ -345,9 +413,9 @@ Cell[BoxData[
                    TypeSystem`NestedGrid`PackagePrivate`$state$$, 
                     TypeSystem`NestedGrid`PackagePrivate`$path$$, 
                     TypeSystem`NestedGrid`PackagePrivate`$pos$$, 
-                    TypeSystem`NestedGrid`PackagePrivate`$grid$$, 979983566][{
+                    TypeSystem`NestedGrid`PackagePrivate`$grid$$, 274351536][{
                     All, "Total Terminal Storage Capacity"}]], 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[979983566][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[274351536][
                   GeneralUtilities`Slice[
                   All, "Total Terminal Storage Capacity"]], "Mouse"], 
                 Background -> GrayLevel[0.95], Alignment -> {Left, Baseline}], 
@@ -376,9 +444,9 @@ Cell[BoxData[
                    TypeSystem`NestedGrid`PackagePrivate`$state$$, 
                     TypeSystem`NestedGrid`PackagePrivate`$path$$, 
                     TypeSystem`NestedGrid`PackagePrivate`$pos$$, 
-                    TypeSystem`NestedGrid`PackagePrivate`$grid$$, 979983566][{
+                    TypeSystem`NestedGrid`PackagePrivate`$grid$$, 274351536][{
                     All, "Daily Production"}]], 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[979983566][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[274351536][
                   GeneralUtilities`Slice[All, "Daily Production"]], "Mouse"], 
                 Background -> GrayLevel[0.95], Alignment -> {Left, Baseline}], 
                Item[
@@ -406,9 +474,9 @@ Cell[BoxData[
                    TypeSystem`NestedGrid`PackagePrivate`$state$$, 
                     TypeSystem`NestedGrid`PackagePrivate`$path$$, 
                     TypeSystem`NestedGrid`PackagePrivate`$pos$$, 
-                    TypeSystem`NestedGrid`PackagePrivate`$grid$$, 979983566][{
+                    TypeSystem`NestedGrid`PackagePrivate`$grid$$, 274351536][{
                     All, "Inventory"}]], 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[979983566][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[274351536][
                   GeneralUtilities`Slice[All, "Inventory"]], "Mouse"], 
                 Background -> GrayLevel[0.95], Alignment -> {Left, Baseline}], 
                Item[
@@ -435,9 +503,9 @@ Cell[BoxData[
                    TypeSystem`NestedGrid`PackagePrivate`$state$$, 
                     TypeSystem`NestedGrid`PackagePrivate`$path$$, 
                     TypeSystem`NestedGrid`PackagePrivate`$pos$$, 
-                    TypeSystem`NestedGrid`PackagePrivate`$grid$$, 979983566][{
+                    TypeSystem`NestedGrid`PackagePrivate`$grid$$, 274351536][{
                     All, "Price"}]], 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[979983566][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[274351536][
                   GeneralUtilities`Slice[All, "Price"]], "Mouse"], Background -> 
                 GrayLevel[0.95], Alignment -> {Left, Baseline}]}, {
                Item[
@@ -455,13 +523,35 @@ Cell[BoxData[
                     TypeSystem`NestedGrid`PackagePrivate`$state$$, 
                     TypeSystem`NestedGrid`PackagePrivate`$path$$, 
                     TypeSystem`NestedGrid`PackagePrivate`$pos$$, 
-                    TypeSystem`NestedGrid`PackagePrivate`$grid$$, 979983566][{
+                    TypeSystem`NestedGrid`PackagePrivate`$grid$$, 274351536][{
                     Key["Golden Pass"]}]], 
-                  TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[979983566][
+                  TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[274351536][
                    GeneralUtilities`Slice[
                     Key["Golden Pass"]]], "Mouse"], 
                  ImageSize -> {{355.20000000000005`, Full}, Automatic}], 
                 Background -> GrayLevel[0.95], Alignment -> {Left, Baseline}], 
+               Pane[
+                Annotation[
+                 RawBoxes[
+                  StyleBox[
+                  "\"Sun 1 Jan 2018 00:00:00\"", FontColor -> RGBColor[{
+                    Rational[33, 74], 
+                    Rational[27, 74], 
+                    Rational[117, 370]}]]], 
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[274351536][
+                  GeneralUtilities`Slice[
+                   Key["Golden Pass"], 
+                   Key["Timestamp"]]], "Mouse"], 
+                ImageSize -> {{75, Full}, Automatic}, 
+                Alignment -> {Left, Baseline}], 
+               Pane[
+                Annotation["Idle", 
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[274351536][
+                  GeneralUtilities`Slice[
+                   Key["Golden Pass"], 
+                   Key["Status"]]], "Mouse"], 
+                ImageSize -> {{38.400000000000006`, Full}, Automatic}, 
+                Alignment -> {Left, Baseline}], 
                Pane[
                 Annotation[
                  RawBoxes[
@@ -471,7 +561,7 @@ Cell[BoxData[
                     Rational[33, 74], 
                     Rational[27, 74], 
                     Rational[117, 370]}]]], 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[979983566][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[274351536][
                   GeneralUtilities`Slice[
                    Key["Golden Pass"], 
                    Key["LatLong"]]], "Mouse"], 
@@ -479,7 +569,7 @@ Cell[BoxData[
                 Alignment -> {Left, Baseline}], 
                Pane[
                 Annotation["USD", 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[979983566][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[274351536][
                   GeneralUtilities`Slice[
                    Key["Golden Pass"], 
                    Key["Currency"]]], "Mouse"], 
@@ -487,7 +577,7 @@ Cell[BoxData[
                 Alignment -> {Left, Baseline}], 
                Pane[
                 Annotation["Liquification and Export", 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[979983566][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[274351536][
                   GeneralUtilities`Slice[
                    Key["Golden Pass"], 
                    Key["Type"]]], "Mouse"], 
@@ -503,7 +593,7 @@ Cell[BoxData[
                     Rational[33, 74], 
                     Rational[27, 74], 
                     Rational[117, 370]}]]], 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[979983566][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[274351536][
                   GeneralUtilities`Slice[
                    Key["Golden Pass"], 
                    Key["Total Terminal Storage Capacity"]]], "Mouse"], 
@@ -521,7 +611,7 @@ Cell[BoxData[
                     Rational[33, 74], 
                     Rational[27, 74], 
                     Rational[117, 370]}]]], 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[979983566][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[274351536][
                   GeneralUtilities`Slice[
                    Key["Golden Pass"], 
                    Key["Daily Production"]]], "Mouse"], 
@@ -537,7 +627,7 @@ Cell[BoxData[
                     Rational[33, 74], 
                     Rational[27, 74], 
                     Rational[117, 370]}]]], 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[979983566][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[274351536][
                   GeneralUtilities`Slice[
                    Key["Golden Pass"], 
                    Key["Inventory"]]], "Mouse"], 
@@ -559,7 +649,7 @@ Cell[BoxData[
                     Rational[33, 74], 
                     Rational[27, 74], 
                     Rational[117, 370]}]]], 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[979983566][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[274351536][
                   GeneralUtilities`Slice[
                    Key["Golden Pass"], 
                    Key["Price"]]], "Mouse"], 
@@ -580,13 +670,35 @@ Cell[BoxData[
                     TypeSystem`NestedGrid`PackagePrivate`$state$$, 
                     TypeSystem`NestedGrid`PackagePrivate`$path$$, 
                     TypeSystem`NestedGrid`PackagePrivate`$pos$$, 
-                    TypeSystem`NestedGrid`PackagePrivate`$grid$$, 979983566][{
+                    TypeSystem`NestedGrid`PackagePrivate`$grid$$, 274351536][{
                     Key["Gate LNG Terminal Netherland"]}]], 
-                  TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[979983566][
+                  TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[274351536][
                    GeneralUtilities`Slice[
                     Key["Gate LNG Terminal Netherland"]]], "Mouse"], 
                  ImageSize -> {{355.20000000000005`, Full}, Automatic}], 
                 Background -> GrayLevel[0.95], Alignment -> {Left, Baseline}], 
+               Pane[
+                Annotation[
+                 RawBoxes[
+                  StyleBox[
+                  "\"Sun 1 Jan 2018 00:00:00\"", FontColor -> RGBColor[{
+                    Rational[33, 74], 
+                    Rational[27, 74], 
+                    Rational[117, 370]}]]], 
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[274351536][
+                  GeneralUtilities`Slice[
+                   Key["Gate LNG Terminal Netherland"], 
+                   Key["Timestamp"]]], "Mouse"], 
+                ImageSize -> {{75, Full}, Automatic}, 
+                Alignment -> {Left, Baseline}], 
+               Pane[
+                Annotation["Idle", 
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[274351536][
+                  GeneralUtilities`Slice[
+                   Key["Gate LNG Terminal Netherland"], 
+                   Key["Status"]]], "Mouse"], 
+                ImageSize -> {{38.400000000000006`, Full}, Automatic}, 
+                Alignment -> {Left, Baseline}], 
                Pane[
                 Annotation[
                  RawBoxes[
@@ -596,7 +708,7 @@ Cell[BoxData[
                     Rational[33, 74], 
                     Rational[27, 74], 
                     Rational[117, 370]}]]], 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[979983566][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[274351536][
                   GeneralUtilities`Slice[
                    Key["Gate LNG Terminal Netherland"], 
                    Key["LatLong"]]], "Mouse"], 
@@ -604,7 +716,7 @@ Cell[BoxData[
                 Alignment -> {Left, Baseline}], 
                Pane[
                 Annotation["EUR", 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[979983566][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[274351536][
                   GeneralUtilities`Slice[
                    Key["Gate LNG Terminal Netherland"], 
                    Key["Currency"]]], "Mouse"], 
@@ -612,7 +724,7 @@ Cell[BoxData[
                 Alignment -> {Left, Baseline}], 
                Pane[
                 Annotation["Import and Re-gasification", 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[979983566][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[274351536][
                   GeneralUtilities`Slice[
                    Key["Gate LNG Terminal Netherland"], 
                    Key["Type"]]], "Mouse"], 
@@ -628,7 +740,7 @@ Cell[BoxData[
                     Rational[33, 74], 
                     Rational[27, 74], 
                     Rational[117, 370]}]]], 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[979983566][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[274351536][
                   GeneralUtilities`Slice[
                    Key["Gate LNG Terminal Netherland"], 
                    Key["Total Terminal Storage Capacity"]]], "Mouse"], 
@@ -656,7 +768,7 @@ Cell[BoxData[
                     Rational[33, 74], 
                     Rational[27, 74], 
                     Rational[117, 370]}]]], 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[979983566][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[274351536][
                   GeneralUtilities`Slice[
                    Key["Gate LNG Terminal Netherland"], 
                    Key["Price"]]], "Mouse"], 
@@ -677,13 +789,35 @@ Cell[BoxData[
                     TypeSystem`NestedGrid`PackagePrivate`$state$$, 
                     TypeSystem`NestedGrid`PackagePrivate`$path$$, 
                     TypeSystem`NestedGrid`PackagePrivate`$pos$$, 
-                    TypeSystem`NestedGrid`PackagePrivate`$grid$$, 979983566][{
+                    TypeSystem`NestedGrid`PackagePrivate`$grid$$, 274351536][{
                     Key["Arun LNG Terminal and Plant Indonesia"]}]], 
-                  TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[979983566][
+                  TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[274351536][
                    GeneralUtilities`Slice[
                     Key["Arun LNG Terminal and Plant Indonesia"]]], "Mouse"], 
                  ImageSize -> {{355.20000000000005`, Full}, Automatic}], 
                 Background -> GrayLevel[0.95], Alignment -> {Left, Baseline}], 
+               Pane[
+                Annotation[
+                 RawBoxes[
+                  StyleBox[
+                  "\"Sun 1 Jan 2018 00:00:00\"", FontColor -> RGBColor[{
+                    Rational[33, 74], 
+                    Rational[27, 74], 
+                    Rational[117, 370]}]]], 
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[274351536][
+                  GeneralUtilities`Slice[
+                   Key["Arun LNG Terminal and Plant Indonesia"], 
+                   Key["Timestamp"]]], "Mouse"], 
+                ImageSize -> {{75, Full}, Automatic}, 
+                Alignment -> {Left, Baseline}], 
+               Pane[
+                Annotation["Idle", 
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[274351536][
+                  GeneralUtilities`Slice[
+                   Key["Arun LNG Terminal and Plant Indonesia"], 
+                   Key["Status"]]], "Mouse"], 
+                ImageSize -> {{38.400000000000006`, Full}, Automatic}, 
+                Alignment -> {Left, Baseline}], 
                Pane[
                 Annotation[
                  RawBoxes[
@@ -693,7 +827,7 @@ Cell[BoxData[
                     Rational[33, 74], 
                     Rational[27, 74], 
                     Rational[117, 370]}]]], 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[979983566][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[274351536][
                   GeneralUtilities`Slice[
                    Key["Arun LNG Terminal and Plant Indonesia"], 
                    Key["LatLong"]]], "Mouse"], 
@@ -701,7 +835,7 @@ Cell[BoxData[
                 Alignment -> {Left, Baseline}], 
                Pane[
                 Annotation["Rupiah", 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[979983566][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[274351536][
                   GeneralUtilities`Slice[
                    Key["Arun LNG Terminal and Plant Indonesia"], 
                    Key["Currency"]]], "Mouse"], 
@@ -709,7 +843,7 @@ Cell[BoxData[
                 Alignment -> {Left, Baseline}], 
                Pane[
                 Annotation["Import and Re-gasification", 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[979983566][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[274351536][
                   GeneralUtilities`Slice[
                    Key["Arun LNG Terminal and Plant Indonesia"], 
                    Key["Type"]]], "Mouse"], 
@@ -725,7 +859,7 @@ Cell[BoxData[
                     Rational[33, 74], 
                     Rational[27, 74], 
                     Rational[117, 370]}]]], 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[979983566][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[274351536][
                   GeneralUtilities`Slice[
                    Key["Arun LNG Terminal and Plant Indonesia"], 
                    Key["Total Terminal Storage Capacity"]]], "Mouse"], 
@@ -753,7 +887,7 @@ Cell[BoxData[
                     Rational[33, 74], 
                     Rational[27, 74], 
                     Rational[117, 370]}]]], 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[979983566][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[274351536][
                   GeneralUtilities`Slice[
                    Key["Arun LNG Terminal and Plant Indonesia"], 
                    Key["Price"]]], "Mouse"], 
@@ -774,13 +908,35 @@ Cell[BoxData[
                     TypeSystem`NestedGrid`PackagePrivate`$state$$, 
                     TypeSystem`NestedGrid`PackagePrivate`$path$$, 
                     TypeSystem`NestedGrid`PackagePrivate`$pos$$, 
-                    TypeSystem`NestedGrid`PackagePrivate`$grid$$, 979983566][{
+                    TypeSystem`NestedGrid`PackagePrivate`$grid$$, 274351536][{
                     Key["Rudong Jiangsu LNG Terminal China"]}]], 
-                  TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[979983566][
+                  TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[274351536][
                    GeneralUtilities`Slice[
                     Key["Rudong Jiangsu LNG Terminal China"]]], "Mouse"], 
                  ImageSize -> {{355.20000000000005`, Full}, Automatic}], 
                 Background -> GrayLevel[0.95], Alignment -> {Left, Baseline}], 
+               Pane[
+                Annotation[
+                 RawBoxes[
+                  StyleBox[
+                  "\"Sun 1 Jan 2018 00:00:00\"", FontColor -> RGBColor[{
+                    Rational[33, 74], 
+                    Rational[27, 74], 
+                    Rational[117, 370]}]]], 
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[274351536][
+                  GeneralUtilities`Slice[
+                   Key["Rudong Jiangsu LNG Terminal China"], 
+                   Key["Timestamp"]]], "Mouse"], 
+                ImageSize -> {{75, Full}, Automatic}, 
+                Alignment -> {Left, Baseline}], 
+               Pane[
+                Annotation["Idle", 
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[274351536][
+                  GeneralUtilities`Slice[
+                   Key["Rudong Jiangsu LNG Terminal China"], 
+                   Key["Status"]]], "Mouse"], 
+                ImageSize -> {{38.400000000000006`, Full}, Automatic}, 
+                Alignment -> {Left, Baseline}], 
                Pane[
                 Annotation[
                  RawBoxes[
@@ -790,7 +946,7 @@ Cell[BoxData[
                     Rational[33, 74], 
                     Rational[27, 74], 
                     Rational[117, 370]}]]], 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[979983566][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[274351536][
                   GeneralUtilities`Slice[
                    Key["Rudong Jiangsu LNG Terminal China"], 
                    Key["LatLong"]]], "Mouse"], 
@@ -798,7 +954,7 @@ Cell[BoxData[
                 Alignment -> {Left, Baseline}], 
                Pane[
                 Annotation["Yuan Renminbi", 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[979983566][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[274351536][
                   GeneralUtilities`Slice[
                    Key["Rudong Jiangsu LNG Terminal China"], 
                    Key["Currency"]]], "Mouse"], 
@@ -806,7 +962,7 @@ Cell[BoxData[
                 Alignment -> {Left, Baseline}], 
                Pane[
                 Annotation["Import and Re-gasification", 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[979983566][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[274351536][
                   GeneralUtilities`Slice[
                    Key["Rudong Jiangsu LNG Terminal China"], 
                    Key["Type"]]], "Mouse"], 
@@ -822,7 +978,7 @@ Cell[BoxData[
                     Rational[33, 74], 
                     Rational[27, 74], 
                     Rational[117, 370]}]]], 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[979983566][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[274351536][
                   GeneralUtilities`Slice[
                    Key["Rudong Jiangsu LNG Terminal China"], 
                    Key["Total Terminal Storage Capacity"]]], "Mouse"], 
@@ -850,7 +1006,7 @@ Cell[BoxData[
                     Rational[33, 74], 
                     Rational[27, 74], 
                     Rational[117, 370]}]]], 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[979983566][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[274351536][
                   GeneralUtilities`Slice[
                    Key["Rudong Jiangsu LNG Terminal China"], 
                    Key["Price"]]], "Mouse"], 
@@ -871,9 +1027,9 @@ Cell[BoxData[
                     TypeSystem`NestedGrid`PackagePrivate`$state$$, 
                     TypeSystem`NestedGrid`PackagePrivate`$path$$, 
                     TypeSystem`NestedGrid`PackagePrivate`$pos$$, 
-                    TypeSystem`NestedGrid`PackagePrivate`$grid$$, 979983566][{
+                    TypeSystem`NestedGrid`PackagePrivate`$grid$$, 274351536][{
                     Key["PNG LNG Terminal Papua New Guinea"]}]], 
-                  TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[979983566][
+                  TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[274351536][
                    GeneralUtilities`Slice[
                     Key["PNG LNG Terminal Papua New Guinea"]]], "Mouse"], 
                  ImageSize -> {{355.20000000000005`, Full}, Automatic}], 
@@ -882,11 +1038,33 @@ Cell[BoxData[
                 Annotation[
                  RawBoxes[
                   StyleBox[
+                  "\"Sun 1 Jan 2018 00:00:00\"", FontColor -> RGBColor[{
+                    Rational[33, 74], 
+                    Rational[27, 74], 
+                    Rational[117, 370]}]]], 
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[274351536][
+                  GeneralUtilities`Slice[
+                   Key["PNG LNG Terminal Papua New Guinea"], 
+                   Key["Timestamp"]]], "Mouse"], 
+                ImageSize -> {{75, Full}, Automatic}, 
+                Alignment -> {Left, Baseline}], 
+               Pane[
+                Annotation["Idle", 
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[274351536][
+                  GeneralUtilities`Slice[
+                   Key["PNG LNG Terminal Papua New Guinea"], 
+                   Key["Status"]]], "Mouse"], 
+                ImageSize -> {{38.400000000000006`, Full}, Automatic}, 
+                Alignment -> {Left, Baseline}], 
+               Pane[
+                Annotation[
+                 RawBoxes[
+                  StyleBox[
                   "\"9.339\[Degree]S 147.\[Degree]E\"", FontColor -> RGBColor[{
                     Rational[33, 74], 
                     Rational[27, 74], 
                     Rational[117, 370]}]]], 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[979983566][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[274351536][
                   GeneralUtilities`Slice[
                    Key["PNG LNG Terminal Papua New Guinea"], 
                    Key["LatLong"]]], "Mouse"], 
@@ -894,7 +1072,7 @@ Cell[BoxData[
                 Alignment -> {Left, Baseline}], 
                Pane[
                 Annotation["Kina", 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[979983566][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[274351536][
                   GeneralUtilities`Slice[
                    Key["PNG LNG Terminal Papua New Guinea"], 
                    Key["Currency"]]], "Mouse"], 
@@ -902,7 +1080,7 @@ Cell[BoxData[
                 Alignment -> {Left, Baseline}], 
                Pane[
                 Annotation["Liquification and Export", 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[979983566][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[274351536][
                   GeneralUtilities`Slice[
                    Key["PNG LNG Terminal Papua New Guinea"], 
                    Key["Type"]]], "Mouse"], 
@@ -918,7 +1096,7 @@ Cell[BoxData[
                     Rational[33, 74], 
                     Rational[27, 74], 
                     Rational[117, 370]}]]], 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[979983566][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[274351536][
                   GeneralUtilities`Slice[
                    Key["PNG LNG Terminal Papua New Guinea"], 
                    Key["Total Terminal Storage Capacity"]]], "Mouse"], 
@@ -936,7 +1114,7 @@ Cell[BoxData[
                     Rational[33, 74], 
                     Rational[27, 74], 
                     Rational[117, 370]}]]], 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[979983566][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[274351536][
                   GeneralUtilities`Slice[
                    Key["PNG LNG Terminal Papua New Guinea"], 
                    Key["Daily Production"]]], "Mouse"], 
@@ -952,7 +1130,7 @@ Cell[BoxData[
                     Rational[33, 74], 
                     Rational[27, 74], 
                     Rational[117, 370]}]]], 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[979983566][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[274351536][
                   GeneralUtilities`Slice[
                    Key["PNG LNG Terminal Papua New Guinea"], 
                    Key["Inventory"]]], "Mouse"], 
@@ -974,7 +1152,7 @@ Cell[BoxData[
                     Rational[33, 74], 
                     Rational[27, 74], 
                     Rational[117, 370]}]]], 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[979983566][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[274351536][
                   GeneralUtilities`Slice[
                    Key["PNG LNG Terminal Papua New Guinea"], 
                    Key["Price"]]], "Mouse"], 
@@ -1026,7 +1204,7 @@ Cell[BoxData[
                 TypeSystem`NestedGrid`PackagePrivate`$state$$, 
                  TypeSystem`NestedGrid`PackagePrivate`$path$$, 
                  TypeSystem`NestedGrid`PackagePrivate`$pos$$, 
-                 TypeSystem`NestedGrid`PackagePrivate`$grid$$, 979983566][
+                 TypeSystem`NestedGrid`PackagePrivate`$grid$$, 274351536][
                 TypeSystem`NestedGrid`PackagePrivate`tmpData$]]; If[
                Not[
                 FailureQ[TypeSystem`NestedGrid`PackagePrivate`tmpGrid$]], 
@@ -1057,14 +1235,14 @@ Cell[BoxData[
            TypeSystem`NestedGrid`PackagePrivate`$state$$, 
             TypeSystem`NestedGrid`PackagePrivate`$path$$, 
             TypeSystem`NestedGrid`PackagePrivate`$pos$$, 
-            TypeSystem`NestedGrid`PackagePrivate`$grid$$, 979983566]]]], 
+            TypeSystem`NestedGrid`PackagePrivate`$grid$$, 274351536]]]], 
         TrackedSymbols :> {TypeSystem`NestedGrid`PackagePrivate`$path$$}], 
       TypeSystem`NestedGrid`PackagePrivate`$bottomBar$$ = Framed[
         Dynamic[
          Replace[
           MouseAnnotation[Null], {
-          TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[979983566][Null] -> 
-           "", TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[979983566][
+          TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[274351536][Null] -> 
+           "", TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[274351536][
              Pattern[TypeSystem`NestedGrid`PackagePrivate`path, 
               Blank[]]] :> (
             TypeSystem`NestedGrid`PackagePrivate`$lastPath = 
@@ -1098,7 +1276,7 @@ Cell[BoxData[
            TypeSystem`NestedGrid`PackagePrivate`$bottomBar$$]]}], Spacings -> 
         If[TypeSystem`NestedGrid`PackagePrivate`$path$$ == {}, 
           0, {{}, {0, 0.05, 0}}]], StandardForm], 
-      ImageSizeCache -> {1398., {99., 106.}}, 
+      ImageSizeCache -> {1616., {99., 106.}}, 
       TrackedSymbols :> {
        TypeSystem`NestedGrid`PackagePrivate`$state$$, 
         TypeSystem`NestedGrid`PackagePrivate`$grid$$}], 
@@ -1114,8 +1292,9 @@ Cell[BoxData[
  CellChangeTimes->{3.724155310003718*^9, 3.7241581667463636`*^9, 
   3.7241581979830265`*^9, 3.7241587349757586`*^9, 3.724158801179759*^9, 
   3.7241588842097588`*^9, 3.7250178724466953`*^9, 3.7250233294363675`*^9, 
-  3.7251012841257176`*^9},ExpressionUUID->"8d30e736-51a3-467f-b720-\
-e6ffc3c858a1"]
+  3.7251012841257176`*^9, 
+  3.729254329491872*^9},ExpressionUUID->"634dbf75-5e1b-40f0-9695-\
+eae5d15656cb"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -1135,9 +1314,11 @@ Cell[BoxData[
           TypeSystem`Atom[String], 
           
           TypeSystem`Struct[{
-           "Capacity", "Maximum loading rate", "Maximum discharge rate", 
-            "Boil-off rate", "Position", "Speed", "Inventory", 
-            "DailyFixedCost"}, {
+           "Timestamp", "Status", "Capacity", "Maximum loading rate", 
+            "Maximum discharge rate", "Boil-off rate", "Position", "Speed", 
+            "Inventory", "DailyFixedCost"}, {
+            TypeSystem`Atom[DateObject], 
+            TypeSystem`Atom[String], 
             TypeSystem`Atom[
              Quantity[1, "Meters"^3]], 
             TypeSystem`Atom[
@@ -1154,7 +1335,8 @@ Cell[BoxData[
              Quantity[1, "Days"^(-1) "USDollars"]]}], 4], "Shape" -> 
         TypeSystem`PackageScope`HeaderShape[
           Association[{All, 
-             TypeSystem`PackageScope`KeyDummy[1]} -> 1, {All, "Capacity"} -> 
+             TypeSystem`PackageScope`KeyDummy[0]} -> 1, {All, "Timestamp"} -> 
+           1, {All, "Status"} -> 1, {All, "Capacity"} -> 
            1, {All, "Maximum loading rate"} -> 
            1, {All, "Maximum discharge rate"} -> 1, {All, "Boil-off rate"} -> 
            1, {All, "Position"} -> 1, {All, "Speed"} -> 1, {All, "Inventory"} -> 
@@ -1165,7 +1347,9 @@ Cell[BoxData[
              TypeSystem`PackageScope`AtomShape[76.80000000000001], 
              TypeSystem`PackageScope`RowShape[
               Association[
-              "Capacity" -> TypeSystem`PackageScope`AtomShape[75], 
+              "Timestamp" -> TypeSystem`PackageScope`AtomShape[75], "Status" -> 
+               TypeSystem`PackageScope`AtomShape[38.400000000000006`], 
+               "Capacity" -> TypeSystem`PackageScope`AtomShape[75], 
                "Maximum loading rate" -> 
                TypeSystem`PackageScope`AtomShape[75], 
                "Maximum discharge rate" -> 
@@ -1175,14 +1359,16 @@ Cell[BoxData[
                TypeSystem`PackageScope`AtomShape[75], "Inventory" -> 
                TypeSystem`PackageScope`AtomShape[75], "DailyFixedCost" -> 
                TypeSystem`PackageScope`AtomShape[75]]]]], 4, {}]], 
-        "InitialData" -> TypeSystem`PackageScope`CacheHandle[1914156059], 
+        "InitialData" -> TypeSystem`PackageScope`CacheHandle[1821061760], 
         "Type" -> TypeSystem`Assoc[
           TypeSystem`Atom[String], 
           
           TypeSystem`Struct[{
-           "Capacity", "Maximum loading rate", "Maximum discharge rate", 
-            "Boil-off rate", "Position", "Speed", "Inventory", 
-            "DailyFixedCost"}, {
+           "Timestamp", "Status", "Capacity", "Maximum loading rate", 
+            "Maximum discharge rate", "Boil-off rate", "Position", "Speed", 
+            "Inventory", "DailyFixedCost"}, {
+            TypeSystem`Atom[DateObject], 
+            TypeSystem`Atom[String], 
             TypeSystem`Atom[
              Quantity[1, "Meters"^3]], 
             TypeSystem`Atom[
@@ -1198,7 +1384,7 @@ Cell[BoxData[
             TypeSystem`Atom[
              Quantity[1, "Days"^(-1) "USDollars"]]}], 4], "HandleQ" -> True, 
         "RowTarget" -> 20, "Data" -> 
-        TypeSystem`PackageScope`CacheHandle[1914156059]], 
+        TypeSystem`PackageScope`CacheHandle[1821061760]], 
       TypeSystem`NestedGrid`PackagePrivate`$path$$ = {}, 
       TypeSystem`NestedGrid`PackagePrivate`$pos$$ = 1, 
       TypeSystem`NestedGrid`PackagePrivate`$grid$$ = 
@@ -1233,11 +1419,70 @@ Cell[BoxData[
                    TypeSystem`NestedGrid`PackagePrivate`$state$$, 
                     TypeSystem`NestedGrid`PackagePrivate`$path$$, 
                     TypeSystem`NestedGrid`PackagePrivate`$pos$$, 
-                    TypeSystem`NestedGrid`PackagePrivate`$grid$$, 
-                    1359669577][{All, Keys}]], 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1359669577][
+                    TypeSystem`NestedGrid`PackagePrivate`$grid$$, 755100221][{
+                    All, Keys}]], 
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[755100221][
                   GeneralUtilities`Slice[All, Keys]], "Mouse"], Background -> 
                 GrayLevel[0.95], Alignment -> {Left, Baseline}], 
+               Item[
+                Annotation[
+                 EventHandler[
+                  MouseAppearance[
+                   Mouseover[
+                    Pane[
+                    RawBoxes[
+                    StyleBox[
+                    "\"Timestamp\"", FontColor -> GrayLevel[0.4]]], {{
+                    20, Full}, 15}], 
+                    Style[
+                    Pane[
+                    RawBoxes[
+                    StyleBox[
+                    "\"Timestamp\"", FontColor -> 
+                    RGBColor[
+                    0.27450980392156865`, 0.5372549019607843, 
+                    0.792156862745098]]], {{20, Full}, 15}], FontColor -> 
+                    RGBColor[
+                    0.27450980392156865`, 0.5372549019607843, 
+                    0.792156862745098]]], "LinkHand"], {"MouseClicked", 1} :> 
+                  TypeSystem`NestedGrid`PackagePrivate`updateState[
+                   TypeSystem`NestedGrid`PackagePrivate`$state$$, 
+                    TypeSystem`NestedGrid`PackagePrivate`$path$$, 
+                    TypeSystem`NestedGrid`PackagePrivate`$pos$$, 
+                    TypeSystem`NestedGrid`PackagePrivate`$grid$$, 755100221][{
+                    All, "Timestamp"}]], 
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[755100221][
+                  GeneralUtilities`Slice[All, "Timestamp"]], "Mouse"], 
+                Background -> GrayLevel[0.95], Alignment -> {Left, Baseline}], 
+               Item[
+                Annotation[
+                 EventHandler[
+                  MouseAppearance[
+                   Mouseover[
+                    Pane[
+                    RawBoxes[
+                    StyleBox["\"Status\"", FontColor -> GrayLevel[0.4]]], {{
+                    20, Full}, 15}], 
+                    Style[
+                    Pane[
+                    RawBoxes[
+                    StyleBox[
+                    "\"Status\"", FontColor -> 
+                    RGBColor[
+                    0.27450980392156865`, 0.5372549019607843, 
+                    0.792156862745098]]], {{20, Full}, 15}], FontColor -> 
+                    RGBColor[
+                    0.27450980392156865`, 0.5372549019607843, 
+                    0.792156862745098]]], "LinkHand"], {"MouseClicked", 1} :> 
+                  TypeSystem`NestedGrid`PackagePrivate`updateState[
+                   TypeSystem`NestedGrid`PackagePrivate`$state$$, 
+                    TypeSystem`NestedGrid`PackagePrivate`$path$$, 
+                    TypeSystem`NestedGrid`PackagePrivate`$pos$$, 
+                    TypeSystem`NestedGrid`PackagePrivate`$grid$$, 755100221][{
+                    All, "Status"}]], 
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[755100221][
+                  GeneralUtilities`Slice[All, "Status"]], "Mouse"], 
+                Background -> GrayLevel[0.95], Alignment -> {Left, Baseline}], 
                Item[
                 Annotation[
                  EventHandler[
@@ -1262,9 +1507,9 @@ Cell[BoxData[
                    TypeSystem`NestedGrid`PackagePrivate`$state$$, 
                     TypeSystem`NestedGrid`PackagePrivate`$path$$, 
                     TypeSystem`NestedGrid`PackagePrivate`$pos$$, 
-                    TypeSystem`NestedGrid`PackagePrivate`$grid$$, 
-                    1359669577][{All, "Capacity"}]], 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1359669577][
+                    TypeSystem`NestedGrid`PackagePrivate`$grid$$, 755100221][{
+                    All, "Capacity"}]], 
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[755100221][
                   GeneralUtilities`Slice[All, "Capacity"]], "Mouse"], 
                 Background -> GrayLevel[0.95], Alignment -> {Left, Baseline}], 
                Item[
@@ -1292,9 +1537,9 @@ Cell[BoxData[
                    TypeSystem`NestedGrid`PackagePrivate`$state$$, 
                     TypeSystem`NestedGrid`PackagePrivate`$path$$, 
                     TypeSystem`NestedGrid`PackagePrivate`$pos$$, 
-                    TypeSystem`NestedGrid`PackagePrivate`$grid$$, 
-                    1359669577][{All, "Maximum loading rate"}]], 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1359669577][
+                    TypeSystem`NestedGrid`PackagePrivate`$grid$$, 755100221][{
+                    All, "Maximum loading rate"}]], 
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[755100221][
                   GeneralUtilities`Slice[All, "Maximum loading rate"]], 
                  "Mouse"], Background -> GrayLevel[0.95], 
                 Alignment -> {Left, Baseline}], 
@@ -1323,9 +1568,9 @@ Cell[BoxData[
                    TypeSystem`NestedGrid`PackagePrivate`$state$$, 
                     TypeSystem`NestedGrid`PackagePrivate`$path$$, 
                     TypeSystem`NestedGrid`PackagePrivate`$pos$$, 
-                    TypeSystem`NestedGrid`PackagePrivate`$grid$$, 
-                    1359669577][{All, "Maximum discharge rate"}]], 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1359669577][
+                    TypeSystem`NestedGrid`PackagePrivate`$grid$$, 755100221][{
+                    All, "Maximum discharge rate"}]], 
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[755100221][
                   GeneralUtilities`Slice[All, "Maximum discharge rate"]], 
                  "Mouse"], Background -> GrayLevel[0.95], 
                 Alignment -> {Left, Baseline}], 
@@ -1354,9 +1599,9 @@ Cell[BoxData[
                    TypeSystem`NestedGrid`PackagePrivate`$state$$, 
                     TypeSystem`NestedGrid`PackagePrivate`$path$$, 
                     TypeSystem`NestedGrid`PackagePrivate`$pos$$, 
-                    TypeSystem`NestedGrid`PackagePrivate`$grid$$, 
-                    1359669577][{All, "Boil-off rate"}]], 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1359669577][
+                    TypeSystem`NestedGrid`PackagePrivate`$grid$$, 755100221][{
+                    All, "Boil-off rate"}]], 
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[755100221][
                   GeneralUtilities`Slice[All, "Boil-off rate"]], "Mouse"], 
                 Background -> GrayLevel[0.95], Alignment -> {Left, Baseline}], 
                Item[
@@ -1383,9 +1628,9 @@ Cell[BoxData[
                    TypeSystem`NestedGrid`PackagePrivate`$state$$, 
                     TypeSystem`NestedGrid`PackagePrivate`$path$$, 
                     TypeSystem`NestedGrid`PackagePrivate`$pos$$, 
-                    TypeSystem`NestedGrid`PackagePrivate`$grid$$, 
-                    1359669577][{All, "Position"}]], 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1359669577][
+                    TypeSystem`NestedGrid`PackagePrivate`$grid$$, 755100221][{
+                    All, "Position"}]], 
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[755100221][
                   GeneralUtilities`Slice[All, "Position"]], "Mouse"], 
                 Background -> GrayLevel[0.95], Alignment -> {Left, Baseline}], 
                Item[
@@ -1412,9 +1657,9 @@ Cell[BoxData[
                    TypeSystem`NestedGrid`PackagePrivate`$state$$, 
                     TypeSystem`NestedGrid`PackagePrivate`$path$$, 
                     TypeSystem`NestedGrid`PackagePrivate`$pos$$, 
-                    TypeSystem`NestedGrid`PackagePrivate`$grid$$, 
-                    1359669577][{All, "Speed"}]], 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1359669577][
+                    TypeSystem`NestedGrid`PackagePrivate`$grid$$, 755100221][{
+                    All, "Speed"}]], 
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[755100221][
                   GeneralUtilities`Slice[All, "Speed"]], "Mouse"], Background -> 
                 GrayLevel[0.95], Alignment -> {Left, Baseline}], 
                Item[
@@ -1442,9 +1687,9 @@ Cell[BoxData[
                    TypeSystem`NestedGrid`PackagePrivate`$state$$, 
                     TypeSystem`NestedGrid`PackagePrivate`$path$$, 
                     TypeSystem`NestedGrid`PackagePrivate`$pos$$, 
-                    TypeSystem`NestedGrid`PackagePrivate`$grid$$, 
-                    1359669577][{All, "Inventory"}]], 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1359669577][
+                    TypeSystem`NestedGrid`PackagePrivate`$grid$$, 755100221][{
+                    All, "Inventory"}]], 
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[755100221][
                   GeneralUtilities`Slice[All, "Inventory"]], "Mouse"], 
                 Background -> GrayLevel[0.95], Alignment -> {Left, Baseline}], 
                Item[
@@ -1472,9 +1717,9 @@ Cell[BoxData[
                    TypeSystem`NestedGrid`PackagePrivate`$state$$, 
                     TypeSystem`NestedGrid`PackagePrivate`$path$$, 
                     TypeSystem`NestedGrid`PackagePrivate`$pos$$, 
-                    TypeSystem`NestedGrid`PackagePrivate`$grid$$, 
-                    1359669577][{All, "DailyFixedCost"}]], 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1359669577][
+                    TypeSystem`NestedGrid`PackagePrivate`$grid$$, 755100221][{
+                    All, "DailyFixedCost"}]], 
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[755100221][
                   GeneralUtilities`Slice[All, "DailyFixedCost"]], "Mouse"], 
                 Background -> GrayLevel[0.95], 
                 Alignment -> {Left, Baseline}]}, {
@@ -1493,14 +1738,35 @@ Cell[BoxData[
                     TypeSystem`NestedGrid`PackagePrivate`$state$$, 
                     TypeSystem`NestedGrid`PackagePrivate`$path$$, 
                     TypeSystem`NestedGrid`PackagePrivate`$pos$$, 
-                    TypeSystem`NestedGrid`PackagePrivate`$grid$$, 1359669577][{
+                    TypeSystem`NestedGrid`PackagePrivate`$grid$$, 755100221][{
                     Key["WSD50"]}]], 
-                  TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[
-                  1359669577][
+                  TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[755100221][
                    GeneralUtilities`Slice[
                     Key["WSD50"]]], "Mouse"], 
                  ImageSize -> {{76.80000000000001, Full}, Automatic}], 
                 Background -> GrayLevel[0.95], Alignment -> {Left, Baseline}], 
+               Pane[
+                Annotation[
+                 RawBoxes[
+                  StyleBox[
+                  "\"Sun 1 Jan 2018 00:00:00\"", FontColor -> RGBColor[{
+                    Rational[33, 74], 
+                    Rational[27, 74], 
+                    Rational[117, 370]}]]], 
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[755100221][
+                  GeneralUtilities`Slice[
+                   Key["WSD50"], 
+                   Key["Timestamp"]]], "Mouse"], 
+                ImageSize -> {{75, Full}, Automatic}, 
+                Alignment -> {Left, Baseline}], 
+               Pane[
+                Annotation["Idle", 
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[755100221][
+                  GeneralUtilities`Slice[
+                   Key["WSD50"], 
+                   Key["Status"]]], "Mouse"], 
+                ImageSize -> {{38.400000000000006`, Full}, Automatic}, 
+                Alignment -> {Left, Baseline}], 
                Pane[
                 Annotation[
                  RawBoxes[
@@ -1511,7 +1777,7 @@ Cell[BoxData[
                     Rational[33, 74], 
                     Rational[27, 74], 
                     Rational[117, 370]}]]], 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1359669577][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[755100221][
                   GeneralUtilities`Slice[
                    Key["WSD50"], 
                    Key["Capacity"]]], "Mouse"], 
@@ -1529,7 +1795,7 @@ Cell[BoxData[
                     Rational[33, 74], 
                     Rational[27, 74], 
                     Rational[117, 370]}]]], 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1359669577][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[755100221][
                   GeneralUtilities`Slice[
                    Key["WSD50"], 
                    Key["Maximum loading rate"]]], "Mouse"], 
@@ -1547,7 +1813,7 @@ Cell[BoxData[
                     Rational[33, 74], 
                     Rational[27, 74], 
                     Rational[117, 370]}]]], 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1359669577][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[755100221][
                   GeneralUtilities`Slice[
                    Key["WSD50"], 
                    Key["Maximum discharge rate"]]], "Mouse"], 
@@ -1556,7 +1822,7 @@ Cell[BoxData[
                Pane[
                 Annotation[
                  RawBoxes["0.12"], 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1359669577][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[755100221][
                   GeneralUtilities`Slice[
                    Key["WSD50"], 
                    Key["Boil-off rate"]]], "Mouse"], 
@@ -1570,7 +1836,7 @@ Cell[BoxData[
                     Rational[33, 74], 
                     Rational[27, 74], 
                     Rational[117, 370]}]]], 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1359669577][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[755100221][
                   GeneralUtilities`Slice[
                    Key["WSD50"], 
                    Key["Position"]]], "Mouse"], 
@@ -1588,7 +1854,7 @@ Cell[BoxData[
                     Rational[33, 74], 
                     Rational[27, 74], 
                     Rational[117, 370]}]]], 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1359669577][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[755100221][
                   GeneralUtilities`Slice[
                    Key["WSD50"], 
                    Key["Speed"]]], "Mouse"], 
@@ -1604,7 +1870,7 @@ Cell[BoxData[
                     Rational[33, 74], 
                     Rational[27, 74], 
                     Rational[117, 370]}]]], 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1359669577][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[755100221][
                   GeneralUtilities`Slice[
                    Key["WSD50"], 
                    Key["Inventory"]]], "Mouse"], 
@@ -1625,7 +1891,7 @@ Cell[BoxData[
                     Rational[33, 74], 
                     Rational[27, 74], 
                     Rational[117, 370]}]]], 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1359669577][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[755100221][
                   GeneralUtilities`Slice[
                    Key["WSD50"], 
                    Key["DailyFixedCost"]]], "Mouse"], 
@@ -1646,14 +1912,35 @@ Cell[BoxData[
                     TypeSystem`NestedGrid`PackagePrivate`$state$$, 
                     TypeSystem`NestedGrid`PackagePrivate`$path$$, 
                     TypeSystem`NestedGrid`PackagePrivate`$pos$$, 
-                    TypeSystem`NestedGrid`PackagePrivate`$grid$$, 1359669577][{
+                    TypeSystem`NestedGrid`PackagePrivate`$grid$$, 755100221][{
                     Key["TGE"]}]], 
-                  TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[
-                  1359669577][
+                  TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[755100221][
                    GeneralUtilities`Slice[
                     Key["TGE"]]], "Mouse"], 
                  ImageSize -> {{76.80000000000001, Full}, Automatic}], 
                 Background -> GrayLevel[0.95], Alignment -> {Left, Baseline}], 
+               Pane[
+                Annotation[
+                 RawBoxes[
+                  StyleBox[
+                  "\"Sun 1 Jan 2018 00:00:00\"", FontColor -> RGBColor[{
+                    Rational[33, 74], 
+                    Rational[27, 74], 
+                    Rational[117, 370]}]]], 
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[755100221][
+                  GeneralUtilities`Slice[
+                   Key["TGE"], 
+                   Key["Timestamp"]]], "Mouse"], 
+                ImageSize -> {{75, Full}, Automatic}, 
+                Alignment -> {Left, Baseline}], 
+               Pane[
+                Annotation["Idle", 
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[755100221][
+                  GeneralUtilities`Slice[
+                   Key["TGE"], 
+                   Key["Status"]]], "Mouse"], 
+                ImageSize -> {{38.400000000000006`, Full}, Automatic}, 
+                Alignment -> {Left, Baseline}], 
                Pane[
                 Annotation[
                  RawBoxes[
@@ -1664,7 +1951,7 @@ Cell[BoxData[
                     Rational[33, 74], 
                     Rational[27, 74], 
                     Rational[117, 370]}]]], 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1359669577][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[755100221][
                   GeneralUtilities`Slice[
                    Key["TGE"], 
                    Key["Capacity"]]], "Mouse"], 
@@ -1682,7 +1969,7 @@ Cell[BoxData[
                     Rational[33, 74], 
                     Rational[27, 74], 
                     Rational[117, 370]}]]], 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1359669577][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[755100221][
                   GeneralUtilities`Slice[
                    Key["TGE"], 
                    Key["Maximum loading rate"]]], "Mouse"], 
@@ -1700,7 +1987,7 @@ Cell[BoxData[
                     Rational[33, 74], 
                     Rational[27, 74], 
                     Rational[117, 370]}]]], 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1359669577][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[755100221][
                   GeneralUtilities`Slice[
                    Key["TGE"], 
                    Key["Maximum discharge rate"]]], "Mouse"], 
@@ -1709,7 +1996,7 @@ Cell[BoxData[
                Pane[
                 Annotation[
                  RawBoxes["0.19"], 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1359669577][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[755100221][
                   GeneralUtilities`Slice[
                    Key["TGE"], 
                    Key["Boil-off rate"]]], "Mouse"], 
@@ -1723,7 +2010,7 @@ Cell[BoxData[
                     Rational[33, 74], 
                     Rational[27, 74], 
                     Rational[117, 370]}]]], 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1359669577][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[755100221][
                   GeneralUtilities`Slice[
                    Key["TGE"], 
                    Key["Position"]]], "Mouse"], 
@@ -1741,7 +2028,7 @@ Cell[BoxData[
                     Rational[33, 74], 
                     Rational[27, 74], 
                     Rational[117, 370]}]]], 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1359669577][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[755100221][
                   GeneralUtilities`Slice[
                    Key["TGE"], 
                    Key["Speed"]]], "Mouse"], 
@@ -1757,7 +2044,7 @@ Cell[BoxData[
                     Rational[33, 74], 
                     Rational[27, 74], 
                     Rational[117, 370]}]]], 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1359669577][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[755100221][
                   GeneralUtilities`Slice[
                    Key["TGE"], 
                    Key["Inventory"]]], "Mouse"], 
@@ -1778,7 +2065,7 @@ Cell[BoxData[
                     Rational[33, 74], 
                     Rational[27, 74], 
                     Rational[117, 370]}]]], 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1359669577][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[755100221][
                   GeneralUtilities`Slice[
                    Key["TGE"], 
                    Key["DailyFixedCost"]]], "Mouse"], 
@@ -1799,14 +2086,35 @@ Cell[BoxData[
                     TypeSystem`NestedGrid`PackagePrivate`$state$$, 
                     TypeSystem`NestedGrid`PackagePrivate`$path$$, 
                     TypeSystem`NestedGrid`PackagePrivate`$pos$$, 
-                    TypeSystem`NestedGrid`PackagePrivate`$grid$$, 1359669577][{
+                    TypeSystem`NestedGrid`PackagePrivate`$grid$$, 755100221][{
                     Key["Leissner"]}]], 
-                  TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[
-                  1359669577][
+                  TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[755100221][
                    GeneralUtilities`Slice[
                     Key["Leissner"]]], "Mouse"], 
                  ImageSize -> {{76.80000000000001, Full}, Automatic}], 
                 Background -> GrayLevel[0.95], Alignment -> {Left, Baseline}], 
+               Pane[
+                Annotation[
+                 RawBoxes[
+                  StyleBox[
+                  "\"Sun 1 Jan 2018 00:00:00\"", FontColor -> RGBColor[{
+                    Rational[33, 74], 
+                    Rational[27, 74], 
+                    Rational[117, 370]}]]], 
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[755100221][
+                  GeneralUtilities`Slice[
+                   Key["Leissner"], 
+                   Key["Timestamp"]]], "Mouse"], 
+                ImageSize -> {{75, Full}, Automatic}, 
+                Alignment -> {Left, Baseline}], 
+               Pane[
+                Annotation["Idle", 
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[755100221][
+                  GeneralUtilities`Slice[
+                   Key["Leissner"], 
+                   Key["Status"]]], "Mouse"], 
+                ImageSize -> {{38.400000000000006`, Full}, Automatic}, 
+                Alignment -> {Left, Baseline}], 
                Pane[
                 Annotation[
                  RawBoxes[
@@ -1817,7 +2125,7 @@ Cell[BoxData[
                     Rational[33, 74], 
                     Rational[27, 74], 
                     Rational[117, 370]}]]], 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1359669577][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[755100221][
                   GeneralUtilities`Slice[
                    Key["Leissner"], 
                    Key["Capacity"]]], "Mouse"], 
@@ -1835,7 +2143,7 @@ Cell[BoxData[
                     Rational[33, 74], 
                     Rational[27, 74], 
                     Rational[117, 370]}]]], 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1359669577][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[755100221][
                   GeneralUtilities`Slice[
                    Key["Leissner"], 
                    Key["Maximum loading rate"]]], "Mouse"], 
@@ -1853,7 +2161,7 @@ Cell[BoxData[
                     Rational[33, 74], 
                     Rational[27, 74], 
                     Rational[117, 370]}]]], 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1359669577][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[755100221][
                   GeneralUtilities`Slice[
                    Key["Leissner"], 
                    Key["Maximum discharge rate"]]], "Mouse"], 
@@ -1862,7 +2170,7 @@ Cell[BoxData[
                Pane[
                 Annotation[
                  RawBoxes["0.15"], 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1359669577][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[755100221][
                   GeneralUtilities`Slice[
                    Key["Leissner"], 
                    Key["Boil-off rate"]]], "Mouse"], 
@@ -1876,7 +2184,7 @@ Cell[BoxData[
                     Rational[33, 74], 
                     Rational[27, 74], 
                     Rational[117, 370]}]]], 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1359669577][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[755100221][
                   GeneralUtilities`Slice[
                    Key["Leissner"], 
                    Key["Position"]]], "Mouse"], 
@@ -1894,7 +2202,7 @@ Cell[BoxData[
                     Rational[33, 74], 
                     Rational[27, 74], 
                     Rational[117, 370]}]]], 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1359669577][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[755100221][
                   GeneralUtilities`Slice[
                    Key["Leissner"], 
                    Key["Speed"]]], "Mouse"], 
@@ -1910,7 +2218,7 @@ Cell[BoxData[
                     Rational[33, 74], 
                     Rational[27, 74], 
                     Rational[117, 370]}]]], 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1359669577][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[755100221][
                   GeneralUtilities`Slice[
                    Key["Leissner"], 
                    Key["Inventory"]]], "Mouse"], 
@@ -1931,7 +2239,7 @@ Cell[BoxData[
                     Rational[33, 74], 
                     Rational[27, 74], 
                     Rational[117, 370]}]]], 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1359669577][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[755100221][
                   GeneralUtilities`Slice[
                    Key["Leissner"], 
                    Key["DailyFixedCost"]]], "Mouse"], 
@@ -1952,14 +2260,35 @@ Cell[BoxData[
                     TypeSystem`NestedGrid`PackagePrivate`$state$$, 
                     TypeSystem`NestedGrid`PackagePrivate`$path$$, 
                     TypeSystem`NestedGrid`PackagePrivate`$pos$$, 
-                    TypeSystem`NestedGrid`PackagePrivate`$grid$$, 1359669577][{
+                    TypeSystem`NestedGrid`PackagePrivate`$grid$$, 755100221][{
                     Key["Tembek"]}]], 
-                  TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[
-                  1359669577][
+                  TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[755100221][
                    GeneralUtilities`Slice[
                     Key["Tembek"]]], "Mouse"], 
                  ImageSize -> {{76.80000000000001, Full}, Automatic}], 
                 Background -> GrayLevel[0.95], Alignment -> {Left, Baseline}], 
+               Pane[
+                Annotation[
+                 RawBoxes[
+                  StyleBox[
+                  "\"Sun 1 Jan 2018 00:00:00\"", FontColor -> RGBColor[{
+                    Rational[33, 74], 
+                    Rational[27, 74], 
+                    Rational[117, 370]}]]], 
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[755100221][
+                  GeneralUtilities`Slice[
+                   Key["Tembek"], 
+                   Key["Timestamp"]]], "Mouse"], 
+                ImageSize -> {{75, Full}, Automatic}, 
+                Alignment -> {Left, Baseline}], 
+               Pane[
+                Annotation["Idle", 
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[755100221][
+                  GeneralUtilities`Slice[
+                   Key["Tembek"], 
+                   Key["Status"]]], "Mouse"], 
+                ImageSize -> {{38.400000000000006`, Full}, Automatic}, 
+                Alignment -> {Left, Baseline}], 
                Pane[
                 Annotation[
                  RawBoxes[
@@ -1970,7 +2299,7 @@ Cell[BoxData[
                     Rational[33, 74], 
                     Rational[27, 74], 
                     Rational[117, 370]}]]], 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1359669577][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[755100221][
                   GeneralUtilities`Slice[
                    Key["Tembek"], 
                    Key["Capacity"]]], "Mouse"], 
@@ -1988,7 +2317,7 @@ Cell[BoxData[
                     Rational[33, 74], 
                     Rational[27, 74], 
                     Rational[117, 370]}]]], 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1359669577][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[755100221][
                   GeneralUtilities`Slice[
                    Key["Tembek"], 
                    Key["Maximum loading rate"]]], "Mouse"], 
@@ -2006,7 +2335,7 @@ Cell[BoxData[
                     Rational[33, 74], 
                     Rational[27, 74], 
                     Rational[117, 370]}]]], 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1359669577][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[755100221][
                   GeneralUtilities`Slice[
                    Key["Tembek"], 
                    Key["Maximum discharge rate"]]], "Mouse"], 
@@ -2015,7 +2344,7 @@ Cell[BoxData[
                Pane[
                 Annotation[
                  RawBoxes["0"], 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1359669577][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[755100221][
                   GeneralUtilities`Slice[
                    Key["Tembek"], 
                    Key["Boil-off rate"]]], "Mouse"], 
@@ -2029,7 +2358,7 @@ Cell[BoxData[
                     Rational[33, 74], 
                     Rational[27, 74], 
                     Rational[117, 370]}]]], 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1359669577][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[755100221][
                   GeneralUtilities`Slice[
                    Key["Tembek"], 
                    Key["Position"]]], "Mouse"], 
@@ -2047,7 +2376,7 @@ Cell[BoxData[
                     Rational[33, 74], 
                     Rational[27, 74], 
                     Rational[117, 370]}]]], 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1359669577][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[755100221][
                   GeneralUtilities`Slice[
                    Key["Tembek"], 
                    Key["Speed"]]], "Mouse"], 
@@ -2063,7 +2392,7 @@ Cell[BoxData[
                     Rational[33, 74], 
                     Rational[27, 74], 
                     Rational[117, 370]}]]], 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1359669577][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[755100221][
                   GeneralUtilities`Slice[
                    Key["Tembek"], 
                    Key["Inventory"]]], "Mouse"], 
@@ -2084,7 +2413,7 @@ Cell[BoxData[
                     Rational[33, 74], 
                     Rational[27, 74], 
                     Rational[117, 370]}]]], 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1359669577][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[755100221][
                   GeneralUtilities`Slice[
                    Key["Tembek"], 
                    Key["DailyFixedCost"]]], "Mouse"], 
@@ -2136,7 +2465,7 @@ Cell[BoxData[
                 TypeSystem`NestedGrid`PackagePrivate`$state$$, 
                  TypeSystem`NestedGrid`PackagePrivate`$path$$, 
                  TypeSystem`NestedGrid`PackagePrivate`$pos$$, 
-                 TypeSystem`NestedGrid`PackagePrivate`$grid$$, 1359669577][
+                 TypeSystem`NestedGrid`PackagePrivate`$grid$$, 755100221][
                 TypeSystem`NestedGrid`PackagePrivate`tmpData$]]; If[
                Not[
                 FailureQ[TypeSystem`NestedGrid`PackagePrivate`tmpGrid$]], 
@@ -2167,14 +2496,14 @@ Cell[BoxData[
            TypeSystem`NestedGrid`PackagePrivate`$state$$, 
             TypeSystem`NestedGrid`PackagePrivate`$path$$, 
             TypeSystem`NestedGrid`PackagePrivate`$pos$$, 
-            TypeSystem`NestedGrid`PackagePrivate`$grid$$, 1359669577]]]], 
+            TypeSystem`NestedGrid`PackagePrivate`$grid$$, 755100221]]]], 
         TrackedSymbols :> {TypeSystem`NestedGrid`PackagePrivate`$path$$}], 
       TypeSystem`NestedGrid`PackagePrivate`$bottomBar$$ = Framed[
         Dynamic[
          Replace[
           MouseAnnotation[Null], {
-          TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1359669577][Null] -> 
-           "", TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1359669577][
+          TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[755100221][Null] -> 
+           "", TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[755100221][
              Pattern[TypeSystem`NestedGrid`PackagePrivate`path, 
               Blank[]]] :> (
             TypeSystem`NestedGrid`PackagePrivate`$lastPath = 
@@ -2208,7 +2537,7 @@ Cell[BoxData[
            TypeSystem`NestedGrid`PackagePrivate`$bottomBar$$]]}], Spacings -> 
         If[TypeSystem`NestedGrid`PackagePrivate`$path$$ == {}, 
           0, {{}, {0, 0.05, 0}}]], StandardForm], 
-      ImageSizeCache -> {950., {77., 84.}}, 
+      ImageSizeCache -> {1168., {77., 84.}}, 
       TrackedSymbols :> {
        TypeSystem`NestedGrid`PackagePrivate`$state$$, 
         TypeSystem`NestedGrid`PackagePrivate`$grid$$}], 
@@ -2225,9 +2554,9 @@ Cell[BoxData[
    3.7227723625173907`*^9, 3.7241524398199835`*^9, 3.724152515525984*^9, 
    3.7241558688145933`*^9, 3.7241582108997345`*^9, 3.7241583688309402`*^9, 
    3.724158496948759*^9, 3.725017707566209*^9, 3.725017874045855*^9, 
-   3.725023268544279*^9, 
-   3.72510128855416*^9},ExpressionUUID->"10e10e79-fdf7-4b23-a5d7-\
-752fe8c9a389"]
+   3.725023268544279*^9, 3.72510128855416*^9, 
+   3.72925431967889*^9},ExpressionUUID->"89b58603-c806-4fcf-a880-\
+d8d1a6e90ba7"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -4365,9 +4694,9 @@ c6689227c0ac"],
 Cell[BoxData[
  RowBox[{"{", 
   RowBox[{"4", ",", "4", ",", "4"}], "}"}]], "Output",
- CellChangeTimes->{
-  3.725110011138397*^9},ExpressionUUID->"b3a55c39-b9d0-4f54-aee1-\
-4f8e9631463f"]
+ CellChangeTimes->{3.725110011138397*^9, 
+  3.729233944751771*^9},ExpressionUUID->"30f9002a-ff43-4fbd-8e3b-\
+670533a5beaf"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -4380,9 +4709,9 @@ Cell[BoxData[
 fa9cb3a433c5"],
 
 Cell[BoxData["47701230579106532933000886614512970393712"], "Output",
- CellChangeTimes->{
-  3.725110296784959*^9},ExpressionUUID->"d3626b56-0afe-4ad5-94af-\
-332721cbb2a3"]
+ CellChangeTimes->{3.725110296784959*^9, 
+  3.7292339455578513`*^9},ExpressionUUID->"c1e6facc-3e23-4527-a898-\
+8e5fbdd22807"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -4396,9 +4725,9 @@ f5f1d8e89741"],
 Cell[BoxData[
  RowBox[{"{", 
   RowBox[{"288", ",", "4"}], "}"}]], "Output",
- CellChangeTimes->{
-  3.725109993243608*^9},ExpressionUUID->"92ca555d-4529-456f-9b4f-\
-61bc246a6b81"]
+ CellChangeTimes->{3.725109993243608*^9, 
+  3.7292339465279484`*^9},ExpressionUUID->"963c4d80-17aa-428f-be4d-\
+6e1c630bdc32"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -4449,9 +4778,9 @@ Cell[BoxData[
    3.7250149099844694`*^9, 3.7250151752229905`*^9, 3.725015653406804*^9, 
    3.7250160081482744`*^9, 3.7250160760100603`*^9, 3.7250177235038023`*^9, 
    3.7250181792043676`*^9, 3.7250182729307394`*^9, 3.7250200062120504`*^9, 
-   3.7250231366230884`*^9, 3.725023416817105*^9, 
-   3.725101305714876*^9},ExpressionUUID->"c80523ce-154d-4fad-81e7-\
-13eb08e02be9"]
+   3.7250231366230884`*^9, 3.725023416817105*^9, 3.725101305714876*^9, 
+   3.729233947362032*^9},ExpressionUUID->"d10bf773-6beb-40bc-85dd-\
+c6e1e13b4934"]
 }, Open  ]],
 
 Cell["Cashflow one trip", "Text",
@@ -4466,183 +4795,150 @@ Cell[BoxData[
   RowBox[{
    RowBox[{"cashflowTrip", "[", 
     RowBox[{
-     RowBox[{"LNGVessels", "[", 
-      RowBox[{"#", "[", "\"\<Vessel\>\"", "]"}], "]"}], ",", " ", 
+     RowBox[{"#", "[", "\"\<Vessel\>\"", "]"}], ",", " ", 
      RowBox[{"#", "[", "\"\<Production\>\"", "]"}], ",", " ", 
-     RowBox[{"LNGTerminals", "[", 
-      RowBox[{"#", "[", "\"\<Market\>\"", "]"}], "]"}]}], "]"}], " ", "&"}], 
-  " ", "/@", " ", 
+     RowBox[{"#", "[", "\"\<Market\>\"", "]"}]}], "]"}], " ", "&"}], " ", "/@",
+   " ", 
   RowBox[{"{", 
    RowBox[{"decisions", "[", 
     RowBox[{"[", 
      RowBox[{"5", ",", " ", "1"}], "]"}], "]"}], "}"}]}]], "Input",
  CellChangeTimes->{{3.7250146460320764`*^9, 3.725014653307804*^9}, {
   3.7250149173532057`*^9, 3.725015021844654*^9}, {3.7250150551169806`*^9, 
-  3.725015059379407*^9}},ExpressionUUID->"c63990a8-040b-4d5f-9554-\
+  3.725015059379407*^9}, {3.7292399985671153`*^9, 
+  3.7292400090521636`*^9}},ExpressionUUID->"c63990a8-040b-4d5f-9554-\
 9cd2579c5561"],
 
 Cell[BoxData[
  RowBox[{"{", 
-  RowBox[{"{", 
+  RowBox[{"\[LeftAssociation]", 
    RowBox[{
-    RowBox[{"\[LeftAssociation]", 
-     RowBox[{
-      RowBox[{"\<\"Speed\"\>", "\[Rule]", 
-       TemplateBox[{
-        "13.`",RowBox[{
-          "\"nmi\"", "\[InvisibleSpace]", "\"/\"", "\[InvisibleSpace]", 
-           "\"h\""}],"nautical miles per hour",FractionBox[
-         "\"NauticalMiles\"", "\"Hours\""]},
-        "Quantity"]}], ",", 
-      RowBox[{"\<\"Capacity\"\>", "\[Rule]", 
-       TemplateBox[{"75000",RowBox[{
-           SuperscriptBox["\"m\"", "3"]}],"meters cubed",SuperscriptBox[
-         "\"Meters\"", "3"]},
-        "Quantity"]}], ",", 
-      RowBox[{"\<\"Maximum loading rate\"\>", "\[Rule]", 
-       TemplateBox[{"1000",RowBox[{
-           SuperscriptBox["\"m\"", "3"], "\[NegativeMediumSpace]", "\"/\"", 
-           "\[InvisibleSpace]", "\"day\""}],"meters cubed per day",FractionBox[
-          SuperscriptBox["\"Meters\"", "3"], "\"Days\""]},
-        "Quantity"]}], ",", 
-      RowBox[{"\<\"Maximum discharge rate\"\>", "\[Rule]", 
-       TemplateBox[{"1000",RowBox[{
-           SuperscriptBox["\"m\"", "3"], "\[NegativeMediumSpace]", "\"/\"", 
-           "\[InvisibleSpace]", "\"day\""}],"meters cubed per day",FractionBox[
-          SuperscriptBox["\"Meters\"", "3"], "\"Days\""]},
-        "Quantity"]}], ",", 
-      RowBox[{"\<\"Boil-off rate\"\>", "\[Rule]", "0.15`"}], ",", 
-      RowBox[{"\<\"Position\"\>", "\[Rule]", 
-       RowBox[{"GeoPosition", "[", 
-        RowBox[{"{", 
-         RowBox[{"5.2234`", ",", "97.083`"}], "}"}], "]"}]}], ",", 
-      RowBox[{"\<\"Inventory\"\>", "\[Rule]", 
-       RowBox[{
-        RowBox[{"-", "optExhaustiveSearch`Private`loadingVolume$5342"}], "+", 
-        TemplateBox[{"0",RowBox[{
+    RowBox[{"\<\"Vessel\"\>", "\[Rule]", 
+     RowBox[{"\[LeftAssociation]", 
+      RowBox[{
+       RowBox[{"\<\"Timestamp\"\>", "\[Rule]", 
+        TemplateBox[{RowBox[{"\"Sun 1 Jan 2018 00:00:00\"", 
+            StyleBox["\"GMT\"", FontColor -> GrayLevel[0.5]], 
+            StyleBox[
+             
+             RowBox[{"\[ThinSpace]", "(", "\[InvisibleSpace]", "\"Julian\"", 
+               "\"calendar\"", "\[InvisibleSpace]", ")"}], FontColor -> 
+             GrayLevel[0.5]]}],RowBox[{"DateObject", "[", 
+            RowBox[{
+              RowBox[{"{", 
+                
+                RowBox[{
+                 "2018", ",", "1", ",", "1", ",", "0", ",", "0", ",", "0.`"}],
+                 "}"}], ",", "\"Instant\"", ",", "\"Julian\"", ",", 
+              "\"Europe/London\""}], "]"}]},
+         "DateObject",
+         Editable->False]}], ",", 
+       RowBox[{"\<\"Status\"\>", "\[Rule]", "\<\"Idle\"\>"}], ",", 
+       RowBox[{"\<\"Speed\"\>", "\[Rule]", 
+        TemplateBox[{
+         "13.`",RowBox[{
+           "\"nmi\"", "\[InvisibleSpace]", "\"/\"", "\[InvisibleSpace]", 
+            "\"h\""}],"nautical miles per hour",FractionBox[
+          "\"NauticalMiles\"", "\"Hours\""]},
+         "Quantity"]}], ",", 
+       RowBox[{"\<\"Capacity\"\>", "\[Rule]", 
+        TemplateBox[{"75000",RowBox[{
             SuperscriptBox["\"m\"", "3"]}],"meters cubed",SuperscriptBox[
           "\"Meters\"", "3"]},
-         "Quantity"]}]}], ",", 
-      RowBox[{"\<\"DailyFixedCost\"\>", "\[Rule]", 
-       TemplateBox[{"200",RowBox[{
-           FormBox["\"$\"", TraditionalForm], "\[VeryThinSpace]"}],
-         RowBox[{"\"per \"", "\[InvisibleSpace]", "\"day\""}],
-         "US dollars per day",FractionBox["\"USDollars\"", "\"Days\""]},
-        "QuantityPrefixUnit"]}]}], "\[RightAssociation]"}], ",", 
-    RowBox[{"\[LeftAssociation]", 
-     RowBox[{
-      RowBox[{"\<\"Golden Pass\"\>", "\[Rule]", 
-       RowBox[{"\[LeftAssociation]", 
+         "Quantity"]}], ",", 
+       RowBox[{"\<\"Maximum loading rate\"\>", "\[Rule]", 
+        TemplateBox[{"1000",RowBox[{
+            SuperscriptBox["\"m\"", "3"], "\[NegativeMediumSpace]", "\"/\"", 
+            "\[InvisibleSpace]", "\"day\""}],"meters cubed per day",
+          FractionBox[
+           SuperscriptBox["\"Meters\"", "3"], "\"Days\""]},
+         "Quantity"]}], ",", 
+       RowBox[{"\<\"Maximum discharge rate\"\>", "\[Rule]", 
+        TemplateBox[{"1000",RowBox[{
+            SuperscriptBox["\"m\"", "3"], "\[NegativeMediumSpace]", "\"/\"", 
+            "\[InvisibleSpace]", "\"day\""}],"meters cubed per day",
+          FractionBox[
+           SuperscriptBox["\"Meters\"", "3"], "\"Days\""]},
+         "Quantity"]}], ",", 
+       RowBox[{"\<\"Boil-off rate\"\>", "\[Rule]", "0.15`"}], ",", 
+       RowBox[{"\<\"Position\"\>", "\[Rule]", 
+        RowBox[{"GeoPosition", "[", 
+         RowBox[{"{", 
+          RowBox[{"5.2234`", ",", "97.083`"}], "}"}], "]"}]}], ",", 
+       RowBox[{"\<\"Inventory\"\>", "\[Rule]", 
         RowBox[{
-         RowBox[{"\<\"LatLong\"\>", "\[Rule]", 
-          RowBox[{"GeoPosition", "[", 
-           RowBox[{"{", 
-            RowBox[{"29.761564`", ",", 
-             RowBox[{"-", "93.929215`"}]}], "}"}], "]"}]}], ",", 
-         RowBox[{"\<\"Currency\"\>", "\[Rule]", "\<\"USD\"\>"}], ",", 
-         RowBox[{"\<\"Type\"\>", 
-          "\[Rule]", "\<\"Liquification and Export\"\>"}], ",", 
-         RowBox[{"\<\"Total Terminal Storage Capacity\"\>", "\[Rule]", 
-          TemplateBox[{"350000",RowBox[{
-              SuperscriptBox["\"m\"", "3"]}],"meters cubed",SuperscriptBox[
-            "\"Meters\"", "3"]},
-           "Quantity"]}], ",", 
-         RowBox[{"\<\"Daily Production\"\>", "\[Rule]", 
-          TemplateBox[{"5000",RowBox[{
-              SuperscriptBox["\"m\"", "3"], "\[NegativeMediumSpace]", "\"/\"",
-               "\[InvisibleSpace]", "\"day\""}],"meters cubed per day",
-            FractionBox[
-             SuperscriptBox["\"Meters\"", "3"], "\"Days\""]},
-           "Quantity"]}], ",", 
-         RowBox[{"\<\"Inventory\"\>", "\[Rule]", 
-          TemplateBox[{"100000",RowBox[{
-              SuperscriptBox["\"m\"", "3"]}],"meters cubed",SuperscriptBox[
-            "\"Meters\"", "3"]},
-           "Quantity"]}], ",", 
-         RowBox[{"\<\"Price\"\>", "\[Rule]", 
-          TemplateBox[{"4.1`",RowBox[{
-              FormBox["\"$\"", TraditionalForm], "\[VeryThinSpace]"}],
-            RowBox[{"\"per \"", "\[InvisibleSpace]", 
-              SuperscriptBox["\"meter\"", "3"]}],"US dollars per meter cubed",
-            FractionBox["\"USDollars\"", 
-             SuperscriptBox["\"Meters\"", "3"]]},
-           "QuantityPrefixUnit"]}]}], "\[RightAssociation]"}]}], ",", 
-      RowBox[{"\<\"PNG LNG Terminal Papua New Guinea\"\>", "\[Rule]", 
-       RowBox[{"\[LeftAssociation]", 
-        RowBox[{
-         RowBox[{"\<\"LatLong\"\>", "\[Rule]", 
-          RowBox[{"GeoPosition", "[", 
-           RowBox[{"{", 
-            RowBox[{
-             RowBox[{"-", "9.33862`"}], ",", "147.01825`"}], "}"}], "]"}]}], 
-         ",", 
-         RowBox[{"\<\"Currency\"\>", "\[Rule]", "\<\"Kina\"\>"}], ",", 
-         RowBox[{"\<\"Type\"\>", 
-          "\[Rule]", "\<\"Liquification and Export\"\>"}], ",", 
-         RowBox[{"\<\"Total Terminal Storage Capacity\"\>", "\[Rule]", 
-          TemplateBox[{"320000",RowBox[{
-              SuperscriptBox["\"m\"", "3"]}],"meters cubed",SuperscriptBox[
-            "\"Meters\"", "3"]},
-           "Quantity"]}], ",", 
-         RowBox[{"\<\"Daily Production\"\>", "\[Rule]", 
-          TemplateBox[{"2500",RowBox[{
-              SuperscriptBox["\"m\"", "3"], "\[NegativeMediumSpace]", "\"/\"",
-               "\[InvisibleSpace]", "\"day\""}],"meters cubed per day",
-            FractionBox[
-             SuperscriptBox["\"Meters\"", "3"], "\"Days\""]},
-           "Quantity"]}], ",", 
-         RowBox[{"\<\"Inventory\"\>", "\[Rule]", 
-          TemplateBox[{"320000",RowBox[{
-              SuperscriptBox["\"m\"", "3"]}],"meters cubed",SuperscriptBox[
-            "\"Meters\"", "3"]},
-           "Quantity"]}], ",", 
-         RowBox[{"\<\"Price\"\>", "\[Rule]", 
-          TemplateBox[{"3.9`",RowBox[{
-              FormBox["\"$\"", TraditionalForm], "\[VeryThinSpace]"}],
-            RowBox[{"\"per \"", "\[InvisibleSpace]", 
-              SuperscriptBox["\"meter\"", "3"]}],"US dollars per meter cubed",
-            FractionBox["\"USDollars\"", 
-             SuperscriptBox["\"Meters\"", "3"]]},
-           "QuantityPrefixUnit"]}]}], "\[RightAssociation]"}]}]}], 
-     "\[RightAssociation]"}], ",", 
-    RowBox[{"\[LeftAssociation]", 
-     RowBox[{
-      RowBox[{"\<\"LatLong\"\>", "\[Rule]", 
-       RowBox[{"GeoPosition", "[", 
-        RowBox[{"{", 
-         RowBox[{"5.2234`", ",", "97.083`"}], "}"}], "]"}]}], ",", 
-      RowBox[{"\<\"Currency\"\>", "\[Rule]", "\<\"Rupiah\"\>"}], ",", 
-      RowBox[{"\<\"Type\"\>", 
-       "\[Rule]", "\<\"Import and Re-gasification\"\>"}], ",", 
-      RowBox[{"\<\"Total Terminal Storage Capacity\"\>", "\[Rule]", 
-       TemplateBox[{"635000",RowBox[{
-           SuperscriptBox["\"m\"", "3"]}],"meters cubed",SuperscriptBox[
-         "\"Meters\"", "3"]},
-        "Quantity"]}], ",", 
-      RowBox[{"\<\"Price\"\>", "\[Rule]", 
-       TemplateBox[{"6.2`",RowBox[{
-           FormBox["\"$\"", TraditionalForm], "\[VeryThinSpace]"}],
-         RowBox[{"\"per \"", "\[InvisibleSpace]", 
-           SuperscriptBox["\"meter\"", "3"]}],"US dollars per meter cubed",
-         FractionBox["\"USDollars\"", 
-          SuperscriptBox["\"Meters\"", "3"]]},
-        "QuantityPrefixUnit"]}]}], "\[RightAssociation]"}], ",", 
-    TemplateBox[{InterpretationBox[
-       TagBox[
-        InterpretationBox[
-        "\"-3\[ThinSpace]319.68\"", -3319.6849198297327`, AutoDelete -> True],
-         NumberForm[#, {Infinity, 2}, DigitBlock -> 3, NumberSeparator -> 
-         "\[ThinSpace]"]& ], -3319.6849198297327`, Selectable -> False],
+         RowBox[{"-", "optExhaustiveSearch`Private`loadingVolume$9400"}], "+", 
+         TemplateBox[{"0",RowBox[{
+             SuperscriptBox["\"m\"", "3"]}],"meters cubed",SuperscriptBox[
+           "\"Meters\"", "3"]},
+          "Quantity"]}]}], ",", 
+       RowBox[{"\<\"DailyFixedCost\"\>", "\[Rule]", 
+        TemplateBox[{"200",RowBox[{
+            FormBox["\"$\"", TraditionalForm], "\[VeryThinSpace]"}],
+          RowBox[{"\"per \"", "\[InvisibleSpace]", "\"day\""}],
+          "US dollars per day",FractionBox["\"USDollars\"", "\"Days\""]},
+         "QuantityPrefixUnit"]}]}], "\[RightAssociation]"}]}], ",", 
+    RowBox[{"\<\"Production\"\>", "\[Rule]", 
+     RowBox[{"Missing", "[", "]"}]}], ",", 
+    RowBox[{"\<\"Market\"\>", "\[Rule]", 
+     RowBox[{"\[LeftAssociation]", 
       RowBox[{
-        FormBox["\"$\"", TraditionalForm], "\[VeryThinSpace]"}],"US dollars",
-      "\"USDollars\""},
-     "QuantityPrefix"]}], "}"}], "}"}]], "Output",
+       RowBox[{"\<\"Timestamp\"\>", "\[Rule]", 
+        TemplateBox[{RowBox[{"\"Sun 1 Jan 2018 00:00:00\"", 
+            StyleBox["\"GMT\"", FontColor -> GrayLevel[0.5]], 
+            StyleBox[
+             
+             RowBox[{"\[ThinSpace]", "(", "\[InvisibleSpace]", "\"Julian\"", 
+               "\"calendar\"", "\[InvisibleSpace]", ")"}], FontColor -> 
+             GrayLevel[0.5]]}],RowBox[{"DateObject", "[", 
+            RowBox[{
+              RowBox[{"{", 
+                
+                RowBox[{
+                 "2018", ",", "1", ",", "1", ",", "0", ",", "0", ",", "0.`"}],
+                 "}"}], ",", "\"Instant\"", ",", "\"Julian\"", ",", 
+              "\"Europe/London\""}], "]"}]},
+         "DateObject",
+         Editable->False]}], ",", 
+       RowBox[{"\<\"Status\"\>", "\[Rule]", "\<\"Idle\"\>"}], ",", 
+       RowBox[{"\<\"LatLong\"\>", "\[Rule]", 
+        RowBox[{"GeoPosition", "[", 
+         RowBox[{"{", 
+          RowBox[{"5.2234`", ",", "97.083`"}], "}"}], "]"}]}], ",", 
+       RowBox[{"\<\"Currency\"\>", "\[Rule]", "\<\"Rupiah\"\>"}], ",", 
+       RowBox[{"\<\"Type\"\>", 
+        "\[Rule]", "\<\"Import and Re-gasification\"\>"}], ",", 
+       RowBox[{"\<\"Total Terminal Storage Capacity\"\>", "\[Rule]", 
+        TemplateBox[{"635000",RowBox[{
+            SuperscriptBox["\"m\"", "3"]}],"meters cubed",SuperscriptBox[
+          "\"Meters\"", "3"]},
+         "Quantity"]}], ",", 
+       RowBox[{"\<\"Price\"\>", "\[Rule]", 
+        TemplateBox[{"6.2`",RowBox[{
+            FormBox["\"$\"", TraditionalForm], "\[VeryThinSpace]"}],
+          RowBox[{"\"per \"", "\[InvisibleSpace]", 
+            SuperscriptBox["\"meter\"", "3"]}],"US dollars per meter cubed",
+          FractionBox["\"USDollars\"", 
+           SuperscriptBox["\"Meters\"", "3"]]},
+         "QuantityPrefixUnit"]}]}], "\[RightAssociation]"}]}], ",", 
+    RowBox[{"\<\"cashflows\"\>", "\[Rule]", 
+     TemplateBox[{InterpretationBox[
+        TagBox[
+         InterpretationBox[
+         "\"-3\[ThinSpace]319.68\"", -3319.6849198297327`, AutoDelete -> 
+          True], NumberForm[#, {Infinity, 2}, DigitBlock -> 3, 
+          NumberSeparator -> "\[ThinSpace]"]& ], -3319.6849198297327`, 
+        Selectable -> False],RowBox[{
+         FormBox["\"$\"", TraditionalForm], "\[VeryThinSpace]"}],"US dollars",
+       "\"USDollars\""},
+      "QuantityPrefix"]}]}], "\[RightAssociation]"}], "}"}]], "Output",
  CellChangeTimes->{3.725015024132883*^9, 3.7250150596574345`*^9, 
   3.725015180291497*^9, 3.725015667528216*^9, 3.7250160123236923`*^9, 
   3.725016081259585*^9, 3.725017727359188*^9, 3.725017883405791*^9, 
   3.725018182450692*^9, 3.7250182763410807`*^9, 3.725101314894794*^9, 
-  3.725101407603064*^9},ExpressionUUID->"93c2909c-2e7d-40f7-9797-\
-47d9aeeca1b5"]
+  3.725101407603064*^9, 3.7292339567079663`*^9, 3.7292350332277822`*^9, 
+  3.729240009704229*^9},ExpressionUUID->"61f02e48-2232-4692-a3b7-\
+aa7ae2e5abef"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -4652,137 +4948,914 @@ Cell[BoxData[
   RowBox[{
    RowBox[{"cashflowTrip", "[", 
     RowBox[{
-     RowBox[{"LNGVessels", "[", 
-      RowBox[{"#", "[", "\"\<Vessel\>\"", "]"}], "]"}], ",", " ", 
-     RowBox[{"LNGTerminals", "[", 
-      RowBox[{"#", "[", "\"\<Production\>\"", "]"}], "]"}], ",", " ", 
-     RowBox[{"LNGTerminals", "[", 
-      RowBox[{"#", "[", "\"\<Market\>\"", "]"}], "]"}]}], "]"}], " ", "&"}], 
-  " ", "/@", " ", 
+     RowBox[{"#", "[", "\"\<Vessel\>\"", "]"}], ",", " ", 
+     RowBox[{"#", "[", "\"\<Production\>\"", "]"}], ",", " ", 
+     RowBox[{"#", "[", "\"\<Market\>\"", "]"}]}], "]"}], " ", "&"}], " ", "/@",
+   " ", 
   RowBox[{"{", 
    RowBox[{"decisions", "[", 
     RowBox[{"[", 
      RowBox[{"5", ",", " ", "4"}], "]"}], "]"}], "}"}]}]], "Input",
  CellChangeTimes->{{3.725023154131839*^9, 3.725023154599886*^9}, {
-  3.7250232224966745`*^9, 
-  3.7250232263340583`*^9}},ExpressionUUID->"716ad4e9-bb19-4b4d-b3d5-\
+  3.7250232224966745`*^9, 3.7250232263340583`*^9}, {3.7292400186051188`*^9, 
+  3.729240032781536*^9}},ExpressionUUID->"716ad4e9-bb19-4b4d-b3d5-\
 915832c4c7be"],
 
 Cell[BoxData[
  RowBox[{"{", 
-  RowBox[{"{", 
+  RowBox[{"\[LeftAssociation]", 
    RowBox[{
-    RowBox[{"\[LeftAssociation]", 
+    RowBox[{"\<\"Vessel\"\>", "\[Rule]", 
+     RowBox[{"\[LeftAssociation]", 
+      RowBox[{
+       RowBox[{"\<\"Timestamp\"\>", "\[Rule]", 
+        TemplateBox[{RowBox[{"\"Sun 1 Jan 2018 00:00:00\"", 
+            StyleBox["\"GMT\"", FontColor -> GrayLevel[0.5]], 
+            StyleBox[
+             
+             RowBox[{"\[ThinSpace]", "(", "\[InvisibleSpace]", "\"Julian\"", 
+               "\"calendar\"", "\[InvisibleSpace]", ")"}], FontColor -> 
+             GrayLevel[0.5]]}],RowBox[{"DateObject", "[", 
+            RowBox[{
+              RowBox[{"{", 
+                
+                RowBox[{
+                 "2018", ",", "1", ",", "1", ",", "0", ",", "0", ",", "0.`"}],
+                 "}"}], ",", "\"Instant\"", ",", "\"Julian\"", ",", 
+              "\"Europe/London\""}], "]"}]},
+         "DateObject",
+         Editable->False]}], ",", 
+       RowBox[{"\<\"Status\"\>", "\[Rule]", "\<\"Idle\"\>"}], ",", 
+       RowBox[{"\<\"Speed\"\>", "\[Rule]", 
+        TemplateBox[{
+         "15.`",RowBox[{
+           "\"nmi\"", "\[InvisibleSpace]", "\"/\"", "\[InvisibleSpace]", 
+            "\"h\""}],"nautical miles per hour",FractionBox[
+          "\"NauticalMiles\"", "\"Hours\""]},
+         "Quantity"]}], ",", 
+       RowBox[{"\<\"Capacity\"\>", "\[Rule]", 
+        TemplateBox[{"20000",RowBox[{
+            SuperscriptBox["\"m\"", "3"]}],"meters cubed",SuperscriptBox[
+          "\"Meters\"", "3"]},
+         "Quantity"]}], ",", 
+       RowBox[{"\<\"Maximum loading rate\"\>", "\[Rule]", 
+        TemplateBox[{"1250",RowBox[{
+            SuperscriptBox["\"m\"", "3"], "\[NegativeMediumSpace]", "\"/\"", 
+            "\[InvisibleSpace]", "\"day\""}],"meters cubed per day",
+          FractionBox[
+           SuperscriptBox["\"Meters\"", "3"], "\"Days\""]},
+         "Quantity"]}], ",", 
+       RowBox[{"\<\"Maximum discharge rate\"\>", "\[Rule]", 
+        TemplateBox[{"1250",RowBox[{
+            SuperscriptBox["\"m\"", "3"], "\[NegativeMediumSpace]", "\"/\"", 
+            "\[InvisibleSpace]", "\"day\""}],"meters cubed per day",
+          FractionBox[
+           SuperscriptBox["\"Meters\"", "3"], "\"Days\""]},
+         "Quantity"]}], ",", 
+       RowBox[{"\<\"Boil-off rate\"\>", "\[Rule]", "0.12`"}], ",", 
+       RowBox[{"\<\"Position\"\>", "\[Rule]", 
+        RowBox[{"GeoPosition", "[", 
+         RowBox[{"{", 
+          RowBox[{"51.9718`", ",", "4.0755`"}], "}"}], "]"}]}], ",", 
+       RowBox[{"\<\"Inventory\"\>", "\[Rule]", 
+        TemplateBox[{"0",RowBox[{
+            SuperscriptBox["\"m\"", "3"]}],"meters cubed",SuperscriptBox[
+          "\"Meters\"", "3"]},
+         "Quantity"]}], ",", 
+       RowBox[{"\<\"DailyFixedCost\"\>", "\[Rule]", 
+        TemplateBox[{"100",RowBox[{
+            FormBox["\"$\"", TraditionalForm], "\[VeryThinSpace]"}],
+          RowBox[{"\"per \"", "\[InvisibleSpace]", "\"day\""}],
+          "US dollars per day",FractionBox["\"USDollars\"", "\"Days\""]},
+         "QuantityPrefixUnit"]}]}], "\[RightAssociation]"}]}], ",", 
+    RowBox[{"\<\"Production\"\>", "\[Rule]", 
+     RowBox[{"\[LeftAssociation]", 
+      RowBox[{
+       RowBox[{"\<\"Timestamp\"\>", "\[Rule]", 
+        TemplateBox[{RowBox[{"\"Sun 1 Jan 2018 00:00:00\"", 
+            StyleBox["\"GMT\"", FontColor -> GrayLevel[0.5]], 
+            StyleBox[
+             
+             RowBox[{"\[ThinSpace]", "(", "\[InvisibleSpace]", "\"Julian\"", 
+               "\"calendar\"", "\[InvisibleSpace]", ")"}], FontColor -> 
+             GrayLevel[0.5]]}],RowBox[{"DateObject", "[", 
+            RowBox[{
+              RowBox[{"{", 
+                
+                RowBox[{
+                 "2018", ",", "1", ",", "1", ",", "0", ",", "0", ",", "0.`"}],
+                 "}"}], ",", "\"Instant\"", ",", "\"Julian\"", ",", 
+              "\"Europe/London\""}], "]"}]},
+         "DateObject",
+         Editable->False]}], ",", 
+       RowBox[{"\<\"Status\"\>", "\[Rule]", "\<\"Idle\"\>"}], ",", 
+       RowBox[{"\<\"LatLong\"\>", "\[Rule]", 
+        RowBox[{"GeoPosition", "[", 
+         RowBox[{"{", 
+          RowBox[{"29.761564`", ",", 
+           RowBox[{"-", "93.929215`"}]}], "}"}], "]"}]}], ",", 
+       RowBox[{"\<\"Currency\"\>", "\[Rule]", "\<\"USD\"\>"}], ",", 
+       RowBox[{"\<\"Type\"\>", 
+        "\[Rule]", "\<\"Liquification and Export\"\>"}], ",", 
+       RowBox[{"\<\"Total Terminal Storage Capacity\"\>", "\[Rule]", 
+        TemplateBox[{"350000",RowBox[{
+            SuperscriptBox["\"m\"", "3"]}],"meters cubed",SuperscriptBox[
+          "\"Meters\"", "3"]},
+         "Quantity"]}], ",", 
+       RowBox[{"\<\"Daily Production\"\>", "\[Rule]", 
+        TemplateBox[{"5000",RowBox[{
+            SuperscriptBox["\"m\"", "3"], "\[NegativeMediumSpace]", "\"/\"", 
+            "\[InvisibleSpace]", "\"day\""}],"meters cubed per day",
+          FractionBox[
+           SuperscriptBox["\"Meters\"", "3"], "\"Days\""]},
+         "Quantity"]}], ",", 
+       RowBox[{"\<\"Inventory\"\>", "\[Rule]", 
+        TemplateBox[{"100000",RowBox[{
+            SuperscriptBox["\"m\"", "3"]}],"meters cubed",SuperscriptBox[
+          "\"Meters\"", "3"]},
+         "Quantity"]}], ",", 
+       RowBox[{"\<\"Price\"\>", "\[Rule]", 
+        TemplateBox[{"4.1`",RowBox[{
+            FormBox["\"$\"", TraditionalForm], "\[VeryThinSpace]"}],
+          RowBox[{"\"per \"", "\[InvisibleSpace]", 
+            SuperscriptBox["\"meter\"", "3"]}],"US dollars per meter cubed",
+          FractionBox["\"USDollars\"", 
+           SuperscriptBox["\"Meters\"", "3"]]},
+         "QuantityPrefixUnit"]}]}], "\[RightAssociation]"}]}], ",", 
+    RowBox[{"\<\"Market\"\>", "\[Rule]", 
+     RowBox[{"\[LeftAssociation]", 
+      RowBox[{
+       RowBox[{"\<\"Timestamp\"\>", "\[Rule]", 
+        TemplateBox[{RowBox[{"\"Sun 1 Jan 2018 00:00:00\"", 
+            StyleBox["\"GMT\"", FontColor -> GrayLevel[0.5]], 
+            StyleBox[
+             
+             RowBox[{"\[ThinSpace]", "(", "\[InvisibleSpace]", "\"Julian\"", 
+               "\"calendar\"", "\[InvisibleSpace]", ")"}], FontColor -> 
+             GrayLevel[0.5]]}],RowBox[{"DateObject", "[", 
+            RowBox[{
+              RowBox[{"{", 
+                
+                RowBox[{
+                 "2018", ",", "1", ",", "1", ",", "0", ",", "0", ",", "0.`"}],
+                 "}"}], ",", "\"Instant\"", ",", "\"Julian\"", ",", 
+              "\"Europe/London\""}], "]"}]},
+         "DateObject",
+         Editable->False]}], ",", 
+       RowBox[{"\<\"Status\"\>", "\[Rule]", "\<\"Idle\"\>"}], ",", 
+       RowBox[{"\<\"LatLong\"\>", "\[Rule]", 
+        RowBox[{"GeoPosition", "[", 
+         RowBox[{"{", 
+          RowBox[{"51.9718`", ",", "4.0755`"}], "}"}], "]"}]}], ",", 
+       RowBox[{"\<\"Currency\"\>", "\[Rule]", "\<\"EUR\"\>"}], ",", 
+       RowBox[{"\<\"Type\"\>", 
+        "\[Rule]", "\<\"Import and Re-gasification\"\>"}], ",", 
+       RowBox[{"\<\"Total Terminal Storage Capacity\"\>", "\[Rule]", 
+        TemplateBox[{"540000",RowBox[{
+            SuperscriptBox["\"m\"", "3"]}],"meters cubed",SuperscriptBox[
+          "\"Meters\"", "3"]},
+         "Quantity"]}], ",", 
+       RowBox[{"\<\"Price\"\>", "\[Rule]", 
+        TemplateBox[{"4.`",RowBox[{
+            FormBox["\"$\"", TraditionalForm], "\[VeryThinSpace]"}],
+          RowBox[{"\"per \"", "\[InvisibleSpace]", 
+            SuperscriptBox["\"meter\"", "3"]}],"US dollars per meter cubed",
+          FractionBox["\"USDollars\"", 
+           SuperscriptBox["\"Meters\"", "3"]]},
+         "QuantityPrefixUnit"]}]}], "\[RightAssociation]"}]}], ",", 
+    RowBox[{"\<\"cashflows\"\>", "\[Rule]", 
+     TemplateBox[{InterpretationBox[
+        TagBox[
+         InterpretationBox[
+         "\"13\[ThinSpace]043.14\"", 13043.138702505523`, AutoDelete -> True],
+          NumberForm[#, {Infinity, 2}, DigitBlock -> 3, NumberSeparator -> 
+          "\[ThinSpace]"]& ], 13043.138702505523`, Selectable -> False],
+       RowBox[{
+         FormBox["\"$\"", TraditionalForm], "\[VeryThinSpace]"}],"US dollars",
+       "\"USDollars\""},
+      "QuantityPrefix"]}]}], "\[RightAssociation]"}], "}"}]], "Output",
+ CellChangeTimes->{
+  3.725023156859112*^9, 3.725023228064232*^9, 3.725023303206745*^9, 
+   3.7250234207574987`*^9, 3.725101417354039*^9, {3.7292350401127825`*^9, 
+   3.729235052511782*^9}, 
+   3.7292400332925873`*^9},ExpressionUUID->"7947c2fc-9454-4442-a0fe-\
+fa3ad8093d86"]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"xxx", "=", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"Module", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"local", "=", "#"}], ",", " ", "lV", ",", " ", "lP", ",", 
+         " ", "lM"}], "}"}], ",", "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"lV", "=", 
+         RowBox[{"LNGVessels", "[", 
+          RowBox[{"local", "[", "\"\<Vessel\>\"", "]"}], "]"}]}], ";", 
+        "\[IndentingNewLine]", 
+        RowBox[{"lP", "=", 
+         RowBox[{"If", "[", 
+          RowBox[{
+           RowBox[{
+            RowBox[{"local", "[", "\"\<Production\>\"", "]"}], "===", 
+            RowBox[{"Missing", "[", "]"}]}], ",", " ", 
+           RowBox[{"Missing", "[", "]"}], ",", " ", 
+           RowBox[{"LNGTerminals", "[", 
+            RowBox[{"local", "[", "\"\<Production\>\"", "]"}], "]"}]}], 
+          "]"}]}], ";", "\[IndentingNewLine]", 
+        RowBox[{"lM", "=", 
+         RowBox[{"If", "[", 
+          RowBox[{
+           RowBox[{
+            RowBox[{"local", "[", "\"\<Market\>\"", "]"}], "===", 
+            RowBox[{"Missing", "[", "]"}]}], ",", " ", 
+           RowBox[{"Missing", "[", "]"}], ",", " ", 
+           RowBox[{"LNGTerminals", "[", 
+            RowBox[{"local", "[", "\"\<Market\>\"", "]"}], "]"}]}], "]"}]}], 
+        ";", "\[IndentingNewLine]", 
+        RowBox[{"cashflowTrip", "[", " ", 
+         RowBox[{"lV", ",", " ", "lP", ",", " ", "lM"}], "]"}]}]}], 
+      "\[IndentingNewLine]", "]"}], " ", "&"}], " ", "/@", " ", 
+    RowBox[{"decisions", "[", 
+     RowBox[{"[", "5", "]"}], "]"}]}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.7292349273050165`*^9, 3.7292349340456905`*^9}, {
+  3.7292350636677823`*^9, 3.7292350696267824`*^9}, {3.729235138922782*^9, 
+  3.7292351712047825`*^9}, {3.729235348246111*^9, 3.729235366644951*^9}, {
+  3.7292363262027545`*^9, 3.7292363272517543`*^9}, {3.7292385477895503`*^9, 
+  3.72923867507778*^9}},ExpressionUUID->"111dbda1-7f2f-41ba-aeff-\
+92208b24df76"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData["xxx"], "Input",
+ CellChangeTimes->{{3.7292437205612774`*^9, 
+  3.729243721636385*^9}},ExpressionUUID->"35d74fc4-6c8c-4d7a-beb1-\
+bfc39e254252"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"\[LeftAssociation]", 
+    RowBox[{
+     RowBox[{"\<\"Vessel\"\>", "\[Rule]", 
+      RowBox[{"\[LeftAssociation]", 
+       RowBox[{
+        RowBox[{"\<\"Timestamp\"\>", "\[Rule]", 
+         TemplateBox[{RowBox[{"\"Sun 1 Jan 2018 00:00:00\"", 
+             StyleBox["\"GMT\"", FontColor -> GrayLevel[0.5]], 
+             StyleBox[
+              
+              RowBox[{"\[ThinSpace]", "(", "\[InvisibleSpace]", "\"Julian\"", 
+                "\"calendar\"", "\[InvisibleSpace]", ")"}], FontColor -> 
+              GrayLevel[0.5]]}],RowBox[{"DateObject", "[", 
+             RowBox[{
+               RowBox[{"{", 
+                 
+                 RowBox[{
+                  "2018", ",", "1", ",", "1", ",", "0", ",", "0", ",", 
+                   "0.`"}], "}"}], ",", "\"Instant\"", ",", "\"Julian\"", ",",
+                "\"Europe/London\""}], "]"}]},
+          "DateObject",
+          Editable->False]}], ",", 
+        RowBox[{"\<\"Status\"\>", "\[Rule]", "\<\"Idle\"\>"}], ",", 
+        RowBox[{"\<\"Speed\"\>", "\[Rule]", 
+         TemplateBox[{
+          "13.`",RowBox[{
+            "\"nmi\"", "\[InvisibleSpace]", "\"/\"", "\[InvisibleSpace]", 
+             "\"h\""}],"nautical miles per hour",FractionBox[
+           "\"NauticalMiles\"", "\"Hours\""]},
+          "Quantity"]}], ",", 
+        RowBox[{"\<\"Capacity\"\>", "\[Rule]", 
+         TemplateBox[{"75000",RowBox[{
+             SuperscriptBox["\"m\"", "3"]}],"meters cubed",SuperscriptBox[
+           "\"Meters\"", "3"]},
+          "Quantity"]}], ",", 
+        RowBox[{"\<\"Maximum loading rate\"\>", "\[Rule]", 
+         TemplateBox[{"1000",RowBox[{
+             SuperscriptBox["\"m\"", "3"], "\[NegativeMediumSpace]", "\"/\"", 
+             "\[InvisibleSpace]", "\"day\""}],"meters cubed per day",
+           FractionBox[
+            SuperscriptBox["\"Meters\"", "3"], "\"Days\""]},
+          "Quantity"]}], ",", 
+        RowBox[{"\<\"Maximum discharge rate\"\>", "\[Rule]", 
+         TemplateBox[{"1000",RowBox[{
+             SuperscriptBox["\"m\"", "3"], "\[NegativeMediumSpace]", "\"/\"", 
+             "\[InvisibleSpace]", "\"day\""}],"meters cubed per day",
+           FractionBox[
+            SuperscriptBox["\"Meters\"", "3"], "\"Days\""]},
+          "Quantity"]}], ",", 
+        RowBox[{"\<\"Boil-off rate\"\>", "\[Rule]", "0.15`"}], ",", 
+        RowBox[{"\<\"Position\"\>", "\[Rule]", 
+         RowBox[{"GeoPosition", "[", 
+          RowBox[{"{", 
+           RowBox[{"5.2234`", ",", "97.083`"}], "}"}], "]"}]}], ",", 
+        RowBox[{"\<\"Inventory\"\>", "\[Rule]", 
+         RowBox[{
+          RowBox[{"-", "optExhaustiveSearch`Private`loadingVolume$10224"}], 
+          "+", 
+          TemplateBox[{"0",RowBox[{
+              SuperscriptBox["\"m\"", "3"]}],"meters cubed",SuperscriptBox[
+            "\"Meters\"", "3"]},
+           "Quantity"]}]}], ",", 
+        RowBox[{"\<\"DailyFixedCost\"\>", "\[Rule]", 
+         TemplateBox[{"200",RowBox[{
+             FormBox["\"$\"", TraditionalForm], "\[VeryThinSpace]"}],
+           RowBox[{"\"per \"", "\[InvisibleSpace]", "\"day\""}],
+           "US dollars per day",FractionBox["\"USDollars\"", "\"Days\""]},
+          "QuantityPrefixUnit"]}]}], "\[RightAssociation]"}]}], ",", 
+     RowBox[{"\<\"Production\"\>", "\[Rule]", 
+      RowBox[{"Missing", "[", "]"}]}], ",", 
+     RowBox[{"\<\"Market\"\>", "\[Rule]", 
+      RowBox[{"\[LeftAssociation]", 
+       RowBox[{
+        RowBox[{"\<\"Timestamp\"\>", "\[Rule]", 
+         TemplateBox[{RowBox[{"\"Sun 1 Jan 2018 00:00:00\"", 
+             StyleBox["\"GMT\"", FontColor -> GrayLevel[0.5]], 
+             StyleBox[
+              
+              RowBox[{"\[ThinSpace]", "(", "\[InvisibleSpace]", "\"Julian\"", 
+                "\"calendar\"", "\[InvisibleSpace]", ")"}], FontColor -> 
+              GrayLevel[0.5]]}],RowBox[{"DateObject", "[", 
+             RowBox[{
+               RowBox[{"{", 
+                 
+                 RowBox[{
+                  "2018", ",", "1", ",", "1", ",", "0", ",", "0", ",", 
+                   "0.`"}], "}"}], ",", "\"Instant\"", ",", "\"Julian\"", ",",
+                "\"Europe/London\""}], "]"}]},
+          "DateObject",
+          Editable->False]}], ",", 
+        RowBox[{"\<\"Status\"\>", "\[Rule]", "\<\"Idle\"\>"}], ",", 
+        RowBox[{"\<\"LatLong\"\>", "\[Rule]", 
+         RowBox[{"GeoPosition", "[", 
+          RowBox[{"{", 
+           RowBox[{"5.2234`", ",", "97.083`"}], "}"}], "]"}]}], ",", 
+        RowBox[{"\<\"Currency\"\>", "\[Rule]", "\<\"Rupiah\"\>"}], ",", 
+        RowBox[{"\<\"Type\"\>", 
+         "\[Rule]", "\<\"Import and Re-gasification\"\>"}], ",", 
+        RowBox[{"\<\"Total Terminal Storage Capacity\"\>", "\[Rule]", 
+         TemplateBox[{"635000",RowBox[{
+             SuperscriptBox["\"m\"", "3"]}],"meters cubed",SuperscriptBox[
+           "\"Meters\"", "3"]},
+          "Quantity"]}], ",", 
+        RowBox[{"\<\"Price\"\>", "\[Rule]", 
+         TemplateBox[{"6.2`",RowBox[{
+             FormBox["\"$\"", TraditionalForm], "\[VeryThinSpace]"}],
+           RowBox[{"\"per \"", "\[InvisibleSpace]", 
+             SuperscriptBox["\"meter\"", "3"]}],"US dollars per meter cubed",
+           FractionBox["\"USDollars\"", 
+            SuperscriptBox["\"Meters\"", "3"]]},
+          "QuantityPrefixUnit"]}]}], "\[RightAssociation]"}]}], ",", 
+     RowBox[{"\<\"cashflows\"\>", "\[Rule]", 
+      TemplateBox[{InterpretationBox[
+         TagBox[
+          InterpretationBox[
+          "\"-3\[ThinSpace]319.68\"", -3319.6849198297327`, AutoDelete -> 
+           True], NumberForm[#, {Infinity, 2}, DigitBlock -> 3, 
+           NumberSeparator -> "\[ThinSpace]"]& ], -3319.6849198297327`, 
+         Selectable -> False],RowBox[{
+          FormBox["\"$\"", TraditionalForm], "\[VeryThinSpace]"}],
+        "US dollars","\"USDollars\""},
+       "QuantityPrefix"]}]}], "\[RightAssociation]"}], ",", 
+   RowBox[{"\[LeftAssociation]", 
+    RowBox[{
+     RowBox[{"\<\"Vessel\"\>", "\[Rule]", 
+      RowBox[{"\[LeftAssociation]", 
+       RowBox[{
+        RowBox[{"\<\"Timestamp\"\>", "\[Rule]", 
+         TemplateBox[{RowBox[{"\"Sun 1 Jan 2018 00:00:00\"", 
+             StyleBox["\"GMT\"", FontColor -> GrayLevel[0.5]], 
+             StyleBox[
+              
+              RowBox[{"\[ThinSpace]", "(", "\[InvisibleSpace]", "\"Julian\"", 
+                "\"calendar\"", "\[InvisibleSpace]", ")"}], FontColor -> 
+              GrayLevel[0.5]]}],RowBox[{"DateObject", "[", 
+             RowBox[{
+               RowBox[{"{", 
+                 
+                 RowBox[{
+                  "2018", ",", "1", ",", "1", ",", "0", ",", "0", ",", 
+                   "0.`"}], "}"}], ",", "\"Instant\"", ",", "\"Julian\"", ",",
+                "\"Europe/London\""}], "]"}]},
+          "DateObject",
+          Editable->False]}], ",", 
+        RowBox[{"\<\"Status\"\>", "\[Rule]", "\<\"Idle\"\>"}], ",", 
+        RowBox[{"\<\"Capacity\"\>", "\[Rule]", 
+         TemplateBox[{"216100",RowBox[{
+             SuperscriptBox["\"m\"", "3"]}],"meters cubed",SuperscriptBox[
+           "\"Meters\"", "3"]},
+          "Quantity"]}], ",", 
+        RowBox[{"\<\"Maximum loading rate\"\>", "\[Rule]", 
+         TemplateBox[{"2600",RowBox[{
+             SuperscriptBox["\"m\"", "3"], "\[NegativeMediumSpace]", "\"/\"", 
+             "\[InvisibleSpace]", "\"day\""}],"meters cubed per day",
+           FractionBox[
+            SuperscriptBox["\"Meters\"", "3"], "\"Days\""]},
+          "Quantity"]}], ",", 
+        RowBox[{"\<\"Maximum discharge rate\"\>", "\[Rule]", 
+         TemplateBox[{"1300",RowBox[{
+             SuperscriptBox["\"m\"", "3"], "\[NegativeMediumSpace]", "\"/\"", 
+             "\[InvisibleSpace]", "\"day\""}],"meters cubed per day",
+           FractionBox[
+            SuperscriptBox["\"Meters\"", "3"], "\"Days\""]},
+          "Quantity"]}], ",", 
+        RowBox[{"\<\"Boil-off rate\"\>", "\[Rule]", "0"}], ",", 
+        RowBox[{"\<\"Position\"\>", "\[Rule]", 
+         RowBox[{"GeoPosition", "[", 
+          RowBox[{"{", 
+           RowBox[{"32.5292`", ",", "121.428`"}], "}"}], "]"}]}], ",", 
+        RowBox[{"\<\"Speed\"\>", "\[Rule]", 
+         TemplateBox[{
+          "16.7`",RowBox[{
+            "\"nmi\"", "\[InvisibleSpace]", "\"/\"", "\[InvisibleSpace]", 
+             "\"h\""}],"nautical miles per hour",FractionBox[
+           "\"NauticalMiles\"", "\"Hours\""]},
+          "Quantity"]}], ",", 
+        RowBox[{"\<\"Inventory\"\>", "\[Rule]", 
+         RowBox[{
+          RowBox[{"-", "optExhaustiveSearch`Private`loadingVolume$10258"}], 
+          "+", 
+          TemplateBox[{"0",RowBox[{
+              SuperscriptBox["\"m\"", "3"]}],"meters cubed",SuperscriptBox[
+            "\"Meters\"", "3"]},
+           "Quantity"]}]}], ",", 
+        RowBox[{"\<\"DailyFixedCost\"\>", "\[Rule]", 
+         TemplateBox[{"250",RowBox[{
+             FormBox["\"$\"", TraditionalForm], "\[VeryThinSpace]"}],
+           RowBox[{"\"per \"", "\[InvisibleSpace]", "\"day\""}],
+           "US dollars per day",FractionBox["\"USDollars\"", "\"Days\""]},
+          "QuantityPrefixUnit"]}]}], "\[RightAssociation]"}]}], ",", 
+     RowBox[{"\<\"Production\"\>", "\[Rule]", 
+      RowBox[{"Missing", "[", "]"}]}], ",", 
+     RowBox[{"\<\"Market\"\>", "\[Rule]", 
+      RowBox[{"\[LeftAssociation]", 
+       RowBox[{
+        RowBox[{"\<\"Timestamp\"\>", "\[Rule]", 
+         TemplateBox[{RowBox[{"\"Sun 1 Jan 2018 00:00:00\"", 
+             StyleBox["\"GMT\"", FontColor -> GrayLevel[0.5]], 
+             StyleBox[
+              
+              RowBox[{"\[ThinSpace]", "(", "\[InvisibleSpace]", "\"Julian\"", 
+                "\"calendar\"", "\[InvisibleSpace]", ")"}], FontColor -> 
+              GrayLevel[0.5]]}],RowBox[{"DateObject", "[", 
+             RowBox[{
+               RowBox[{"{", 
+                 
+                 RowBox[{
+                  "2018", ",", "1", ",", "1", ",", "0", ",", "0", ",", 
+                   "0.`"}], "}"}], ",", "\"Instant\"", ",", "\"Julian\"", ",",
+                "\"Europe/London\""}], "]"}]},
+          "DateObject",
+          Editable->False]}], ",", 
+        RowBox[{"\<\"Status\"\>", "\[Rule]", "\<\"Idle\"\>"}], ",", 
+        RowBox[{"\<\"LatLong\"\>", "\[Rule]", 
+         RowBox[{"GeoPosition", "[", 
+          RowBox[{"{", 
+           RowBox[{"32.5292`", ",", "121.428`"}], "}"}], "]"}]}], ",", 
+        RowBox[{"\<\"Currency\"\>", "\[Rule]", "\<\"Yuan Renminbi\"\>"}], ",", 
+        RowBox[{"\<\"Type\"\>", 
+         "\[Rule]", "\<\"Import and Re-gasification\"\>"}], ",", 
+        RowBox[{"\<\"Total Terminal Storage Capacity\"\>", "\[Rule]", 
+         TemplateBox[{"680000",RowBox[{
+             SuperscriptBox["\"m\"", "3"]}],"meters cubed",SuperscriptBox[
+           "\"Meters\"", "3"]},
+          "Quantity"]}], ",", 
+        RowBox[{"\<\"Price\"\>", "\[Rule]", 
+         TemplateBox[{"6.5`",RowBox[{
+             FormBox["\"$\"", TraditionalForm], "\[VeryThinSpace]"}],
+           RowBox[{"\"per \"", "\[InvisibleSpace]", 
+             SuperscriptBox["\"meter\"", "3"]}],"US dollars per meter cubed",
+           FractionBox["\"USDollars\"", 
+            SuperscriptBox["\"Meters\"", "3"]]},
+          "QuantityPrefixUnit"]}]}], "\[RightAssociation]"}]}], ",", 
+     RowBox[{"\<\"cashflows\"\>", "\[Rule]", 
+      TemplateBox[{InterpretationBox[
+         TagBox[
+          InterpretationBox[
+          "\"-2\[ThinSpace]785.48\"", -2785.4835423715317`, AutoDelete -> 
+           True], NumberForm[#, {Infinity, 2}, DigitBlock -> 3, 
+           NumberSeparator -> "\[ThinSpace]"]& ], -2785.4835423715317`, 
+         Selectable -> False],RowBox[{
+          FormBox["\"$\"", TraditionalForm], "\[VeryThinSpace]"}],
+        "US dollars","\"USDollars\""},
+       "QuantityPrefix"]}]}], "\[RightAssociation]"}], ",", 
+   RowBox[{"\[LeftAssociation]", 
+    RowBox[{
+     RowBox[{"\<\"Vessel\"\>", "\[Rule]", 
+      RowBox[{"\[LeftAssociation]", 
+       RowBox[{
+        RowBox[{"\<\"Timestamp\"\>", "\[Rule]", 
+         TemplateBox[{RowBox[{"\"Sun 1 Jan 2018 00:00:00\"", 
+             StyleBox["\"GMT\"", FontColor -> GrayLevel[0.5]], 
+             StyleBox[
+              
+              RowBox[{"\[ThinSpace]", "(", "\[InvisibleSpace]", "\"Julian\"", 
+                "\"calendar\"", "\[InvisibleSpace]", ")"}], FontColor -> 
+              GrayLevel[0.5]]}],RowBox[{"DateObject", "[", 
+             RowBox[{
+               RowBox[{"{", 
+                 
+                 RowBox[{
+                  "2018", ",", "1", ",", "1", ",", "0", ",", "0", ",", 
+                   "0.`"}], "}"}], ",", "\"Instant\"", ",", "\"Julian\"", ",",
+                "\"Europe/London\""}], "]"}]},
+          "DateObject",
+          Editable->False]}], ",", 
+        RowBox[{"\<\"Status\"\>", "\[Rule]", "\<\"Idle\"\>"}], ",", 
+        RowBox[{"\<\"Speed\"\>", "\[Rule]", 
+         TemplateBox[{
+          "16.`",RowBox[{
+            "\"nmi\"", "\[InvisibleSpace]", "\"/\"", "\[InvisibleSpace]", 
+             "\"h\""}],"nautical miles per hour",FractionBox[
+           "\"NauticalMiles\"", "\"Hours\""]},
+          "Quantity"]}], ",", 
+        RowBox[{"\<\"Capacity\"\>", "\[Rule]", 
+         TemplateBox[{"30000",RowBox[{
+             SuperscriptBox["\"m\"", "3"]}],"meters cubed",SuperscriptBox[
+           "\"Meters\"", "3"]},
+          "Quantity"]}], ",", 
+        RowBox[{"\<\"Maximum loading rate\"\>", "\[Rule]", 
+         TemplateBox[{"2000",RowBox[{
+             SuperscriptBox["\"m\"", "3"], "\[NegativeMediumSpace]", "\"/\"", 
+             "\[InvisibleSpace]", "\"day\""}],"meters cubed per day",
+           FractionBox[
+            SuperscriptBox["\"Meters\"", "3"], "\"Days\""]},
+          "Quantity"]}], ",", 
+        RowBox[{"\<\"Maximum discharge rate\"\>", "\[Rule]", 
+         TemplateBox[{"2500",RowBox[{
+             SuperscriptBox["\"m\"", "3"], "\[NegativeMediumSpace]", "\"/\"", 
+             "\[InvisibleSpace]", "\"day\""}],"meters cubed per day",
+           FractionBox[
+            SuperscriptBox["\"Meters\"", "3"], "\"Days\""]},
+          "Quantity"]}], ",", 
+        RowBox[{"\<\"Boil-off rate\"\>", "\[Rule]", "0.19`"}], ",", 
+        RowBox[{"\<\"Position\"\>", "\[Rule]", 
+         RowBox[{"GeoPosition", "[", 
+          RowBox[{"{", 
+           RowBox[{"58.97`", ",", "5.71`"}], "}"}], "]"}]}], ",", 
+        RowBox[{"\<\"Inventory\"\>", "\[Rule]", 
+         TemplateBox[{"0",RowBox[{
+             SuperscriptBox["\"m\"", "3"]}],"meters cubed",SuperscriptBox[
+           "\"Meters\"", "3"]},
+          "Quantity"]}], ",", 
+        RowBox[{"\<\"DailyFixedCost\"\>", "\[Rule]", 
+         TemplateBox[{"150",RowBox[{
+             FormBox["\"$\"", TraditionalForm], "\[VeryThinSpace]"}],
+           RowBox[{"\"per \"", "\[InvisibleSpace]", "\"day\""}],
+           "US dollars per day",FractionBox["\"USDollars\"", "\"Days\""]},
+          "QuantityPrefixUnit"]}]}], "\[RightAssociation]"}]}], ",", 
+     RowBox[{"\<\"Production\"\>", "\[Rule]", 
+      RowBox[{"\[LeftAssociation]", 
+       RowBox[{
+        RowBox[{"\<\"Timestamp\"\>", "\[Rule]", 
+         TemplateBox[{RowBox[{"\"Sun 1 Jan 2018 00:00:00\"", 
+             StyleBox["\"GMT\"", FontColor -> GrayLevel[0.5]], 
+             StyleBox[
+              
+              RowBox[{"\[ThinSpace]", "(", "\[InvisibleSpace]", "\"Julian\"", 
+                "\"calendar\"", "\[InvisibleSpace]", ")"}], FontColor -> 
+              GrayLevel[0.5]]}],RowBox[{"DateObject", "[", 
+             RowBox[{
+               RowBox[{"{", 
+                 
+                 RowBox[{
+                  "2018", ",", "1", ",", "1", ",", "0", ",", "0", ",", 
+                   "0.`"}], "}"}], ",", "\"Instant\"", ",", "\"Julian\"", ",",
+                "\"Europe/London\""}], "]"}]},
+          "DateObject",
+          Editable->False]}], ",", 
+        RowBox[{"\<\"Status\"\>", "\[Rule]", "\<\"Idle\"\>"}], ",", 
+        RowBox[{"\<\"LatLong\"\>", "\[Rule]", 
+         RowBox[{"GeoPosition", "[", 
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"-", "9.33862`"}], ",", "147.01825`"}], "}"}], "]"}]}], 
+        ",", 
+        RowBox[{"\<\"Currency\"\>", "\[Rule]", "\<\"Kina\"\>"}], ",", 
+        RowBox[{"\<\"Type\"\>", 
+         "\[Rule]", "\<\"Liquification and Export\"\>"}], ",", 
+        RowBox[{"\<\"Total Terminal Storage Capacity\"\>", "\[Rule]", 
+         TemplateBox[{"320000",RowBox[{
+             SuperscriptBox["\"m\"", "3"]}],"meters cubed",SuperscriptBox[
+           "\"Meters\"", "3"]},
+          "Quantity"]}], ",", 
+        RowBox[{"\<\"Daily Production\"\>", "\[Rule]", 
+         TemplateBox[{"2500",RowBox[{
+             SuperscriptBox["\"m\"", "3"], "\[NegativeMediumSpace]", "\"/\"", 
+             "\[InvisibleSpace]", "\"day\""}],"meters cubed per day",
+           FractionBox[
+            SuperscriptBox["\"Meters\"", "3"], "\"Days\""]},
+          "Quantity"]}], ",", 
+        RowBox[{"\<\"Inventory\"\>", "\[Rule]", 
+         TemplateBox[{"320000",RowBox[{
+             SuperscriptBox["\"m\"", "3"]}],"meters cubed",SuperscriptBox[
+           "\"Meters\"", "3"]},
+          "Quantity"]}], ",", 
+        RowBox[{"\<\"Price\"\>", "\[Rule]", 
+         TemplateBox[{"3.9`",RowBox[{
+             FormBox["\"$\"", TraditionalForm], "\[VeryThinSpace]"}],
+           RowBox[{"\"per \"", "\[InvisibleSpace]", 
+             SuperscriptBox["\"meter\"", "3"]}],"US dollars per meter cubed",
+           FractionBox["\"USDollars\"", 
+            SuperscriptBox["\"Meters\"", "3"]]},
+          "QuantityPrefixUnit"]}]}], "\[RightAssociation]"}]}], ",", 
+     RowBox[{"\<\"Market\"\>", "\[Rule]", "optExhaustiveSearch`Private`m"}], 
+     ",", 
+     RowBox[{"\<\"cashflows\"\>", "\[Rule]", 
+      TemplateBox[{RowBox[{"-", "\[Infinity]"}],RowBox[{
+          FormBox["\"$\"", TraditionalForm], "\[VeryThinSpace]"}],
+        "US dollars","\"USDollars\""},
+       "QuantityPrefix"]}]}], "\[RightAssociation]"}], ",", 
+   RowBox[{"\[LeftAssociation]", 
+    RowBox[{
+     RowBox[{"\<\"Vessel\"\>", "\[Rule]", 
+      RowBox[{"\[LeftAssociation]", 
+       RowBox[{
+        RowBox[{"\<\"Timestamp\"\>", "\[Rule]", 
+         TemplateBox[{RowBox[{"\"Sun 1 Jan 2018 00:00:00\"", 
+             StyleBox["\"GMT\"", FontColor -> GrayLevel[0.5]], 
+             StyleBox[
+              
+              RowBox[{"\[ThinSpace]", "(", "\[InvisibleSpace]", "\"Julian\"", 
+                "\"calendar\"", "\[InvisibleSpace]", ")"}], FontColor -> 
+              GrayLevel[0.5]]}],RowBox[{"DateObject", "[", 
+             RowBox[{
+               RowBox[{"{", 
+                 
+                 RowBox[{
+                  "2018", ",", "1", ",", "1", ",", "0", ",", "0", ",", 
+                   "0.`"}], "}"}], ",", "\"Instant\"", ",", "\"Julian\"", ",",
+                "\"Europe/London\""}], "]"}]},
+          "DateObject",
+          Editable->False]}], ",", 
+        RowBox[{"\<\"Status\"\>", "\[Rule]", "\<\"Idle\"\>"}], ",", 
+        RowBox[{"\<\"Speed\"\>", "\[Rule]", 
+         TemplateBox[{
+          "15.`",RowBox[{
+            "\"nmi\"", "\[InvisibleSpace]", "\"/\"", "\[InvisibleSpace]", 
+             "\"h\""}],"nautical miles per hour",FractionBox[
+           "\"NauticalMiles\"", "\"Hours\""]},
+          "Quantity"]}], ",", 
+        RowBox[{"\<\"Capacity\"\>", "\[Rule]", 
+         TemplateBox[{"20000",RowBox[{
+             SuperscriptBox["\"m\"", "3"]}],"meters cubed",SuperscriptBox[
+           "\"Meters\"", "3"]},
+          "Quantity"]}], ",", 
+        RowBox[{"\<\"Maximum loading rate\"\>", "\[Rule]", 
+         TemplateBox[{"1250",RowBox[{
+             SuperscriptBox["\"m\"", "3"], "\[NegativeMediumSpace]", "\"/\"", 
+             "\[InvisibleSpace]", "\"day\""}],"meters cubed per day",
+           FractionBox[
+            SuperscriptBox["\"Meters\"", "3"], "\"Days\""]},
+          "Quantity"]}], ",", 
+        RowBox[{"\<\"Maximum discharge rate\"\>", "\[Rule]", 
+         TemplateBox[{"1250",RowBox[{
+             SuperscriptBox["\"m\"", "3"], "\[NegativeMediumSpace]", "\"/\"", 
+             "\[InvisibleSpace]", "\"day\""}],"meters cubed per day",
+           FractionBox[
+            SuperscriptBox["\"Meters\"", "3"], "\"Days\""]},
+          "Quantity"]}], ",", 
+        RowBox[{"\<\"Boil-off rate\"\>", "\[Rule]", "0.12`"}], ",", 
+        RowBox[{"\<\"Position\"\>", "\[Rule]", 
+         RowBox[{"GeoPosition", "[", 
+          RowBox[{"{", 
+           RowBox[{"51.9718`", ",", "4.0755`"}], "}"}], "]"}]}], ",", 
+        RowBox[{"\<\"Inventory\"\>", "\[Rule]", 
+         TemplateBox[{"0",RowBox[{
+             SuperscriptBox["\"m\"", "3"]}],"meters cubed",SuperscriptBox[
+           "\"Meters\"", "3"]},
+          "Quantity"]}], ",", 
+        RowBox[{"\<\"DailyFixedCost\"\>", "\[Rule]", 
+         TemplateBox[{"100",RowBox[{
+             FormBox["\"$\"", TraditionalForm], "\[VeryThinSpace]"}],
+           RowBox[{"\"per \"", "\[InvisibleSpace]", "\"day\""}],
+           "US dollars per day",FractionBox["\"USDollars\"", "\"Days\""]},
+          "QuantityPrefixUnit"]}]}], "\[RightAssociation]"}]}], ",", 
+     RowBox[{"\<\"Production\"\>", "\[Rule]", 
+      RowBox[{"\[LeftAssociation]", 
+       RowBox[{
+        RowBox[{"\<\"Timestamp\"\>", "\[Rule]", 
+         TemplateBox[{RowBox[{"\"Sun 1 Jan 2018 00:00:00\"", 
+             StyleBox["\"GMT\"", FontColor -> GrayLevel[0.5]], 
+             StyleBox[
+              
+              RowBox[{"\[ThinSpace]", "(", "\[InvisibleSpace]", "\"Julian\"", 
+                "\"calendar\"", "\[InvisibleSpace]", ")"}], FontColor -> 
+              GrayLevel[0.5]]}],RowBox[{"DateObject", "[", 
+             RowBox[{
+               RowBox[{"{", 
+                 
+                 RowBox[{
+                  "2018", ",", "1", ",", "1", ",", "0", ",", "0", ",", 
+                   "0.`"}], "}"}], ",", "\"Instant\"", ",", "\"Julian\"", ",",
+                "\"Europe/London\""}], "]"}]},
+          "DateObject",
+          Editable->False]}], ",", 
+        RowBox[{"\<\"Status\"\>", "\[Rule]", "\<\"Idle\"\>"}], ",", 
+        RowBox[{"\<\"LatLong\"\>", "\[Rule]", 
+         RowBox[{"GeoPosition", "[", 
+          RowBox[{"{", 
+           RowBox[{"29.761564`", ",", 
+            RowBox[{"-", "93.929215`"}]}], "}"}], "]"}]}], ",", 
+        RowBox[{"\<\"Currency\"\>", "\[Rule]", "\<\"USD\"\>"}], ",", 
+        RowBox[{"\<\"Type\"\>", 
+         "\[Rule]", "\<\"Liquification and Export\"\>"}], ",", 
+        RowBox[{"\<\"Total Terminal Storage Capacity\"\>", "\[Rule]", 
+         TemplateBox[{"350000",RowBox[{
+             SuperscriptBox["\"m\"", "3"]}],"meters cubed",SuperscriptBox[
+           "\"Meters\"", "3"]},
+          "Quantity"]}], ",", 
+        RowBox[{"\<\"Daily Production\"\>", "\[Rule]", 
+         TemplateBox[{"5000",RowBox[{
+             SuperscriptBox["\"m\"", "3"], "\[NegativeMediumSpace]", "\"/\"", 
+             "\[InvisibleSpace]", "\"day\""}],"meters cubed per day",
+           FractionBox[
+            SuperscriptBox["\"Meters\"", "3"], "\"Days\""]},
+          "Quantity"]}], ",", 
+        RowBox[{"\<\"Inventory\"\>", "\[Rule]", 
+         TemplateBox[{"100000",RowBox[{
+             SuperscriptBox["\"m\"", "3"]}],"meters cubed",SuperscriptBox[
+           "\"Meters\"", "3"]},
+          "Quantity"]}], ",", 
+        RowBox[{"\<\"Price\"\>", "\[Rule]", 
+         TemplateBox[{"4.1`",RowBox[{
+             FormBox["\"$\"", TraditionalForm], "\[VeryThinSpace]"}],
+           RowBox[{"\"per \"", "\[InvisibleSpace]", 
+             SuperscriptBox["\"meter\"", "3"]}],"US dollars per meter cubed",
+           FractionBox["\"USDollars\"", 
+            SuperscriptBox["\"Meters\"", "3"]]},
+          "QuantityPrefixUnit"]}]}], "\[RightAssociation]"}]}], ",", 
+     RowBox[{"\<\"Market\"\>", "\[Rule]", 
+      RowBox[{"\[LeftAssociation]", 
+       RowBox[{
+        RowBox[{"\<\"Timestamp\"\>", "\[Rule]", 
+         TemplateBox[{RowBox[{"\"Sun 1 Jan 2018 00:00:00\"", 
+             StyleBox["\"GMT\"", FontColor -> GrayLevel[0.5]], 
+             StyleBox[
+              
+              RowBox[{"\[ThinSpace]", "(", "\[InvisibleSpace]", "\"Julian\"", 
+                "\"calendar\"", "\[InvisibleSpace]", ")"}], FontColor -> 
+              GrayLevel[0.5]]}],RowBox[{"DateObject", "[", 
+             RowBox[{
+               RowBox[{"{", 
+                 
+                 RowBox[{
+                  "2018", ",", "1", ",", "1", ",", "0", ",", "0", ",", 
+                   "0.`"}], "}"}], ",", "\"Instant\"", ",", "\"Julian\"", ",",
+                "\"Europe/London\""}], "]"}]},
+          "DateObject",
+          Editable->False]}], ",", 
+        RowBox[{"\<\"Status\"\>", "\[Rule]", "\<\"Idle\"\>"}], ",", 
+        RowBox[{"\<\"LatLong\"\>", "\[Rule]", 
+         RowBox[{"GeoPosition", "[", 
+          RowBox[{"{", 
+           RowBox[{"51.9718`", ",", "4.0755`"}], "}"}], "]"}]}], ",", 
+        RowBox[{"\<\"Currency\"\>", "\[Rule]", "\<\"EUR\"\>"}], ",", 
+        RowBox[{"\<\"Type\"\>", 
+         "\[Rule]", "\<\"Import and Re-gasification\"\>"}], ",", 
+        RowBox[{"\<\"Total Terminal Storage Capacity\"\>", "\[Rule]", 
+         TemplateBox[{"540000",RowBox[{
+             SuperscriptBox["\"m\"", "3"]}],"meters cubed",SuperscriptBox[
+           "\"Meters\"", "3"]},
+          "Quantity"]}], ",", 
+        RowBox[{"\<\"Price\"\>", "\[Rule]", 
+         TemplateBox[{"4.`",RowBox[{
+             FormBox["\"$\"", TraditionalForm], "\[VeryThinSpace]"}],
+           RowBox[{"\"per \"", "\[InvisibleSpace]", 
+             SuperscriptBox["\"meter\"", "3"]}],"US dollars per meter cubed",
+           FractionBox["\"USDollars\"", 
+            SuperscriptBox["\"Meters\"", "3"]]},
+          "QuantityPrefixUnit"]}]}], "\[RightAssociation]"}]}], ",", 
+     RowBox[{"\<\"cashflows\"\>", "\[Rule]", 
+      TemplateBox[{InterpretationBox[
+         TagBox[
+          InterpretationBox[
+          "\"13\[ThinSpace]043.14\"", 13043.138702505523`, AutoDelete -> 
+           True], NumberForm[#, {Infinity, 2}, DigitBlock -> 3, 
+           NumberSeparator -> "\[ThinSpace]"]& ], 13043.138702505523`, 
+         Selectable -> False],RowBox[{
+          FormBox["\"$\"", TraditionalForm], "\[VeryThinSpace]"}],
+        "US dollars","\"USDollars\""},
+       "QuantityPrefix"]}]}], "\[RightAssociation]"}]}], "}"}]], "Output",
+ CellChangeTimes->{
+  3.729243721808402*^9},ExpressionUUID->"72ac160c-6299-4c22-ab42-\
+486dc9c08e1d"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Total", "[", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"#", "[", "\"\<cashflows\>\"", "]"}], " ", "&"}], " ", "/@", " ", 
+   "xxx"}], "]"}]], "Input",
+ CellChangeTimes->{{3.729235110655782*^9, 3.729235114793782*^9}, {
+  3.7292386835886307`*^9, 3.7292387188921604`*^9}, {3.7292437599572167`*^9, 
+  3.7292437621054316`*^9}},ExpressionUUID->"708ae9b6-e644-47cc-acc1-\
+45b1d3122f0b"],
+
+Cell[BoxData[
+ TemplateBox[{RowBox[{"-", "\[Infinity]"}],RowBox[{
+     FormBox["\"$\"", TraditionalForm], "\[VeryThinSpace]"}],"US dollars",
+   "\"USDollars\""},
+  "QuantityPrefix"]], "Output",
+ CellChangeTimes->{{3.729238696296901*^9, 3.7292387193382053`*^9}, 
+   3.7292437623884597`*^9},ExpressionUUID->"298c9d15-3e20-473d-b738-\
+4929eb165575"]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"xxx", "=", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"#", ",", " ", 
+       RowBox[{"cashflowPlan", "[", "#", "]"}]}], "}"}], " ", "&"}], " ", "/@",
+     " ", 
+    RowBox[{"(", 
      RowBox[{
-      RowBox[{"\<\"Speed\"\>", "\[Rule]", 
-       TemplateBox[{
-        "15.`",RowBox[{
-          "\"nmi\"", "\[InvisibleSpace]", "\"/\"", "\[InvisibleSpace]", 
-           "\"h\""}],"nautical miles per hour",FractionBox[
-         "\"NauticalMiles\"", "\"Hours\""]},
-        "Quantity"]}], ",", 
-      RowBox[{"\<\"Capacity\"\>", "\[Rule]", 
-       TemplateBox[{"20000",RowBox[{
-           SuperscriptBox["\"m\"", "3"]}],"meters cubed",SuperscriptBox[
-         "\"Meters\"", "3"]},
-        "Quantity"]}], ",", 
-      RowBox[{"\<\"Maximum loading rate\"\>", "\[Rule]", 
-       TemplateBox[{"1250",RowBox[{
-           SuperscriptBox["\"m\"", "3"], "\[NegativeMediumSpace]", "\"/\"", 
-           "\[InvisibleSpace]", "\"day\""}],"meters cubed per day",FractionBox[
-          SuperscriptBox["\"Meters\"", "3"], "\"Days\""]},
-        "Quantity"]}], ",", 
-      RowBox[{"\<\"Maximum discharge rate\"\>", "\[Rule]", 
-       TemplateBox[{"1250",RowBox[{
-           SuperscriptBox["\"m\"", "3"], "\[NegativeMediumSpace]", "\"/\"", 
-           "\[InvisibleSpace]", "\"day\""}],"meters cubed per day",FractionBox[
-          SuperscriptBox["\"Meters\"", "3"], "\"Days\""]},
-        "Quantity"]}], ",", 
-      RowBox[{"\<\"Boil-off rate\"\>", "\[Rule]", "0.12`"}], ",", 
-      RowBox[{"\<\"Position\"\>", "\[Rule]", 
-       RowBox[{"GeoPosition", "[", 
-        RowBox[{"{", 
-         RowBox[{"51.9718`", ",", "4.0755`"}], "}"}], "]"}]}], ",", 
-      RowBox[{"\<\"Inventory\"\>", "\[Rule]", 
-       TemplateBox[{"0",RowBox[{
-           SuperscriptBox["\"m\"", "3"]}],"meters cubed",SuperscriptBox[
-         "\"Meters\"", "3"]},
-        "Quantity"]}], ",", 
-      RowBox[{"\<\"DailyFixedCost\"\>", "\[Rule]", 
-       TemplateBox[{"100",RowBox[{
-           FormBox["\"$\"", TraditionalForm], "\[VeryThinSpace]"}],
-         RowBox[{"\"per \"", "\[InvisibleSpace]", "\"day\""}],
-         "US dollars per day",FractionBox["\"USDollars\"", "\"Days\""]},
-        "QuantityPrefixUnit"]}]}], "\[RightAssociation]"}], ",", 
-    RowBox[{"\[LeftAssociation]", 
+      RowBox[{"Function", "[", 
+       RowBox[{"dec", ",", " ", 
+        RowBox[{"DeleteCases", "[", 
+         RowBox[{"dec", ",", " ", 
+          RowBox[{"_", "?", 
+           RowBox[{"(", " ", 
+            RowBox[{
+             RowBox[{
+              RowBox[{
+               RowBox[{"#", "[", "\"\<Production\>\"", "]"}], "===", 
+               RowBox[{"Missing", "[", "]"}]}], " ", "||", " ", 
+              RowBox[{
+               RowBox[{"#", "[", "\"\<Market\>\"", "]"}], "===", 
+               RowBox[{"Missing", "[", "]"}]}]}], " ", "&"}], ")"}]}]}], 
+         "]"}]}], "]"}], " ", "/@", " ", "decisions"}], ")"}]}]}], 
+  ";"}]], "Input",
+ CellChangeTimes->{{3.7292442765757756`*^9, 3.7292443139832926`*^9}, {
+   3.729245536654515*^9, 3.7292455396625147`*^9}, 
+   3.729247106630658*^9},ExpressionUUID->"3f65a62d-6fb1-4432-96e3-\
+5a47770ff617"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"SortBy", "[", 
+   RowBox[{"xxx", ",", 
+    RowBox[{
      RowBox[{
-      RowBox[{"\<\"LatLong\"\>", "\[Rule]", 
-       RowBox[{"GeoPosition", "[", 
-        RowBox[{"{", 
-         RowBox[{"29.761564`", ",", 
-          RowBox[{"-", "93.929215`"}]}], "}"}], "]"}]}], ",", 
-      RowBox[{"\<\"Currency\"\>", "\[Rule]", "\<\"USD\"\>"}], ",", 
-      RowBox[{"\<\"Type\"\>", "\[Rule]", "\<\"Liquification and Export\"\>"}],
-       ",", 
-      RowBox[{"\<\"Total Terminal Storage Capacity\"\>", "\[Rule]", 
-       TemplateBox[{"350000",RowBox[{
-           SuperscriptBox["\"m\"", "3"]}],"meters cubed",SuperscriptBox[
-         "\"Meters\"", "3"]},
-        "Quantity"]}], ",", 
-      RowBox[{"\<\"Daily Production\"\>", "\[Rule]", 
-       TemplateBox[{"5000",RowBox[{
-           SuperscriptBox["\"m\"", "3"], "\[NegativeMediumSpace]", "\"/\"", 
-           "\[InvisibleSpace]", "\"day\""}],"meters cubed per day",FractionBox[
-          SuperscriptBox["\"Meters\"", "3"], "\"Days\""]},
-        "Quantity"]}], ",", 
-      RowBox[{"\<\"Inventory\"\>", "\[Rule]", 
-       TemplateBox[{"100000",RowBox[{
-           SuperscriptBox["\"m\"", "3"]}],"meters cubed",SuperscriptBox[
-         "\"Meters\"", "3"]},
-        "Quantity"]}], ",", 
-      RowBox[{"\<\"Price\"\>", "\[Rule]", 
-       TemplateBox[{"4.1`",RowBox[{
-           FormBox["\"$\"", TraditionalForm], "\[VeryThinSpace]"}],
-         RowBox[{"\"per \"", "\[InvisibleSpace]", 
-           SuperscriptBox["\"meter\"", "3"]}],"US dollars per meter cubed",
-         FractionBox["\"USDollars\"", 
-          SuperscriptBox["\"Meters\"", "3"]]},
-        "QuantityPrefixUnit"]}]}], "\[RightAssociation]"}], ",", 
-    RowBox[{"\[LeftAssociation]", 
-     RowBox[{
-      RowBox[{"\<\"LatLong\"\>", "\[Rule]", 
-       RowBox[{"GeoPosition", "[", 
-        RowBox[{"{", 
-         RowBox[{"51.9718`", ",", "4.0755`"}], "}"}], "]"}]}], ",", 
-      RowBox[{"\<\"Currency\"\>", "\[Rule]", "\<\"EUR\"\>"}], ",", 
-      RowBox[{"\<\"Type\"\>", 
-       "\[Rule]", "\<\"Import and Re-gasification\"\>"}], ",", 
-      RowBox[{"\<\"Total Terminal Storage Capacity\"\>", "\[Rule]", 
-       TemplateBox[{"540000",RowBox[{
-           SuperscriptBox["\"m\"", "3"]}],"meters cubed",SuperscriptBox[
-         "\"Meters\"", "3"]},
-        "Quantity"]}], ",", 
-      RowBox[{"\<\"Price\"\>", "\[Rule]", 
-       TemplateBox[{"4.`",RowBox[{
-           FormBox["\"$\"", TraditionalForm], "\[VeryThinSpace]"}],
-         RowBox[{"\"per \"", "\[InvisibleSpace]", 
-           SuperscriptBox["\"meter\"", "3"]}],"US dollars per meter cubed",
-         FractionBox["\"USDollars\"", 
-          SuperscriptBox["\"Meters\"", "3"]]},
-        "QuantityPrefixUnit"]}]}], "\[RightAssociation]"}], ",", 
-    TemplateBox[{InterpretationBox[
-       TagBox[
-        InterpretationBox[
-        "\"13\[ThinSpace]043.14\"", 13043.138702505523`, AutoDelete -> True], 
-        NumberForm[#, {Infinity, 2}, DigitBlock -> 3, NumberSeparator -> 
-         "\[ThinSpace]"]& ], 13043.138702505523`, Selectable -> False],RowBox[{
-        FormBox["\"$\"", TraditionalForm], "\[VeryThinSpace]"}],"US dollars",
-      "\"USDollars\""},
-     "QuantityPrefix"]}], "}"}], "}"}]], "Output",
- CellChangeTimes->{3.725023156859112*^9, 3.725023228064232*^9, 
-  3.725023303206745*^9, 3.7250234207574987`*^9, 
-  3.725101417354039*^9},ExpressionUUID->"3f252965-7cec-418d-af27-\
-5b1c7adb9d70"]
+      RowBox[{"#", "[", 
+       RowBox[{"[", "2", "]"}], "]"}], "[", "\"\<cashflows\>\"", "]"}], " ", 
+     "&"}]}], "]"}], "[", 
+  RowBox[{"[", 
+   RowBox[{"-", "1"}], "]"}], "]"}]], "Input",
+ CellChangeTimes->{{3.729244350708946*^9, 3.729244380726941*^9}, {
+   3.72924442812246*^9, 3.7292444636414337`*^9}, 3.7292445471400833`*^9, 
+   3.7292455857735147`*^9, 
+   3.7292471384398384`*^9},ExpressionUUID->"88e1981e-eafb-454a-aa6b-\
+9e80fb477215"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"\[LeftAssociation]", 
+      RowBox[{
+       RowBox[{"\<\"Vessel\"\>", "\[Rule]", "\<\"Tembek\"\>"}], ",", 
+       RowBox[{"\<\"Production\"\>", 
+        "\[Rule]", "\<\"PNG LNG Terminal Papua New Guinea\"\>"}], ",", 
+       RowBox[{"\<\"Market\"\>", 
+        "\[Rule]", "\<\"Rudong Jiangsu LNG Terminal China\"\>"}]}], 
+      "\[RightAssociation]"}], ",", 
+     RowBox[{"\[LeftAssociation]", 
+      RowBox[{
+       RowBox[{"\<\"Vessel\"\>", "\[Rule]", "\<\"WSD50\"\>"}], ",", 
+       RowBox[{"\<\"Production\"\>", "\[Rule]", "\<\"Golden Pass\"\>"}], ",", 
+       RowBox[{"\<\"Market\"\>", 
+        "\[Rule]", "\<\"Gate LNG Terminal Netherland\"\>"}]}], 
+      "\[RightAssociation]"}]}], "}"}], ",", 
+   RowBox[{"\[LeftAssociation]", 
+    RowBox[{"\<\"cashflows\"\>", "\[Rule]", 
+     TemplateBox[{
+      InterpretationBox[
+       1.3489626707974088`*^6, 1.3489626707974088`*^6, Selectable -> False],
+       RowBox[{
+         FormBox["\"$\"", TraditionalForm], "\[VeryThinSpace]"}],"US dollars",
+       "\"USDollars\""},
+      "QuantityPrefix"]}], "\[RightAssociation]"}]}], "}"}]], "Output",
+ CellChangeTimes->{{3.729244352154657*^9, 3.729244370623962*^9}, {
+   3.7292444301790485`*^9, 3.7292444377135415`*^9}, 3.7292444677260256`*^9, 
+   3.729244548019995*^9, {3.7292455822215147`*^9, 3.729245587766515*^9}, {
+   3.7292471327722716`*^9, 
+   3.7292471390008945`*^9}},ExpressionUUID->"69bda3b7-6f1f-475b-a128-\
+ee4ba647f575"]
 }, Open  ]]
 }, Open  ]]
 }, Open  ]],
@@ -26514,11 +27587,11 @@ Cell[BoxData[
   3.722760715715827*^9}},ExpressionUUID->"507ced51-58af-43b1-973c-\
 e3d43189a47e"]
 }, Open  ]]
-}, Open  ]]
+}, Closed]]
 }, Closed]]
 },
 WindowSize->{1114, 900},
-WindowMargins->{{Automatic, 6}, {Automatic, 10}},
+WindowMargins->{{239, Automatic}, {Automatic, 8}},
 FrontEndVersion->"11.2 for Microsoft Windows (64-bit) (September 10, 2017)",
 StyleDefinitions->"Default.nb"
 ]
@@ -26547,156 +27620,170 @@ Cell[3134, 98, 519, 12, 28, "Input",ExpressionUUID->"da0dd498-4f05-4f4b-99b7-b73
 Cell[3656, 112, 419, 11, 28, "Input",ExpressionUUID->"04433de8-a203-4f3e-94c1-67face339df5"],
 Cell[CellGroupData[{
 Cell[4100, 127, 199, 4, 28, "Input",ExpressionUUID->"f44fa0f9-c047-4b37-bef3-9cfc79bb9ab5"],
-Cell[4302, 133, 49279, 984, 224, "Output",ExpressionUUID->"8d30e736-51a3-467f-b720-e6ffc3c858a1"]
+Cell[4302, 133, 57829, 1163, 224, "Output",ExpressionUUID->"634dbf75-5e1b-40f0-9695-eae5d15656cb"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[53618, 1122, 199, 4, 28, "Input",ExpressionUUID->"dcc06ef9-f67d-4de3-9afc-de5eec416549"],
-Cell[53820, 1128, 52514, 1101, 180, "Output",ExpressionUUID->"10e10e79-fdf7-4b23-a5d7-752fe8c9a389"]
+Cell[62168, 1301, 199, 4, 28, "Input",ExpressionUUID->"dcc06ef9-f67d-4de3-9afc-de5eec416549"],
+Cell[62370, 1307, 59672, 1251, 180, "Output",ExpressionUUID->"89b58603-c806-4fcf-a880-d8d1a6e90ba7"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[106371, 2234, 952, 22, 48, "Input",ExpressionUUID->"bff157c2-d547-4c51-85c7-01e02b4087f4"],
-Cell[107326, 2258, 359, 7, 41, "Output",ExpressionUUID->"22a44e5f-d160-4b0d-9efe-96473b066095"]
+Cell[122079, 2563, 952, 22, 48, "Input",ExpressionUUID->"bff157c2-d547-4c51-85c7-01e02b4087f4"],
+Cell[123034, 2587, 359, 7, 41, "Output",ExpressionUUID->"22a44e5f-d160-4b0d-9efe-96473b066095"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[107722, 2270, 341, 9, 28, "Input",ExpressionUUID->"478aa9b0-25d4-4d5d-b654-ee2cb6279575"],
-Cell[108066, 2281, 404, 12, 32, "Output",ExpressionUUID->"648c7723-ffed-418c-b0de-a131b3f019db"]
+Cell[123430, 2599, 341, 9, 28, "Input",ExpressionUUID->"478aa9b0-25d4-4d5d-b654-ee2cb6279575"],
+Cell[123774, 2610, 404, 12, 32, "Output",ExpressionUUID->"648c7723-ffed-418c-b0de-a131b3f019db"]
 }, Open  ]],
-Cell[108485, 2296, 908, 23, 48, "Input",ExpressionUUID->"764beb07-a798-4ce4-92dc-11c7a0c2b814"],
-Cell[109396, 2321, 779, 20, 67, "Input",ExpressionUUID->"95b04de4-909b-43bc-b01c-6a5123713a53"],
+Cell[124193, 2625, 908, 23, 48, "Input",ExpressionUUID->"764beb07-a798-4ce4-92dc-11c7a0c2b814"],
+Cell[125104, 2650, 779, 20, 67, "Input",ExpressionUUID->"95b04de4-909b-43bc-b01c-6a5123713a53"],
 Cell[CellGroupData[{
-Cell[110200, 2345, 305, 7, 28, "Input",ExpressionUUID->"cad7e481-bfca-4af0-8b7d-f23e00a9a525"],
-Cell[110508, 2354, 2155, 60, 71, "Output",ExpressionUUID->"3b211bb3-793d-45df-8b34-cf9578b97f5c"]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[112700, 2419, 382, 11, 28, "Input",ExpressionUUID->"f4ce4dfc-9f3d-44ec-a8cf-b8d07d17c17e"],
-Cell[113085, 2432, 556, 14, 32, "Output",ExpressionUUID->"21e04bc4-4ffe-4d6d-b64e-01908f57c4d3"]
-}, Open  ]],
-Cell[113656, 2449, 893, 25, 28, "Input",ExpressionUUID->"6de3ba93-b088-4157-9c5b-a4d7e092dcaa"],
-Cell[CellGroupData[{
-Cell[114574, 2478, 307, 7, 28, "Input",ExpressionUUID->"bc83f445-dca6-487a-aed2-adc427424913"],
-Cell[114884, 2487, 399, 11, 32, "Output",ExpressionUUID->"7a139ccb-65f1-4993-9bc1-7f793b0ec237"]
+Cell[125908, 2674, 305, 7, 28, "Input",ExpressionUUID->"cad7e481-bfca-4af0-8b7d-f23e00a9a525"],
+Cell[126216, 2683, 2155, 60, 71, "Output",ExpressionUUID->"3b211bb3-793d-45df-8b34-cf9578b97f5c"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[115320, 2503, 193, 4, 28, "Input",ExpressionUUID->"f3d6fa28-60c9-43a5-890b-6e327c99fd7c"],
-Cell[115516, 2509, 589, 17, 32, "Output",ExpressionUUID->"f988f121-6b0c-425a-873c-6e43a9e89141"]
+Cell[128408, 2748, 382, 11, 28, "Input",ExpressionUUID->"f4ce4dfc-9f3d-44ec-a8cf-b8d07d17c17e"],
+Cell[128793, 2761, 556, 14, 32, "Output",ExpressionUUID->"21e04bc4-4ffe-4d6d-b64e-01908f57c4d3"]
+}, Open  ]],
+Cell[129364, 2778, 893, 25, 28, "Input",ExpressionUUID->"6de3ba93-b088-4157-9c5b-a4d7e092dcaa"],
+Cell[CellGroupData[{
+Cell[130282, 2807, 307, 7, 28, "Input",ExpressionUUID->"bc83f445-dca6-487a-aed2-adc427424913"],
+Cell[130592, 2816, 399, 11, 32, "Output",ExpressionUUID->"7a139ccb-65f1-4993-9bc1-7f793b0ec237"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[116142, 2531, 195, 4, 28, "Input",ExpressionUUID->"b60939d8-3031-477e-b25e-67a9d9d0e065"],
-Cell[116340, 2537, 301, 9, 32, "Output",ExpressionUUID->"afa38049-625c-435f-acc0-22f19585e384"]
+Cell[131028, 2832, 193, 4, 28, "Input",ExpressionUUID->"f3d6fa28-60c9-43a5-890b-6e327c99fd7c"],
+Cell[131224, 2838, 589, 17, 32, "Output",ExpressionUUID->"f988f121-6b0c-425a-873c-6e43a9e89141"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[116678, 2551, 195, 4, 28, "Input",ExpressionUUID->"f67c630d-aa18-4a90-bb79-afcc6cbe9d91"],
-Cell[116876, 2557, 589, 17, 32, "Output",ExpressionUUID->"5e9d2285-b5a1-4874-bae9-13f77eb0f286"]
+Cell[131850, 2860, 195, 4, 28, "Input",ExpressionUUID->"b60939d8-3031-477e-b25e-67a9d9d0e065"],
+Cell[132048, 2866, 301, 9, 32, "Output",ExpressionUUID->"afa38049-625c-435f-acc0-22f19585e384"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[117502, 2579, 844, 20, 28, "Input",ExpressionUUID->"7f01dda4-f9d3-427a-bccb-8809c700d18f"],
-Cell[118349, 2601, 1828, 56, 52, "Output",ExpressionUUID->"224e2b4f-438d-445f-9a4f-39cf4270b4ba"]
+Cell[132386, 2880, 195, 4, 28, "Input",ExpressionUUID->"f67c630d-aa18-4a90-bb79-afcc6cbe9d91"],
+Cell[132584, 2886, 589, 17, 32, "Output",ExpressionUUID->"5e9d2285-b5a1-4874-bae9-13f77eb0f286"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[120214, 2662, 1347, 33, 67, "Input",ExpressionUUID->"2e11d7b5-1168-4753-b028-f604d41699a7"],
-Cell[121564, 2697, 16356, 560, 356, "Output",ExpressionUUID->"4f26f702-d1ba-4afb-a5e0-0d6188e9cc7d"]
+Cell[133210, 2908, 844, 20, 28, "Input",ExpressionUUID->"7f01dda4-f9d3-427a-bccb-8809c700d18f"],
+Cell[134057, 2930, 1828, 56, 52, "Output",ExpressionUUID->"224e2b4f-438d-445f-9a4f-39cf4270b4ba"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[137957, 3262, 2515, 61, 86, "Input",ExpressionUUID->"176c2785-356d-4b1e-9070-51005934d3a4"],
-Cell[140475, 3325, 31398, 765, 698, "Output",ExpressionUUID->"6910a24e-c4bd-44ac-95d0-5f2f9af9bad0"]
+Cell[135922, 2991, 1347, 33, 67, "Input",ExpressionUUID->"2e11d7b5-1168-4753-b028-f604d41699a7"],
+Cell[137272, 3026, 16356, 560, 356, "Output",ExpressionUUID->"4f26f702-d1ba-4afb-a5e0-0d6188e9cc7d"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[171910, 4095, 169, 3, 53, "Subsection",ExpressionUUID->"320c3179-5c95-47b2-ba31-5eb20ac750c3"],
-Cell[172082, 4100, 466, 11, 28, "Input",ExpressionUUID->"0eede781-c6cc-4b71-ad90-f09171c42391"],
-Cell[CellGroupData[{
-Cell[172573, 4115, 157, 3, 28, "Input",ExpressionUUID->"4e1015f1-8a55-4f8e-ab8c-7bb90306c65c"],
-Cell[172733, 4120, 163, 3, 32, "Output",ExpressionUUID->"a9d3ee39-6005-4e16-808d-c20a48f32fe1"]
+Cell[153665, 3591, 2515, 61, 86, "Input",ExpressionUUID->"176c2785-356d-4b1e-9070-51005934d3a4"],
+Cell[156183, 3654, 31398, 765, 698, "Output",ExpressionUUID->"6910a24e-c4bd-44ac-95d0-5f2f9af9bad0"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[172933, 4128, 265, 7, 28, "Input",ExpressionUUID->"75955279-d5a9-4360-a282-e9ab5a06534e"],
-Cell[173201, 4137, 163, 3, 32, "Output",ExpressionUUID->"8d598e7c-b3d2-4a49-bb09-b8d22c196cc3"]
+Cell[187618, 4424, 169, 3, 53, "Subsection",ExpressionUUID->"320c3179-5c95-47b2-ba31-5eb20ac750c3"],
+Cell[187790, 4429, 466, 11, 28, "Input",ExpressionUUID->"0eede781-c6cc-4b71-ad90-f09171c42391"],
+Cell[CellGroupData[{
+Cell[188281, 4444, 157, 3, 28, "Input",ExpressionUUID->"4e1015f1-8a55-4f8e-ab8c-7bb90306c65c"],
+Cell[188441, 4449, 163, 3, 32, "Output",ExpressionUUID->"a9d3ee39-6005-4e16-808d-c20a48f32fe1"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[173401, 4145, 159, 3, 28, "Input",ExpressionUUID->"eee1a959-f85e-499e-b274-291f476f5904"],
-Cell[173563, 4150, 137, 3, 32, "Output",ExpressionUUID->"5bd00600-2cfd-44c1-8477-fb153d014a7e"]
+Cell[188641, 4457, 265, 7, 28, "Input",ExpressionUUID->"75955279-d5a9-4360-a282-e9ab5a06534e"],
+Cell[188909, 4466, 163, 3, 32, "Output",ExpressionUUID->"8d598e7c-b3d2-4a49-bb09-b8d22c196cc3"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[173737, 4158, 484, 11, 48, "Input",ExpressionUUID->"ac6365c5-213e-48b6-8c1b-8e30646472ec"],
-Cell[174224, 4171, 163, 3, 32, "Output",ExpressionUUID->"b54639d3-b39f-4547-8584-3f1bbd3f5664"]
+Cell[189109, 4474, 159, 3, 28, "Input",ExpressionUUID->"eee1a959-f85e-499e-b274-291f476f5904"],
+Cell[189271, 4479, 137, 3, 32, "Output",ExpressionUUID->"5bd00600-2cfd-44c1-8477-fb153d014a7e"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[174424, 4179, 665, 14, 48, "Input",ExpressionUUID->"92789b2c-858e-402e-9fe8-55297fa3834a"],
-Cell[175092, 4195, 1163, 29, 32, "Output",ExpressionUUID->"0fcd953f-59d6-48bc-b546-fd9aa0a0c8cf"]
+Cell[189445, 4487, 484, 11, 48, "Input",ExpressionUUID->"ac6365c5-213e-48b6-8c1b-8e30646472ec"],
+Cell[189932, 4500, 163, 3, 32, "Output",ExpressionUUID->"b54639d3-b39f-4547-8584-3f1bbd3f5664"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[190132, 4508, 665, 14, 48, "Input",ExpressionUUID->"92789b2c-858e-402e-9fe8-55297fa3834a"],
+Cell[190800, 4524, 1163, 29, 32, "Output",ExpressionUUID->"0fcd953f-59d6-48bc-b546-fd9aa0a0c8cf"]
 }, Open  ]]
 }, Closed]],
 Cell[CellGroupData[{
-Cell[176304, 4230, 185, 3, 37, "Subsection",ExpressionUUID->"12b5d1e3-cef3-4416-998d-8947c9eef7b4"],
-Cell[176492, 4235, 1161, 29, 67, "Input",ExpressionUUID->"b3fa3c07-65e5-4298-b079-3451023314d6"],
-Cell[177656, 4266, 979, 27, 67, "Input",ExpressionUUID->"9c9caecb-e190-4602-ac2c-0e423a6207a4"],
-Cell[178638, 4295, 2167, 57, 86, "Input",ExpressionUUID->"d8e56f0c-ef0b-4e41-8414-9fb87aff7428"],
+Cell[192012, 4559, 185, 3, 37, "Subsection",ExpressionUUID->"12b5d1e3-cef3-4416-998d-8947c9eef7b4"],
+Cell[192200, 4564, 1161, 29, 67, "Input",ExpressionUUID->"b3fa3c07-65e5-4298-b079-3451023314d6"],
+Cell[193364, 4595, 979, 27, 67, "Input",ExpressionUUID->"9c9caecb-e190-4602-ac2c-0e423a6207a4"],
+Cell[194346, 4624, 2167, 57, 86, "Input",ExpressionUUID->"d8e56f0c-ef0b-4e41-8414-9fb87aff7428"],
 Cell[CellGroupData[{
-Cell[180830, 4356, 258, 6, 28, "Input",ExpressionUUID->"48a03375-4511-47a3-bfa4-c6689227c0ac"],
-Cell[181091, 4364, 185, 5, 32, "Output",ExpressionUUID->"b3a55c39-b9d0-4f54-aee1-4f8e9631463f"]
+Cell[196538, 4685, 258, 6, 28, "Input",ExpressionUUID->"48a03375-4511-47a3-bfa4-c6689227c0ac"],
+Cell[196799, 4693, 207, 5, 32, "Output",ExpressionUUID->"30f9002a-ff43-4fbd-8e3b-670533a5beaf"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[181313, 4374, 222, 5, 28, "Input",ExpressionUUID->"2ae705a7-091b-49d1-99be-fa9cb3a433c5"],
-Cell[181538, 4381, 170, 3, 32, "Output",ExpressionUUID->"d3626b56-0afe-4ad5-94af-332721cbb2a3"]
+Cell[197043, 4703, 222, 5, 28, "Input",ExpressionUUID->"2ae705a7-091b-49d1-99be-fa9cb3a433c5"],
+Cell[197268, 4710, 194, 3, 32, "Output",ExpressionUUID->"c1e6facc-3e23-4527-a898-8e5fbdd22807"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[181745, 4389, 197, 4, 28, "Input",ExpressionUUID->"e5ab1cd8-adca-42e5-aa3b-f5f1d8e89741"],
-Cell[181945, 4395, 177, 5, 32, "Output",ExpressionUUID->"92ca555d-4529-456f-9b4f-61bc246a6b81"]
+Cell[197499, 4718, 197, 4, 28, "Input",ExpressionUUID->"e5ab1cd8-adca-42e5-aa3b-f5f1d8e89741"],
+Cell[197699, 4724, 201, 5, 32, "Output",ExpressionUUID->"963c4d80-17aa-428f-be4d-6e1c630bdc32"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[182159, 4405, 266, 6, 28, "Input",ExpressionUUID->"cee0a23f-2b58-43da-902d-2091074218dc"],
-Cell[182428, 4413, 1892, 40, 90, "Output",ExpressionUUID->"c80523ce-154d-4fad-81e7-13eb08e02be9"]
+Cell[197937, 4734, 266, 6, 28, "Input",ExpressionUUID->"cee0a23f-2b58-43da-902d-2091074218dc"],
+Cell[198206, 4742, 1914, 40, 90, "Output",ExpressionUUID->"d10bf773-6beb-40bc-85dd-c6e1e13b4934"]
 }, Open  ]],
-Cell[184335, 4456, 159, 3, 34, "Text",ExpressionUUID->"08604694-f231-4dca-bd86-c3bbc128bf16"],
+Cell[200135, 4785, 159, 3, 34, "Text",ExpressionUUID->"08604694-f231-4dca-bd86-c3bbc128bf16"],
 Cell[CellGroupData[{
-Cell[184519, 4463, 734, 18, 28, "Input",ExpressionUUID->"c63990a8-040b-4d5f-9554-9cd2579c5561"],
-Cell[185256, 4483, 7792, 161, 317, "Output",ExpressionUUID->"93c2909c-2e7d-40f7-9797-47d9aeeca1b5"]
+Cell[200319, 4792, 703, 17, 28, "Input",ExpressionUUID->"c63990a8-040b-4d5f-9554-9cd2579c5561"],
+Cell[201025, 4811, 6176, 129, 184, "Output",ExpressionUUID->"61f02e48-2232-4692-a3b7-aa7ae2e5abef"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[193085, 4649, 729, 19, 28, "Input",ExpressionUUID->"716ad4e9-bb19-4b4d-b3d5-915832c4c7be"],
-Cell[193817, 4670, 5440, 114, 187, "Output",ExpressionUUID->"3f252965-7cec-418d-af27-5b1c7adb9d70"]
+Cell[207238, 4945, 650, 16, 28, "Input",ExpressionUUID->"716ad4e9-bb19-4b4d-b3d5-915832c4c7be"],
+Cell[207891, 4963, 8372, 178, 282, "Output",ExpressionUUID->"7947c2fc-9454-4442-a0fe-fa3ad8093d86"]
+}, Open  ]],
+Cell[216278, 5144, 1984, 46, 124, "Input",ExpressionUUID->"111dbda1-7f2f-41ba-aeff-92208b24df76"],
+Cell[CellGroupData[{
+Cell[218287, 5194, 157, 3, 28, "Input",ExpressionUUID->"35d74fc4-6c8c-4d7a-beb1-bfc39e254252"],
+Cell[218447, 5199, 26147, 547, 832, "Output",ExpressionUUID->"72ac160c-6299-4c22-ab42-486dc9c08e1d"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[244631, 5751, 397, 9, 28, "Input",ExpressionUUID->"708ae9b6-e644-47cc-acc1-45b1d3122f0b"],
+Cell[245031, 5762, 346, 7, 42, "Output",ExpressionUUID->"298c9d15-3e20-473d-b738-4929eb165575"]
+}, Open  ]],
+Cell[245392, 5772, 1095, 30, 48, "Input",ExpressionUUID->"3f65a62d-6fb1-4432-96e3-5a47770ff617"],
+Cell[CellGroupData[{
+Cell[246512, 5806, 547, 15, 28, "Input",ExpressionUUID->"88e1981e-eafb-454a-aa6b-9e80fb477215"],
+Cell[247062, 5823, 1508, 34, 76, "Output",ExpressionUUID->"69bda3b7-6f1f-475b-a128-ee4ba647f575"]
 }, Open  ]]
 }, Open  ]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[199318, 4791, 151, 3, 67, "Section",ExpressionUUID->"0f7c9409-870e-4206-937b-f7380c5efefd"],
+Cell[248631, 5864, 151, 3, 67, "Section",ExpressionUUID->"0f7c9409-870e-4206-937b-f7380c5efefd"],
 Cell[CellGroupData[{
-Cell[199494, 4798, 182, 3, 53, "Subsection",ExpressionUUID->"c3784527-4a9a-4494-820d-42ed967d1c57"],
-Cell[199679, 4803, 230, 6, 34, "Text",ExpressionUUID->"b29860b6-17f6-473d-9b6c-39b9eaba6801"],
+Cell[248807, 5871, 182, 3, 53, "Subsection",ExpressionUUID->"c3784527-4a9a-4494-820d-42ed967d1c57"],
+Cell[248992, 5876, 230, 6, 34, "Text",ExpressionUUID->"b29860b6-17f6-473d-9b6c-39b9eaba6801"],
 Cell[CellGroupData[{
-Cell[199934, 4813, 490, 14, 28, "Input",ExpressionUUID->"ec71adcc-a90b-4675-9463-ac7ebc1845cb"],
-Cell[200427, 4829, 750, 14, 21, "Message",ExpressionUUID->"6a945acc-67a2-4ffb-8742-ec8802380023"],
-Cell[201180, 4845, 138, 3, 32, "Output",ExpressionUUID->"643ba7cc-9363-43d4-8eb3-f675dd9aea8f"]
+Cell[249247, 5886, 490, 14, 28, "Input",ExpressionUUID->"ec71adcc-a90b-4675-9463-ac7ebc1845cb"],
+Cell[249740, 5902, 750, 14, 21, "Message",ExpressionUUID->"6a945acc-67a2-4ffb-8742-ec8802380023"],
+Cell[250493, 5918, 138, 3, 32, "Output",ExpressionUUID->"643ba7cc-9363-43d4-8eb3-f675dd9aea8f"]
 }, Open  ]],
-Cell[201333, 4851, 609, 16, 28, "Input",ExpressionUUID->"2de38633-3c10-48f8-9a24-0ec4d79c9316"],
+Cell[250646, 5924, 609, 16, 28, "Input",ExpressionUUID->"2de38633-3c10-48f8-9a24-0ec4d79c9316"],
 Cell[CellGroupData[{
-Cell[201967, 4871, 654, 17, 28, "Input",ExpressionUUID->"a777e697-9fe5-40d9-ba1b-a053e864329d"],
-Cell[202624, 4890, 895014, 16201, 124, "Output",ExpressionUUID->"48dc5c24-1b67-43be-826a-f3f831bda758"]
+Cell[251280, 5944, 654, 17, 28, "Input",ExpressionUUID->"a777e697-9fe5-40d9-ba1b-a053e864329d"],
+Cell[251937, 5963, 895014, 16201, 124, "Output",ExpressionUUID->"48dc5c24-1b67-43be-826a-f3f831bda758"]
 }, Open  ]],
-Cell[1097653, 21094, 1459, 32, 40, "Input",ExpressionUUID->"f48106b8-e58a-4d63-b2df-22021ba219ad"],
+Cell[1146966, 22167, 1459, 32, 40, "Input",ExpressionUUID->"f48106b8-e58a-4d63-b2df-22021ba219ad"],
 Cell[CellGroupData[{
-Cell[1099137, 21130, 392, 9, 28, "Input",ExpressionUUID->"fa38bf8b-e55c-4129-be1f-f607288b7673"],
-Cell[1099532, 21141, 133682, 2229, 102, "Output",ExpressionUUID->"bcfd79fa-5f39-4d7a-a298-84690a6187da"]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[1233251, 23375, 171, 3, 28, "Input",ExpressionUUID->"05263ecb-ce18-47fd-84dc-edef146dacf5"],
-Cell[1233425, 23380, 329, 7, 45, "Output",ExpressionUUID->"430dda6a-ede0-47c4-beeb-3cb376df772d"]
+Cell[1148450, 22203, 392, 9, 28, "Input",ExpressionUUID->"fa38bf8b-e55c-4129-be1f-f607288b7673"],
+Cell[1148845, 22214, 133682, 2229, 102, "Output",ExpressionUUID->"bcfd79fa-5f39-4d7a-a298-84690a6187da"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[1233791, 23392, 8573, 160, 272, "Input",ExpressionUUID->"35d0631d-7ce9-44c2-a257-0a5456d8f9e7"],
-Cell[1242367, 23554, 8304, 158, 177, "Output",ExpressionUUID->"26965442-6c5a-409b-b288-24383d43a689"]
+Cell[1282564, 24448, 171, 3, 28, "Input",ExpressionUUID->"05263ecb-ce18-47fd-84dc-edef146dacf5"],
+Cell[1282738, 24453, 329, 7, 45, "Output",ExpressionUUID->"430dda6a-ede0-47c4-beeb-3cb376df772d"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[1250708, 23717, 392, 9, 28, "Input",ExpressionUUID->"9a6522b2-40a2-44d4-a2c4-e3a796a5de07"],
-Cell[1251103, 23728, 133758, 2230, 102, "Output",ExpressionUUID->"28b430c7-dc5a-4680-8fb2-c5553f3500bb"]
+Cell[1283104, 24465, 8573, 160, 272, "Input",ExpressionUUID->"35d0631d-7ce9-44c2-a257-0a5456d8f9e7"],
+Cell[1291680, 24627, 8304, 158, 177, "Output",ExpressionUUID->"26965442-6c5a-409b-b288-24383d43a689"]
 }, Open  ]],
-Cell[1384876, 25961, 456, 12, 28, "Input",ExpressionUUID->"4aa9cc66-cd8d-473c-9315-6bf2649107ae"],
-Cell[1385335, 25975, 982, 28, 28, "Input",ExpressionUUID->"b2771b8b-eb1b-4473-a6e1-2e4731465b3b"],
-Cell[1386320, 26005, 527, 13, 28, "Input",ExpressionUUID->"43f076c4-7981-46ff-9650-ca55ef1031ed"],
-Cell[1386850, 26020, 198, 4, 28, "Input",ExpressionUUID->"68c736db-e7f9-4576-9656-9d8f03d5e839"],
 Cell[CellGroupData[{
-Cell[1387073, 26028, 991, 24, 86, "Input",ExpressionUUID->"09cfd17b-d085-4eea-96f5-accd257fd7b6"],
-Cell[1388067, 26054, 23814, 460, 474, "Output",ExpressionUUID->"507ced51-58af-43b1-973c-e3d43189a47e"]
+Cell[1300021, 24790, 392, 9, 28, "Input",ExpressionUUID->"9a6522b2-40a2-44d4-a2c4-e3a796a5de07"],
+Cell[1300416, 24801, 133758, 2230, 102, "Output",ExpressionUUID->"28b430c7-dc5a-4680-8fb2-c5553f3500bb"]
+}, Open  ]],
+Cell[1434189, 27034, 456, 12, 28, "Input",ExpressionUUID->"4aa9cc66-cd8d-473c-9315-6bf2649107ae"],
+Cell[1434648, 27048, 982, 28, 28, "Input",ExpressionUUID->"b2771b8b-eb1b-4473-a6e1-2e4731465b3b"],
+Cell[1435633, 27078, 527, 13, 28, "Input",ExpressionUUID->"43f076c4-7981-46ff-9650-ca55ef1031ed"],
+Cell[1436163, 27093, 198, 4, 28, "Input",ExpressionUUID->"68c736db-e7f9-4576-9656-9d8f03d5e839"],
+Cell[CellGroupData[{
+Cell[1436386, 27101, 991, 24, 86, "Input",ExpressionUUID->"09cfd17b-d085-4eea-96f5-accd257fd7b6"],
+Cell[1437380, 27127, 23814, 460, 474, "Output",ExpressionUUID->"507ced51-58af-43b1-973c-e3d43189a47e"]
 }, Open  ]]
-}, Open  ]]
+}, Closed]]
 }, Closed]]
 }
 ]

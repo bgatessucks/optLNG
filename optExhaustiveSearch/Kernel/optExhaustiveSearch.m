@@ -8,6 +8,7 @@ BeginPackage["optExhaustiveSearch`"]
 $vessels::usage
 $terminals::usage
 cashflowTrip::usage
+cashflowPlan::usage
 
 Begin["`Private`"]
 (* Implementation of the package *)
@@ -108,12 +109,13 @@ $production = Select[$terminals, #Type=="Liquification and Export" &];
 $market = Select[$terminals, #Type=="Import and Re-gasification" &];
 
 (* Need to update the state of the world *)
-cashflowTrip[v_Association, Missing[], Missing[]] := -Infinity (* TODO: really consider ? *)
-cashflowTrip[v_Association, Missing[], m_Association] :=
+cashflowTrip[v_, p_, Missing[]] := <|"Vessel" -> v, "Production" -> p, "Market" -> m, "cashflows"->Quantity[-Infinity, "USDollars"]|> (* TODO: really consider ? *)
+cashflowTrip[v_, Missing[], Missing[]] := <|"Vessel" -> v, "Production" -> p, "Market" -> m, "cashflows"->Quantity[-Infinity, "USDollars"]|> (* TODO: really consider ? *)
+cashflowTrip[v_, Missing[], m_] :=
     Module[ {lV, lP, lM, loadingVolume, toDischargeTripTime, dischargeVolume, dischargingTime, cashflow},
-        lV = v;
-   		lP = $production;
-    	lM = m;
+        lV = $vessels[v];
+   		lP = Missing[];
+    	lM = $market[m];
  		
     	toDischargeTripTime = GeoDistance[{lV["Position"], lM["LatLong"]}, UnitSystem -> "NauticalMiles"] / UnitConvert[lV["Speed"], "NauticalMiles"/"Days"];
     	dischargeVolume = Min[lV["Inventory"] Power[(1.0 - lV["Boil-off rate"]), QuantityMagnitude[toDischargeTripTime]], 
@@ -125,13 +127,13 @@ cashflowTrip[v_Association, Missing[], m_Association] :=
     	
     	cashflow = - lV["DailyFixedCost"] (toDischargeTripTime + dischargingTime) + dischargeVolume lM["Price"];
     	
-   		{lV, lP, lM, cashflow}
+   		<|"Vessel" -> lV, "Production" -> lP, "Market" -> lM, "cashflows"->cashflow|>
     ]  
-cashflowTrip[v_Association, p_Association, m_Association] :=
+cashflowTrip[v_, p_, m_] :=
     Module[ {lV, lP, lM, toLoadTripTime, loadingVolume, loadingTime, toDischargeTripTime, dischargeVolume, dischargingTime, cashflow},
-    	lV = v;
-    	lP = p;
-    	lM = m;
+    	lV = $vessels[v];
+    	lP = $production[p];
+    	lM = $market[m];
     	
     	toLoadTripTime = GeoDistance[{lV["Position"], lP["LatLong"]}, UnitSystem -> "NauticalMiles"] / UnitConvert[lV["Speed"], "NauticalMiles"/"Days"];
     	loadingVolume = Min[lV["Capacity"] - lV["Inventory"], lP["Inventory"]];
@@ -150,12 +152,14 @@ cashflowTrip[v_Association, p_Association, m_Association] :=
     	
     	cashflow = - lV["DailyFixedCost"] (toLoadTripTime + loadingTime + toDischargeTripTime + dischargingTime) + dischargeVolume lM["Price"];
     	
-   		{lV, lP, lM, cashflow}
-        
+   		<|"Vessel" -> lV, "Production" -> lP, "Market" -> lM, "cashflows"->cashflow|>
     ]
 
+cashflowPlan[plan_List] := <|"cashflows" -> Total[cashflowTrip[Sequence @@ #]["cashflows"] & /@ plan]|>
 
-End[]
 
-EndPackage[]
+
+End[];
+
+EndPackage[];
 
