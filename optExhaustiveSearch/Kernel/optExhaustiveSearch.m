@@ -154,18 +154,18 @@ cashflowTrip[v_, p_, m_] :=
 
 cashflowPlan[plan_List] := <|"cashflows" -> Total[cashflowTrip[Sequence @@ #]["cashflows"] & /@ plan]|>
 
-makeProductionInventory[dateStart_, dateEnd_, granularity_, initialInventory_, productionRate_, maxInventory_] := 
-	Module[{rate, timeSteps, inventory}, 
-	rate = UnitConvert[productionRate, QuantityUnit[initialInventory] / granularity];
-	timeSteps = DateRange[DatePlus[dateStart, granularity], dateEnd, granularity];
-	inventory = AssociationThread[timeSteps, initialInventory + Accumulate[Quantity[1, granularity] ConstantArray[rate, Length[timeSteps]]]]
-	]
+makeProductionInventory[dateStart_, dateEnd_, granularity_, initialInventory_, productionRate_, maxInventory_] :=
+    Module[ {rate, timeSteps, inventory},
+        rate = UnitConvert[productionRate, QuantityUnit[initialInventory] / granularity];
+        timeSteps = DateRange[DatePlus[dateStart, granularity], dateEnd, granularity];
+        inventory = AssociationThread[timeSteps, initialInventory + Accumulate[Quantity[1, granularity] ConstantArray[rate, Length[timeSteps]]]]
+    ]
 
-valuation[pStart_, pEnd_, granularity_] := 
-	Module[{timeSteps},
-	timeSteps = DateRange[DatePlus[pStart, granularity], pEnd, granularity];
-	
-	]
+valuation[pStart_, pEnd_, granularity_] :=
+    Module[ {timeSteps},
+        timeSteps = DateRange[DatePlus[pStart, granularity], pEnd, granularity];
+        
+    ]
 
 End[];
 
