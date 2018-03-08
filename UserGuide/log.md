@@ -17,6 +17,21 @@
   - during a decision, as a first approximation all vessels are busy; it could be that some terminals can accommodate multiple vessels, in which case another decision can start before the remaining vessels of the current decision have terminated their trips.
   - make prices a time series
 
+# Pseudo code
+
+```mathematica
+val[pStart_, pEnd_, granularity_] = Module[{timeSteps},
+    timeSteps = DateRange[DatePlus[pStart, granularity], pEnd, granularity];
+    vDate = pStart;
+    updateProductionInventory;
+    While[vDate < pEnd,
+      makeDecision;
+      updateLogPlanAndCashflows;
+      updateProductionInventory;
+      vDate = earliestDateIdleVessel;
+    ]
+  ]
+```
 
 # Parameters
 

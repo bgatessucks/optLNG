@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[   1472427,      27783]
-NotebookOptionsPosition[   1461234,      27592]
-NotebookOutlinePosition[   1461582,      27607]
-CellTagsIndexPosition[   1461539,      27604]
+NotebookDataLength[   1511815,      28819]
+NotebookOptionsPosition[   1499602,      28611]
+NotebookOutlinePosition[   1499950,      28626]
+CellTagsIndexPosition[   1499907,      28623]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -79,11 +79,13 @@ Cell[TextData[{
 
 Cell[BoxData[{
  RowBox[{
-  RowBox[{"LNGTerminals", "=", "$terminals"}], ";"}], "\[IndentingNewLine]", 
+  RowBox[{"LNGTerminals", "=", "$terminalSpec"}], 
+  ";"}], "\[IndentingNewLine]", 
  RowBox[{
-  RowBox[{"LNGVessels", "=", "$vessels"}], ";"}]}], "Input",
- CellChangeTimes->{{3.7250904753699074`*^9, 
-  3.72509048793559*^9}},ExpressionUUID->"45781270-c5ca-4607-887c-\
+  RowBox[{"LNGVessels", "=", "$vesselSpec"}], ";"}]}], "Input",
+ CellChangeTimes->{{3.7250904753699074`*^9, 3.72509048793559*^9}, {
+  3.7294048741586313`*^9, 
+  3.729404878558071*^9}},ExpressionUUID->"45781270-c5ca-4607-887c-\
 4056342c490f"],
 
 Cell[BoxData[
@@ -5856,6 +5858,1023 @@ Cell[BoxData[
    3.7292471327722716`*^9, 
    3.7292471390008945`*^9}},ExpressionUUID->"69bda3b7-6f1f-475b-a128-\
 ee4ba647f575"]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"xxx", " ", "=", " ", 
+   RowBox[{"valuation", "[", 
+    RowBox[{
+     RowBox[{"DateObject", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"2018", ",", "1", ",", "1"}], "}"}], ",", 
+       RowBox[{"TimeObject", "[", 
+        RowBox[{"{", 
+         RowBox[{"0", ",", "0", ",", "0"}], "}"}], "]"}]}], "]"}], ",", " ", 
+     RowBox[{"DateObject", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"2019", ",", "1", ",", "1"}], "}"}], ",", 
+       RowBox[{"TimeObject", "[", 
+        RowBox[{"{", 
+         RowBox[{"0", ",", "0", ",", "0"}], "}"}], "]"}]}], "]"}]}], "]"}]}], 
+  ";"}]], "Input",
+ CellChangeTimes->{{3.729429805702593*^9, 3.729429845748597*^9}, {
+  3.7294307865996723`*^9, 
+  3.729430795684581*^9}},ExpressionUUID->"e14699a2-6a75-4881-8781-\
+7328731ee1b8"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"UnitConvert", "[", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"xxx", "[", 
+     RowBox[{"[", 
+      RowBox[{"2", ",", " ", "1"}], "]"}], "]"}], "[", 
+    "\"\<Daily Production\>\"", "]"}], ",", "  ", 
+   RowBox[{
+    SuperscriptBox["\"\<Meters\>\"", "3"], " ", "/", " ", "\"\<Hours\>\""}]}],
+   "]"}]], "Input",
+ CellChangeTimes->{{3.7294308770457163`*^9, 3.7294308806640778`*^9}, {
+  3.7294311515361624`*^9, 
+  3.7294312181298213`*^9}},ExpressionUUID->"fa64a9c9-b1a0-4943-b6ec-\
+3486db741b87"],
+
+Cell[BoxData[
+ TemplateBox[{FractionBox["625", "3"],RowBox[{
+     SuperscriptBox["\"m\"", "3"], "\[NegativeMediumSpace]", "\"/\"", 
+     "\[InvisibleSpace]", "\"h\""}],"meters cubed per hour",FractionBox[
+    SuperscriptBox["\"Meters\"", "3"], "\"Hours\""]},
+  "Quantity"]], "Output",
+ CellChangeTimes->{
+  3.729430881001112*^9, 3.7294311581948285`*^9, {3.729431210863095*^9, 
+   3.7294312193519435`*^9}},ExpressionUUID->"30f389de-b6e5-41f5-98bc-\
+c13e53f5cd3d"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"AssociationThread", "[", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"xxx", "[", 
+     RowBox[{"[", "1", "]"}], "]"}], "[", 
+    RowBox[{"[", 
+     RowBox[{"1", ";;", "30"}], "]"}], "]"}], ",", " ", 
+   RowBox[{"Clip", "[", 
+    RowBox[{
+     RowBox[{
+      RowBox[{
+       RowBox[{"xxx", "[", 
+        RowBox[{"[", 
+         RowBox[{"2", ",", " ", "1"}], "]"}], "]"}], "[", "\"\<Inventory\>\"",
+        "]"}], " ", "+", " ", 
+      RowBox[{"Accumulate", "[", 
+       RowBox[{
+        RowBox[{"UnitConvert", "[", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"xxx", "[", 
+            RowBox[{"[", 
+             RowBox[{"2", ",", " ", "1"}], "]"}], "]"}], "[", 
+           "\"\<Daily Production\>\"", "]"}], ",", "  ", 
+          RowBox[{
+           SuperscriptBox["\"\<Meters\>\"", "3"], " ", "/", " ", 
+           "\"\<Hours\>\""}]}], "]"}], "  ", 
+        RowBox[{"Range", "[", "30", "]"}], " ", 
+        RowBox[{"Quantity", "[", 
+         RowBox[{"1", ",", " ", "\"\<Hours\>\""}], " ", "]"}]}], "]"}]}], ",",
+      " ", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"Quantity", "[", 
+        RowBox[{"0", ",", " ", 
+         SuperscriptBox["\"\<Meters\>\"", "3"]}], "]"}], ",", 
+       RowBox[{
+        RowBox[{"xxx", "[", 
+         RowBox[{"[", 
+          RowBox[{"2", ",", " ", "1"}], "]"}], "]"}], "[", 
+        "\"\<Total Terminal Storage Capacity\>\"", "]"}]}], " ", "}"}]}], 
+    "]"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.729431801759178*^9, 3.7294319097249737`*^9}, {
+  3.72943227972197*^9, 
+  3.729432301485146*^9}},ExpressionUUID->"db89c432-d3a4-4904-af60-\
+957e9aeba337"],
+
+Cell[BoxData[
+ RowBox[{"\[LeftAssociation]", 
+  RowBox[{
+   RowBox[{
+    TemplateBox[{RowBox[{"\"Mon 1 Jan 2018 00:00:00\"", 
+        StyleBox["\"GMT\"", FontColor -> GrayLevel[0.5]]}],
+      RowBox[{"DateObject", "[", 
+        RowBox[{
+          RowBox[{"{", 
+            
+            RowBox[{"2018", ",", "1", ",", "1", ",", "0", ",", "0", ",", 
+              "0.`"}], "}"}], ",", "\"Instant\"", ",", "\"Gregorian\"", ",", 
+          "0.`"}], "]"}]},
+     "DateObject",
+     Editable->False], "\[Rule]", 
+    TemplateBox[{FractionBox["300625", "3"],RowBox[{
+        SuperscriptBox["\"m\"", "3"]}],"meters cubed",SuperscriptBox[
+      "\"Meters\"", "3"]},
+     "Quantity"]}], ",", 
+   RowBox[{
+    TemplateBox[{RowBox[{"\"Mon 1 Jan 2018 01:00:00\"", 
+        StyleBox["\"GMT\"", FontColor -> GrayLevel[0.5]]}],
+      RowBox[{"DateObject", "[", 
+        RowBox[{
+          RowBox[{"{", 
+            
+            RowBox[{"2018", ",", "1", ",", "1", ",", "1", ",", "0", ",", 
+              "0.`"}], "}"}], ",", "\"Instant\"", ",", "\"Gregorian\"", ",", 
+          "0.`"}], "]"}]},
+     "DateObject",
+     Editable->False], "\[Rule]", 
+    TemplateBox[{"100625",RowBox[{
+        SuperscriptBox["\"m\"", "3"]}],"meters cubed",SuperscriptBox[
+      "\"Meters\"", "3"]},
+     "Quantity"]}], ",", 
+   RowBox[{
+    TemplateBox[{RowBox[{"\"Mon 1 Jan 2018 02:00:00\"", 
+        StyleBox["\"GMT\"", FontColor -> GrayLevel[0.5]]}],
+      RowBox[{"DateObject", "[", 
+        RowBox[{
+          RowBox[{"{", 
+            
+            RowBox[{"2018", ",", "1", ",", "1", ",", "2", ",", "0", ",", 
+              "0.`"}], "}"}], ",", "\"Instant\"", ",", "\"Gregorian\"", ",", 
+          "0.`"}], "]"}]},
+     "DateObject",
+     Editable->False], "\[Rule]", 
+    TemplateBox[{"101250",RowBox[{
+        SuperscriptBox["\"m\"", "3"]}],"meters cubed",SuperscriptBox[
+      "\"Meters\"", "3"]},
+     "Quantity"]}], ",", 
+   RowBox[{
+    TemplateBox[{RowBox[{"\"Mon 1 Jan 2018 03:00:00\"", 
+        StyleBox["\"GMT\"", FontColor -> GrayLevel[0.5]]}],
+      RowBox[{"DateObject", "[", 
+        RowBox[{
+          RowBox[{"{", 
+            
+            RowBox[{"2018", ",", "1", ",", "1", ",", "3", ",", "0", ",", 
+              "0.`"}], "}"}], ",", "\"Instant\"", ",", "\"Gregorian\"", ",", 
+          "0.`"}], "]"}]},
+     "DateObject",
+     Editable->False], "\[Rule]", 
+    TemplateBox[{FractionBox["306250", "3"],RowBox[{
+        SuperscriptBox["\"m\"", "3"]}],"meters cubed",SuperscriptBox[
+      "\"Meters\"", "3"]},
+     "Quantity"]}], ",", 
+   RowBox[{
+    TemplateBox[{RowBox[{"\"Mon 1 Jan 2018 04:00:00\"", 
+        StyleBox["\"GMT\"", FontColor -> GrayLevel[0.5]]}],
+      RowBox[{"DateObject", "[", 
+        RowBox[{
+          RowBox[{"{", 
+            
+            RowBox[{"2018", ",", "1", ",", "1", ",", "4", ",", "0", ",", 
+              "0.`"}], "}"}], ",", "\"Instant\"", ",", "\"Gregorian\"", ",", 
+          "0.`"}], "]"}]},
+     "DateObject",
+     Editable->False], "\[Rule]", 
+    TemplateBox[{"103125",RowBox[{
+        SuperscriptBox["\"m\"", "3"]}],"meters cubed",SuperscriptBox[
+      "\"Meters\"", "3"]},
+     "Quantity"]}], ",", 
+   RowBox[{
+    TemplateBox[{RowBox[{"\"Mon 1 Jan 2018 05:00:00\"", 
+        StyleBox["\"GMT\"", FontColor -> GrayLevel[0.5]]}],
+      RowBox[{"DateObject", "[", 
+        RowBox[{
+          RowBox[{"{", 
+            
+            RowBox[{"2018", ",", "1", ",", "1", ",", "5", ",", "0", ",", 
+              "0.`"}], "}"}], ",", "\"Instant\"", ",", "\"Gregorian\"", ",", 
+          "0.`"}], "]"}]},
+     "DateObject",
+     Editable->False], "\[Rule]", 
+    TemplateBox[{"104375",RowBox[{
+        SuperscriptBox["\"m\"", "3"]}],"meters cubed",SuperscriptBox[
+      "\"Meters\"", "3"]},
+     "Quantity"]}], ",", 
+   RowBox[{
+    TemplateBox[{RowBox[{"\"Mon 1 Jan 2018 06:00:00\"", 
+        StyleBox["\"GMT\"", FontColor -> GrayLevel[0.5]]}],
+      RowBox[{"DateObject", "[", 
+        RowBox[{
+          RowBox[{"{", 
+            
+            RowBox[{"2018", ",", "1", ",", "1", ",", "6", ",", "0", ",", 
+              "0.`"}], "}"}], ",", "\"Instant\"", ",", "\"Gregorian\"", ",", 
+          "0.`"}], "]"}]},
+     "DateObject",
+     Editable->False], "\[Rule]", 
+    TemplateBox[{FractionBox["317500", "3"],RowBox[{
+        SuperscriptBox["\"m\"", "3"]}],"meters cubed",SuperscriptBox[
+      "\"Meters\"", "3"]},
+     "Quantity"]}], ",", 
+   RowBox[{
+    TemplateBox[{RowBox[{"\"Mon 1 Jan 2018 07:00:00\"", 
+        StyleBox["\"GMT\"", FontColor -> GrayLevel[0.5]]}],
+      RowBox[{"DateObject", "[", 
+        RowBox[{
+          RowBox[{"{", 
+            
+            RowBox[{"2018", ",", "1", ",", "1", ",", "7", ",", "0", ",", 
+              "0.`"}], "}"}], ",", "\"Instant\"", ",", "\"Gregorian\"", ",", 
+          "0.`"}], "]"}]},
+     "DateObject",
+     Editable->False], "\[Rule]", 
+    TemplateBox[{"107500",RowBox[{
+        SuperscriptBox["\"m\"", "3"]}],"meters cubed",SuperscriptBox[
+      "\"Meters\"", "3"]},
+     "Quantity"]}], ",", 
+   RowBox[{
+    TemplateBox[{RowBox[{"\"Mon 1 Jan 2018 08:00:00\"", 
+        StyleBox["\"GMT\"", FontColor -> GrayLevel[0.5]]}],
+      RowBox[{"DateObject", "[", 
+        RowBox[{
+          RowBox[{"{", 
+            
+            RowBox[{"2018", ",", "1", ",", "1", ",", "8", ",", "0", ",", 
+              "0.`"}], "}"}], ",", "\"Instant\"", ",", "\"Gregorian\"", ",", 
+          "0.`"}], "]"}]},
+     "DateObject",
+     Editable->False], "\[Rule]", 
+    TemplateBox[{"109375",RowBox[{
+        SuperscriptBox["\"m\"", "3"]}],"meters cubed",SuperscriptBox[
+      "\"Meters\"", "3"]},
+     "Quantity"]}], ",", 
+   RowBox[{
+    TemplateBox[{RowBox[{"\"Mon 1 Jan 2018 09:00:00\"", 
+        StyleBox["\"GMT\"", FontColor -> GrayLevel[0.5]]}],
+      RowBox[{"DateObject", "[", 
+        RowBox[{
+          RowBox[{"{", 
+            
+            RowBox[{"2018", ",", "1", ",", "1", ",", "9", ",", "0", ",", 
+              "0.`"}], "}"}], ",", "\"Instant\"", ",", "\"Gregorian\"", ",", 
+          "0.`"}], "]"}]},
+     "DateObject",
+     Editable->False], "\[Rule]", 
+    TemplateBox[{FractionBox["334375", "3"],RowBox[{
+        SuperscriptBox["\"m\"", "3"]}],"meters cubed",SuperscriptBox[
+      "\"Meters\"", "3"]},
+     "Quantity"]}], ",", 
+   RowBox[{
+    TemplateBox[{RowBox[{"\"Mon 1 Jan 2018 10:00:00\"", 
+        StyleBox["\"GMT\"", FontColor -> GrayLevel[0.5]]}],
+      RowBox[{"DateObject", "[", 
+        RowBox[{
+          RowBox[{"{", 
+            
+            RowBox[{"2018", ",", "1", ",", "1", ",", "10", ",", "0", ",", 
+              "0.`"}], "}"}], ",", "\"Instant\"", ",", "\"Gregorian\"", ",", 
+          "0.`"}], "]"}]},
+     "DateObject",
+     Editable->False], "\[Rule]", 
+    TemplateBox[{"113750",RowBox[{
+        SuperscriptBox["\"m\"", "3"]}],"meters cubed",SuperscriptBox[
+      "\"Meters\"", "3"]},
+     "Quantity"]}], ",", 
+   RowBox[{
+    TemplateBox[{RowBox[{"\"Mon 1 Jan 2018 11:00:00\"", 
+        StyleBox["\"GMT\"", FontColor -> GrayLevel[0.5]]}],
+      RowBox[{"DateObject", "[", 
+        RowBox[{
+          RowBox[{"{", 
+            
+            RowBox[{"2018", ",", "1", ",", "1", ",", "11", ",", "0", ",", 
+              "0.`"}], "}"}], ",", "\"Instant\"", ",", "\"Gregorian\"", ",", 
+          "0.`"}], "]"}]},
+     "DateObject",
+     Editable->False], "\[Rule]", 
+    TemplateBox[{"116250",RowBox[{
+        SuperscriptBox["\"m\"", "3"]}],"meters cubed",SuperscriptBox[
+      "\"Meters\"", "3"]},
+     "Quantity"]}], ",", 
+   RowBox[{
+    TemplateBox[{RowBox[{"\"Mon 1 Jan 2018 12:00:00\"", 
+        StyleBox["\"GMT\"", FontColor -> GrayLevel[0.5]]}],
+      RowBox[{"DateObject", "[", 
+        RowBox[{
+          RowBox[{"{", 
+            
+            RowBox[{"2018", ",", "1", ",", "1", ",", "12", ",", "0", ",", 
+              "0.`"}], "}"}], ",", "\"Instant\"", ",", "\"Gregorian\"", ",", 
+          "0.`"}], "]"}]},
+     "DateObject",
+     Editable->False], "\[Rule]", 
+    TemplateBox[{FractionBox["356875", "3"],RowBox[{
+        SuperscriptBox["\"m\"", "3"]}],"meters cubed",SuperscriptBox[
+      "\"Meters\"", "3"]},
+     "Quantity"]}], ",", 
+   RowBox[{
+    TemplateBox[{RowBox[{"\"Mon 1 Jan 2018 13:00:00\"", 
+        StyleBox["\"GMT\"", FontColor -> GrayLevel[0.5]]}],
+      RowBox[{"DateObject", "[", 
+        RowBox[{
+          RowBox[{"{", 
+            
+            RowBox[{"2018", ",", "1", ",", "1", ",", "13", ",", "0", ",", 
+              "0.`"}], "}"}], ",", "\"Instant\"", ",", "\"Gregorian\"", ",", 
+          "0.`"}], "]"}]},
+     "DateObject",
+     Editable->False], "\[Rule]", 
+    TemplateBox[{"121875",RowBox[{
+        SuperscriptBox["\"m\"", "3"]}],"meters cubed",SuperscriptBox[
+      "\"Meters\"", "3"]},
+     "Quantity"]}], ",", 
+   RowBox[{
+    TemplateBox[{RowBox[{"\"Mon 1 Jan 2018 14:00:00\"", 
+        StyleBox["\"GMT\"", FontColor -> GrayLevel[0.5]]}],
+      RowBox[{"DateObject", "[", 
+        RowBox[{
+          RowBox[{"{", 
+            
+            RowBox[{"2018", ",", "1", ",", "1", ",", "14", ",", "0", ",", 
+              "0.`"}], "}"}], ",", "\"Instant\"", ",", "\"Gregorian\"", ",", 
+          "0.`"}], "]"}]},
+     "DateObject",
+     Editable->False], "\[Rule]", 
+    TemplateBox[{"125000",RowBox[{
+        SuperscriptBox["\"m\"", "3"]}],"meters cubed",SuperscriptBox[
+      "\"Meters\"", "3"]},
+     "Quantity"]}], ",", 
+   RowBox[{
+    TemplateBox[{RowBox[{"\"Mon 1 Jan 2018 15:00:00\"", 
+        StyleBox["\"GMT\"", FontColor -> GrayLevel[0.5]]}],
+      RowBox[{"DateObject", "[", 
+        RowBox[{
+          RowBox[{"{", 
+            
+            RowBox[{"2018", ",", "1", ",", "1", ",", "15", ",", "0", ",", 
+              "0.`"}], "}"}], ",", "\"Instant\"", ",", "\"Gregorian\"", ",", 
+          "0.`"}], "]"}]},
+     "DateObject",
+     Editable->False], "\[Rule]", 
+    TemplateBox[{FractionBox["385000", "3"],RowBox[{
+        SuperscriptBox["\"m\"", "3"]}],"meters cubed",SuperscriptBox[
+      "\"Meters\"", "3"]},
+     "Quantity"]}], ",", 
+   RowBox[{
+    TemplateBox[{RowBox[{"\"Mon 1 Jan 2018 16:00:00\"", 
+        StyleBox["\"GMT\"", FontColor -> GrayLevel[0.5]]}],
+      RowBox[{"DateObject", "[", 
+        RowBox[{
+          RowBox[{"{", 
+            
+            RowBox[{"2018", ",", "1", ",", "1", ",", "16", ",", "0", ",", 
+              "0.`"}], "}"}], ",", "\"Instant\"", ",", "\"Gregorian\"", ",", 
+          "0.`"}], "]"}]},
+     "DateObject",
+     Editable->False], "\[Rule]", 
+    TemplateBox[{"131875",RowBox[{
+        SuperscriptBox["\"m\"", "3"]}],"meters cubed",SuperscriptBox[
+      "\"Meters\"", "3"]},
+     "Quantity"]}], ",", 
+   RowBox[{
+    TemplateBox[{RowBox[{"\"Mon 1 Jan 2018 17:00:00\"", 
+        StyleBox["\"GMT\"", FontColor -> GrayLevel[0.5]]}],
+      RowBox[{"DateObject", "[", 
+        RowBox[{
+          RowBox[{"{", 
+            
+            RowBox[{"2018", ",", "1", ",", "1", ",", "17", ",", "0", ",", 
+              "0.`"}], "}"}], ",", "\"Instant\"", ",", "\"Gregorian\"", ",", 
+          "0.`"}], "]"}]},
+     "DateObject",
+     Editable->False], "\[Rule]", 
+    TemplateBox[{"135625",RowBox[{
+        SuperscriptBox["\"m\"", "3"]}],"meters cubed",SuperscriptBox[
+      "\"Meters\"", "3"]},
+     "Quantity"]}], ",", 
+   RowBox[{
+    TemplateBox[{RowBox[{"\"Mon 1 Jan 2018 18:00:00\"", 
+        StyleBox["\"GMT\"", FontColor -> GrayLevel[0.5]]}],
+      RowBox[{"DateObject", "[", 
+        RowBox[{
+          RowBox[{"{", 
+            
+            RowBox[{"2018", ",", "1", ",", "1", ",", "18", ",", "0", ",", 
+              "0.`"}], "}"}], ",", "\"Instant\"", ",", "\"Gregorian\"", ",", 
+          "0.`"}], "]"}]},
+     "DateObject",
+     Editable->False], "\[Rule]", 
+    TemplateBox[{FractionBox["418750", "3"],RowBox[{
+        SuperscriptBox["\"m\"", "3"]}],"meters cubed",SuperscriptBox[
+      "\"Meters\"", "3"]},
+     "Quantity"]}], ",", 
+   RowBox[{
+    TemplateBox[{RowBox[{"\"Mon 1 Jan 2018 19:00:00\"", 
+        StyleBox["\"GMT\"", FontColor -> GrayLevel[0.5]]}],
+      RowBox[{"DateObject", "[", 
+        RowBox[{
+          RowBox[{"{", 
+            
+            RowBox[{"2018", ",", "1", ",", "1", ",", "19", ",", "0", ",", 
+              "0.`"}], "}"}], ",", "\"Instant\"", ",", "\"Gregorian\"", ",", 
+          "0.`"}], "]"}]},
+     "DateObject",
+     Editable->False], "\[Rule]", 
+    TemplateBox[{"143750",RowBox[{
+        SuperscriptBox["\"m\"", "3"]}],"meters cubed",SuperscriptBox[
+      "\"Meters\"", "3"]},
+     "Quantity"]}], ",", 
+   RowBox[{
+    TemplateBox[{RowBox[{"\"Mon 1 Jan 2018 20:00:00\"", 
+        StyleBox["\"GMT\"", FontColor -> GrayLevel[0.5]]}],
+      RowBox[{"DateObject", "[", 
+        RowBox[{
+          RowBox[{"{", 
+            
+            RowBox[{"2018", ",", "1", ",", "1", ",", "20", ",", "0", ",", 
+              "0.`"}], "}"}], ",", "\"Instant\"", ",", "\"Gregorian\"", ",", 
+          "0.`"}], "]"}]},
+     "DateObject",
+     Editable->False], "\[Rule]", 
+    TemplateBox[{"148125",RowBox[{
+        SuperscriptBox["\"m\"", "3"]}],"meters cubed",SuperscriptBox[
+      "\"Meters\"", "3"]},
+     "Quantity"]}], ",", 
+   RowBox[{
+    TemplateBox[{RowBox[{"\"Mon 1 Jan 2018 21:00:00\"", 
+        StyleBox["\"GMT\"", FontColor -> GrayLevel[0.5]]}],
+      RowBox[{"DateObject", "[", 
+        RowBox[{
+          RowBox[{"{", 
+            
+            RowBox[{"2018", ",", "1", ",", "1", ",", "21", ",", "0", ",", 
+              "0.`"}], "}"}], ",", "\"Instant\"", ",", "\"Gregorian\"", ",", 
+          "0.`"}], "]"}]},
+     "DateObject",
+     Editable->False], "\[Rule]", 
+    TemplateBox[{FractionBox["458125", "3"],RowBox[{
+        SuperscriptBox["\"m\"", "3"]}],"meters cubed",SuperscriptBox[
+      "\"Meters\"", "3"]},
+     "Quantity"]}], ",", 
+   RowBox[{
+    TemplateBox[{RowBox[{"\"Mon 1 Jan 2018 22:00:00\"", 
+        StyleBox["\"GMT\"", FontColor -> GrayLevel[0.5]]}],
+      RowBox[{"DateObject", "[", 
+        RowBox[{
+          RowBox[{"{", 
+            
+            RowBox[{"2018", ",", "1", ",", "1", ",", "22", ",", "0", ",", 
+              "0.`"}], "}"}], ",", "\"Instant\"", ",", "\"Gregorian\"", ",", 
+          "0.`"}], "]"}]},
+     "DateObject",
+     Editable->False], "\[Rule]", 
+    TemplateBox[{"157500",RowBox[{
+        SuperscriptBox["\"m\"", "3"]}],"meters cubed",SuperscriptBox[
+      "\"Meters\"", "3"]},
+     "Quantity"]}], ",", 
+   RowBox[{
+    TemplateBox[{RowBox[{"\"Mon 1 Jan 2018 23:00:00\"", 
+        StyleBox["\"GMT\"", FontColor -> GrayLevel[0.5]]}],
+      RowBox[{"DateObject", "[", 
+        RowBox[{
+          RowBox[{"{", 
+            
+            RowBox[{"2018", ",", "1", ",", "1", ",", "23", ",", "0", ",", 
+              "0.`"}], "}"}], ",", "\"Instant\"", ",", "\"Gregorian\"", ",", 
+          "0.`"}], "]"}]},
+     "DateObject",
+     Editable->False], "\[Rule]", 
+    TemplateBox[{"162500",RowBox[{
+        SuperscriptBox["\"m\"", "3"]}],"meters cubed",SuperscriptBox[
+      "\"Meters\"", "3"]},
+     "Quantity"]}], ",", 
+   RowBox[{
+    TemplateBox[{RowBox[{"\"Tue 2 Jan 2018 00:00:00\"", 
+        StyleBox["\"GMT\"", FontColor -> GrayLevel[0.5]]}],
+      RowBox[{"DateObject", "[", 
+        RowBox[{
+          RowBox[{"{", 
+            
+            RowBox[{"2018", ",", "1", ",", "2", ",", "0", ",", "0", ",", 
+              "0.`"}], "}"}], ",", "\"Instant\"", ",", "\"Gregorian\"", ",", 
+          "0.`"}], "]"}]},
+     "DateObject",
+     Editable->False], "\[Rule]", 
+    TemplateBox[{FractionBox["503125", "3"],RowBox[{
+        SuperscriptBox["\"m\"", "3"]}],"meters cubed",SuperscriptBox[
+      "\"Meters\"", "3"]},
+     "Quantity"]}], ",", 
+   RowBox[{
+    TemplateBox[{RowBox[{"\"Tue 2 Jan 2018 01:00:00\"", 
+        StyleBox["\"GMT\"", FontColor -> GrayLevel[0.5]]}],
+      RowBox[{"DateObject", "[", 
+        RowBox[{
+          RowBox[{"{", 
+            
+            RowBox[{"2018", ",", "1", ",", "2", ",", "1", ",", "0", ",", 
+              "0.`"}], "}"}], ",", "\"Instant\"", ",", "\"Gregorian\"", ",", 
+          "0.`"}], "]"}]},
+     "DateObject",
+     Editable->False], "\[Rule]", 
+    TemplateBox[{"173125",RowBox[{
+        SuperscriptBox["\"m\"", "3"]}],"meters cubed",SuperscriptBox[
+      "\"Meters\"", "3"]},
+     "Quantity"]}], ",", 
+   RowBox[{
+    TemplateBox[{RowBox[{"\"Tue 2 Jan 2018 02:00:00\"", 
+        StyleBox["\"GMT\"", FontColor -> GrayLevel[0.5]]}],
+      RowBox[{"DateObject", "[", 
+        RowBox[{
+          RowBox[{"{", 
+            
+            RowBox[{"2018", ",", "1", ",", "2", ",", "2", ",", "0", ",", 
+              "0.`"}], "}"}], ",", "\"Instant\"", ",", "\"Gregorian\"", ",", 
+          "0.`"}], "]"}]},
+     "DateObject",
+     Editable->False], "\[Rule]", 
+    TemplateBox[{"178750",RowBox[{
+        SuperscriptBox["\"m\"", "3"]}],"meters cubed",SuperscriptBox[
+      "\"Meters\"", "3"]},
+     "Quantity"]}], ",", 
+   RowBox[{
+    TemplateBox[{RowBox[{"\"Tue 2 Jan 2018 03:00:00\"", 
+        StyleBox["\"GMT\"", FontColor -> GrayLevel[0.5]]}],
+      RowBox[{"DateObject", "[", 
+        RowBox[{
+          RowBox[{"{", 
+            
+            RowBox[{"2018", ",", "1", ",", "2", ",", "3", ",", "0", ",", 
+              "0.`"}], "}"}], ",", "\"Instant\"", ",", "\"Gregorian\"", ",", 
+          "0.`"}], "]"}]},
+     "DateObject",
+     Editable->False], "\[Rule]", 
+    TemplateBox[{FractionBox["553750", "3"],RowBox[{
+        SuperscriptBox["\"m\"", "3"]}],"meters cubed",SuperscriptBox[
+      "\"Meters\"", "3"]},
+     "Quantity"]}], ",", 
+   RowBox[{
+    TemplateBox[{RowBox[{"\"Tue 2 Jan 2018 04:00:00\"", 
+        StyleBox["\"GMT\"", FontColor -> GrayLevel[0.5]]}],
+      RowBox[{"DateObject", "[", 
+        RowBox[{
+          RowBox[{"{", 
+            
+            RowBox[{"2018", ",", "1", ",", "2", ",", "4", ",", "0", ",", 
+              "0.`"}], "}"}], ",", "\"Instant\"", ",", "\"Gregorian\"", ",", 
+          "0.`"}], "]"}]},
+     "DateObject",
+     Editable->False], "\[Rule]", 
+    TemplateBox[{"190625",RowBox[{
+        SuperscriptBox["\"m\"", "3"]}],"meters cubed",SuperscriptBox[
+      "\"Meters\"", "3"]},
+     "Quantity"]}], ",", 
+   RowBox[{
+    TemplateBox[{RowBox[{"\"Tue 2 Jan 2018 05:00:00\"", 
+        StyleBox["\"GMT\"", FontColor -> GrayLevel[0.5]]}],
+      RowBox[{"DateObject", "[", 
+        RowBox[{
+          RowBox[{"{", 
+            
+            RowBox[{"2018", ",", "1", ",", "2", ",", "5", ",", "0", ",", 
+              "0.`"}], "}"}], ",", "\"Instant\"", ",", "\"Gregorian\"", ",", 
+          "0.`"}], "]"}]},
+     "DateObject",
+     Editable->False], "\[Rule]", 
+    TemplateBox[{"196875",RowBox[{
+        SuperscriptBox["\"m\"", "3"]}],"meters cubed",SuperscriptBox[
+      "\"Meters\"", "3"]},
+     "Quantity"]}]}], "\[RightAssociation]"}]], "Output",
+ CellChangeTimes->{
+  3.7294319156015615`*^9, {3.729432287689767*^9, 
+   3.729432302093207*^9}},ExpressionUUID->"a5f9f05f-df43-433b-972e-\
+3e30fdb1dc02"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"makeProductionInventory", "[", 
+  RowBox[{
+   TemplateBox[{RowBox[{"\"Mon 1 Jan 2018 03:00:00\"", 
+       StyleBox["\"GMT\"", FontColor -> GrayLevel[0.5]]}],
+     RowBox[{"DateObject", "[", 
+       RowBox[{
+         RowBox[{"{", 
+           
+           RowBox[{"2018", ",", "1", ",", "1", ",", "3", ",", "0", ",", 
+             "0.`"}], "}"}], ",", "\"Instant\"", ",", "\"Gregorian\"", ",", 
+         "0.`"}], "]"}]},
+    "DateObject",
+    Editable->False], ",", 
+   TemplateBox[{RowBox[{"\"Mon 1 Jan 2018 22:00:00\"", 
+       StyleBox["\"GMT\"", FontColor -> GrayLevel[0.5]]}],
+     RowBox[{"DateObject", "[", 
+       RowBox[{
+         RowBox[{"{", 
+           
+           RowBox[{"2018", ",", "1", ",", "1", ",", "22", ",", "0", ",", 
+             "0.`"}], "}"}], ",", "\"Instant\"", ",", "\"Gregorian\"", ",", 
+         "0.`"}], "]"}]},
+    "DateObject",
+    Editable->False], ",", "\"\<Hours\>\"", ",", 
+   TemplateBox[{"100000",RowBox[{
+       SuperscriptBox["\"m\"", "3"]}],"meters cubed",SuperscriptBox[
+     "\"Meters\"", "3"]},
+    "Quantity"], ",", 
+   TemplateBox[{"5000",RowBox[{
+       SuperscriptBox["\"m\"", "3"], "\[NegativeMediumSpace]", "\"/\"", 
+       "\[InvisibleSpace]", "\"day\""}],"meters cubed per day",FractionBox[
+      SuperscriptBox["\"Meters\"", "3"], "\"Days\""]},
+    "Quantity"], ",", 
+   TemplateBox[{"540000",RowBox[{
+       SuperscriptBox["\"m\"", "3"]}],"meters cubed",SuperscriptBox[
+     "\"Meters\"", "3"]},
+    "Quantity"]}], "]"}]], "Input",
+ CellChangeTimes->{{3.7294352686608343`*^9, 
+  3.7294353372006874`*^9}},ExpressionUUID->"31f76543-3174-4d27-84e1-\
+76d36810334f"],
+
+Cell[BoxData[
+ RowBox[{"\[LeftAssociation]", 
+  RowBox[{
+   RowBox[{
+    TemplateBox[{RowBox[{"\"Mon 1 Jan 2018 04:00:00\"", 
+        StyleBox["\"GMT\"", FontColor -> GrayLevel[0.5]]}],
+      RowBox[{"DateObject", "[", 
+        RowBox[{
+          RowBox[{"{", 
+            
+            RowBox[{"2018", ",", "1", ",", "1", ",", "4", ",", "0", ",", 
+              "0.`"}], "}"}], ",", "\"Instant\"", ",", "\"Gregorian\"", ",", 
+          "0.`"}], "]"}]},
+     "DateObject",
+     Editable->False], "\[Rule]", 
+    TemplateBox[{FractionBox["300625", "3"],RowBox[{
+        SuperscriptBox["\"m\"", "3"]}],"meters cubed",SuperscriptBox[
+      "\"Meters\"", "3"]},
+     "Quantity"]}], ",", 
+   RowBox[{
+    TemplateBox[{RowBox[{"\"Mon 1 Jan 2018 05:00:00\"", 
+        StyleBox["\"GMT\"", FontColor -> GrayLevel[0.5]]}],
+      RowBox[{"DateObject", "[", 
+        RowBox[{
+          RowBox[{"{", 
+            
+            RowBox[{"2018", ",", "1", ",", "1", ",", "5", ",", "0", ",", 
+              "0.`"}], "}"}], ",", "\"Instant\"", ",", "\"Gregorian\"", ",", 
+          "0.`"}], "]"}]},
+     "DateObject",
+     Editable->False], "\[Rule]", 
+    TemplateBox[{FractionBox["301250", "3"],RowBox[{
+        SuperscriptBox["\"m\"", "3"]}],"meters cubed",SuperscriptBox[
+      "\"Meters\"", "3"]},
+     "Quantity"]}], ",", 
+   RowBox[{
+    TemplateBox[{RowBox[{"\"Mon 1 Jan 2018 06:00:00\"", 
+        StyleBox["\"GMT\"", FontColor -> GrayLevel[0.5]]}],
+      RowBox[{"DateObject", "[", 
+        RowBox[{
+          RowBox[{"{", 
+            
+            RowBox[{"2018", ",", "1", ",", "1", ",", "6", ",", "0", ",", 
+              "0.`"}], "}"}], ",", "\"Instant\"", ",", "\"Gregorian\"", ",", 
+          "0.`"}], "]"}]},
+     "DateObject",
+     Editable->False], "\[Rule]", 
+    TemplateBox[{"100625",RowBox[{
+        SuperscriptBox["\"m\"", "3"]}],"meters cubed",SuperscriptBox[
+      "\"Meters\"", "3"]},
+     "Quantity"]}], ",", 
+   RowBox[{
+    TemplateBox[{RowBox[{"\"Mon 1 Jan 2018 07:00:00\"", 
+        StyleBox["\"GMT\"", FontColor -> GrayLevel[0.5]]}],
+      RowBox[{"DateObject", "[", 
+        RowBox[{
+          RowBox[{"{", 
+            
+            RowBox[{"2018", ",", "1", ",", "1", ",", "7", ",", "0", ",", 
+              "0.`"}], "}"}], ",", "\"Instant\"", ",", "\"Gregorian\"", ",", 
+          "0.`"}], "]"}]},
+     "DateObject",
+     Editable->False], "\[Rule]", 
+    TemplateBox[{FractionBox["302500", "3"],RowBox[{
+        SuperscriptBox["\"m\"", "3"]}],"meters cubed",SuperscriptBox[
+      "\"Meters\"", "3"]},
+     "Quantity"]}], ",", 
+   RowBox[{
+    TemplateBox[{RowBox[{"\"Mon 1 Jan 2018 08:00:00\"", 
+        StyleBox["\"GMT\"", FontColor -> GrayLevel[0.5]]}],
+      RowBox[{"DateObject", "[", 
+        RowBox[{
+          RowBox[{"{", 
+            
+            RowBox[{"2018", ",", "1", ",", "1", ",", "8", ",", "0", ",", 
+              "0.`"}], "}"}], ",", "\"Instant\"", ",", "\"Gregorian\"", ",", 
+          "0.`"}], "]"}]},
+     "DateObject",
+     Editable->False], "\[Rule]", 
+    TemplateBox[{FractionBox["303125", "3"],RowBox[{
+        SuperscriptBox["\"m\"", "3"]}],"meters cubed",SuperscriptBox[
+      "\"Meters\"", "3"]},
+     "Quantity"]}], ",", 
+   RowBox[{
+    TemplateBox[{RowBox[{"\"Mon 1 Jan 2018 09:00:00\"", 
+        StyleBox["\"GMT\"", FontColor -> GrayLevel[0.5]]}],
+      RowBox[{"DateObject", "[", 
+        RowBox[{
+          RowBox[{"{", 
+            
+            RowBox[{"2018", ",", "1", ",", "1", ",", "9", ",", "0", ",", 
+              "0.`"}], "}"}], ",", "\"Instant\"", ",", "\"Gregorian\"", ",", 
+          "0.`"}], "]"}]},
+     "DateObject",
+     Editable->False], "\[Rule]", 
+    TemplateBox[{"101250",RowBox[{
+        SuperscriptBox["\"m\"", "3"]}],"meters cubed",SuperscriptBox[
+      "\"Meters\"", "3"]},
+     "Quantity"]}], ",", 
+   RowBox[{
+    TemplateBox[{RowBox[{"\"Mon 1 Jan 2018 10:00:00\"", 
+        StyleBox["\"GMT\"", FontColor -> GrayLevel[0.5]]}],
+      RowBox[{"DateObject", "[", 
+        RowBox[{
+          RowBox[{"{", 
+            RowBox[{
+             "2018", ",", "1", ",", "1", ",", "10", ",", "0", ",", "0.`"}], 
+            "}"}], ",", "\"Instant\"", ",", "\"Gregorian\"", ",", "0.`"}], 
+        "]"}]},
+     "DateObject",
+     Editable->False], "\[Rule]", 
+    TemplateBox[{FractionBox["304375", "3"],RowBox[{
+        SuperscriptBox["\"m\"", "3"]}],"meters cubed",SuperscriptBox[
+      "\"Meters\"", "3"]},
+     "Quantity"]}], ",", 
+   RowBox[{
+    TemplateBox[{RowBox[{"\"Mon 1 Jan 2018 11:00:00\"", 
+        StyleBox["\"GMT\"", FontColor -> GrayLevel[0.5]]}],
+      RowBox[{"DateObject", "[", 
+        RowBox[{
+          RowBox[{"{", 
+            
+            RowBox[{"2018", ",", "1", ",", "1", ",", "11", ",", "0", ",", 
+              "0.`"}], "}"}], ",", "\"Instant\"", ",", "\"Gregorian\"", ",", 
+          "0.`"}], "]"}]},
+     "DateObject",
+     Editable->False], "\[Rule]", 
+    TemplateBox[{FractionBox["305000", "3"],RowBox[{
+        SuperscriptBox["\"m\"", "3"]}],"meters cubed",SuperscriptBox[
+      "\"Meters\"", "3"]},
+     "Quantity"]}], ",", 
+   RowBox[{
+    TemplateBox[{RowBox[{"\"Mon 1 Jan 2018 12:00:00\"", 
+        StyleBox["\"GMT\"", FontColor -> GrayLevel[0.5]]}],
+      RowBox[{"DateObject", "[", 
+        RowBox[{
+          RowBox[{"{", 
+            
+            RowBox[{"2018", ",", "1", ",", "1", ",", "12", ",", "0", ",", 
+              "0.`"}], "}"}], ",", "\"Instant\"", ",", "\"Gregorian\"", ",", 
+          "0.`"}], "]"}]},
+     "DateObject",
+     Editable->False], "\[Rule]", 
+    TemplateBox[{"101875",RowBox[{
+        SuperscriptBox["\"m\"", "3"]}],"meters cubed",SuperscriptBox[
+      "\"Meters\"", "3"]},
+     "Quantity"]}], ",", 
+   RowBox[{
+    TemplateBox[{RowBox[{"\"Mon 1 Jan 2018 13:00:00\"", 
+        StyleBox["\"GMT\"", FontColor -> GrayLevel[0.5]]}],
+      RowBox[{"DateObject", "[", 
+        RowBox[{
+          RowBox[{"{", 
+            
+            RowBox[{"2018", ",", "1", ",", "1", ",", "13", ",", "0", ",", 
+              "0.`"}], "}"}], ",", "\"Instant\"", ",", "\"Gregorian\"", ",", 
+          "0.`"}], "]"}]},
+     "DateObject",
+     Editable->False], "\[Rule]", 
+    TemplateBox[{FractionBox["306250", "3"],RowBox[{
+        SuperscriptBox["\"m\"", "3"]}],"meters cubed",SuperscriptBox[
+      "\"Meters\"", "3"]},
+     "Quantity"]}], ",", 
+   RowBox[{
+    TemplateBox[{RowBox[{"\"Mon 1 Jan 2018 14:00:00\"", 
+        StyleBox["\"GMT\"", FontColor -> GrayLevel[0.5]]}],
+      RowBox[{"DateObject", "[", 
+        RowBox[{
+          RowBox[{"{", 
+            
+            RowBox[{"2018", ",", "1", ",", "1", ",", "14", ",", "0", ",", 
+              "0.`"}], "}"}], ",", "\"Instant\"", ",", "\"Gregorian\"", ",", 
+          "0.`"}], "]"}]},
+     "DateObject",
+     Editable->False], "\[Rule]", 
+    TemplateBox[{FractionBox["306875", "3"],RowBox[{
+        SuperscriptBox["\"m\"", "3"]}],"meters cubed",SuperscriptBox[
+      "\"Meters\"", "3"]},
+     "Quantity"]}], ",", 
+   RowBox[{
+    TemplateBox[{RowBox[{"\"Mon 1 Jan 2018 15:00:00\"", 
+        StyleBox["\"GMT\"", FontColor -> GrayLevel[0.5]]}],
+      RowBox[{"DateObject", "[", 
+        RowBox[{
+          RowBox[{"{", 
+            
+            RowBox[{"2018", ",", "1", ",", "1", ",", "15", ",", "0", ",", 
+              "0.`"}], "}"}], ",", "\"Instant\"", ",", "\"Gregorian\"", ",", 
+          "0.`"}], "]"}]},
+     "DateObject",
+     Editable->False], "\[Rule]", 
+    TemplateBox[{"102500",RowBox[{
+        SuperscriptBox["\"m\"", "3"]}],"meters cubed",SuperscriptBox[
+      "\"Meters\"", "3"]},
+     "Quantity"]}], ",", 
+   RowBox[{
+    TemplateBox[{RowBox[{"\"Mon 1 Jan 2018 16:00:00\"", 
+        StyleBox["\"GMT\"", FontColor -> GrayLevel[0.5]]}],
+      RowBox[{"DateObject", "[", 
+        RowBox[{
+          RowBox[{"{", 
+            
+            RowBox[{"2018", ",", "1", ",", "1", ",", "16", ",", "0", ",", 
+              "0.`"}], "}"}], ",", "\"Instant\"", ",", "\"Gregorian\"", ",", 
+          "0.`"}], "]"}]},
+     "DateObject",
+     Editable->False], "\[Rule]", 
+    TemplateBox[{FractionBox["308125", "3"],RowBox[{
+        SuperscriptBox["\"m\"", "3"]}],"meters cubed",SuperscriptBox[
+      "\"Meters\"", "3"]},
+     "Quantity"]}], ",", 
+   RowBox[{
+    TemplateBox[{RowBox[{"\"Mon 1 Jan 2018 17:00:00\"", 
+        StyleBox["\"GMT\"", FontColor -> GrayLevel[0.5]]}],
+      RowBox[{"DateObject", "[", 
+        RowBox[{
+          RowBox[{"{", 
+            
+            RowBox[{"2018", ",", "1", ",", "1", ",", "17", ",", "0", ",", 
+              "0.`"}], "}"}], ",", "\"Instant\"", ",", "\"Gregorian\"", ",", 
+          "0.`"}], "]"}]},
+     "DateObject",
+     Editable->False], "\[Rule]", 
+    TemplateBox[{FractionBox["308750", "3"],RowBox[{
+        SuperscriptBox["\"m\"", "3"]}],"meters cubed",SuperscriptBox[
+      "\"Meters\"", "3"]},
+     "Quantity"]}], ",", 
+   RowBox[{
+    TemplateBox[{RowBox[{"\"Mon 1 Jan 2018 18:00:00\"", 
+        StyleBox["\"GMT\"", FontColor -> GrayLevel[0.5]]}],
+      RowBox[{"DateObject", "[", 
+        RowBox[{
+          RowBox[{"{", 
+            
+            RowBox[{"2018", ",", "1", ",", "1", ",", "18", ",", "0", ",", 
+              "0.`"}], "}"}], ",", "\"Instant\"", ",", "\"Gregorian\"", ",", 
+          "0.`"}], "]"}]},
+     "DateObject",
+     Editable->False], "\[Rule]", 
+    TemplateBox[{"103125",RowBox[{
+        SuperscriptBox["\"m\"", "3"]}],"meters cubed",SuperscriptBox[
+      "\"Meters\"", "3"]},
+     "Quantity"]}], ",", 
+   RowBox[{
+    TemplateBox[{RowBox[{"\"Mon 1 Jan 2018 19:00:00\"", 
+        StyleBox["\"GMT\"", FontColor -> GrayLevel[0.5]]}],
+      RowBox[{"DateObject", "[", 
+        RowBox[{
+          RowBox[{"{", 
+            
+            RowBox[{"2018", ",", "1", ",", "1", ",", "19", ",", "0", ",", 
+              "0.`"}], "}"}], ",", "\"Instant\"", ",", "\"Gregorian\"", ",", 
+          "0.`"}], "]"}]},
+     "DateObject",
+     Editable->False], "\[Rule]", 
+    TemplateBox[{FractionBox["310000", "3"],RowBox[{
+        SuperscriptBox["\"m\"", "3"]}],"meters cubed",SuperscriptBox[
+      "\"Meters\"", "3"]},
+     "Quantity"]}], ",", 
+   RowBox[{
+    TemplateBox[{RowBox[{"\"Mon 1 Jan 2018 20:00:00\"", 
+        StyleBox["\"GMT\"", FontColor -> GrayLevel[0.5]]}],
+      RowBox[{"DateObject", "[", 
+        RowBox[{
+          RowBox[{"{", 
+            
+            RowBox[{"2018", ",", "1", ",", "1", ",", "20", ",", "0", ",", 
+              "0.`"}], "}"}], ",", "\"Instant\"", ",", "\"Gregorian\"", ",", 
+          "0.`"}], "]"}]},
+     "DateObject",
+     Editable->False], "\[Rule]", 
+    TemplateBox[{FractionBox["310625", "3"],RowBox[{
+        SuperscriptBox["\"m\"", "3"]}],"meters cubed",SuperscriptBox[
+      "\"Meters\"", "3"]},
+     "Quantity"]}], ",", 
+   RowBox[{
+    TemplateBox[{RowBox[{"\"Mon 1 Jan 2018 21:00:00\"", 
+        StyleBox["\"GMT\"", FontColor -> GrayLevel[0.5]]}],
+      RowBox[{"DateObject", "[", 
+        RowBox[{
+          RowBox[{"{", 
+            
+            RowBox[{"2018", ",", "1", ",", "1", ",", "21", ",", "0", ",", 
+              "0.`"}], "}"}], ",", "\"Instant\"", ",", "\"Gregorian\"", ",", 
+          "0.`"}], "]"}]},
+     "DateObject",
+     Editable->False], "\[Rule]", 
+    TemplateBox[{"103750",RowBox[{
+        SuperscriptBox["\"m\"", "3"]}],"meters cubed",SuperscriptBox[
+      "\"Meters\"", "3"]},
+     "Quantity"]}], ",", 
+   RowBox[{
+    TemplateBox[{RowBox[{"\"Mon 1 Jan 2018 22:00:00\"", 
+        StyleBox["\"GMT\"", FontColor -> GrayLevel[0.5]]}],
+      RowBox[{"DateObject", "[", 
+        RowBox[{
+          RowBox[{"{", 
+            
+            RowBox[{"2018", ",", "1", ",", "1", ",", "22", ",", "0", ",", 
+              "0.`"}], "}"}], ",", "\"Instant\"", ",", "\"Gregorian\"", ",", 
+          "0.`"}], "]"}]},
+     "DateObject",
+     Editable->False], "\[Rule]", 
+    TemplateBox[{FractionBox["311875", "3"],RowBox[{
+        SuperscriptBox["\"m\"", "3"]}],"meters cubed",SuperscriptBox[
+      "\"Meters\"", "3"]},
+     "Quantity"]}]}], "\[RightAssociation]"}]], "Output",
+ CellChangeTimes->{
+  3.7294353386518326`*^9},ExpressionUUID->"36498c69-b5d9-43d7-b86e-\
+ff807342c2cc"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"makeProductionInventory", "[", 
+  RowBox[{
+   TemplateBox[{RowBox[{"\"Mon 1 Jan 2018 03:00:00\"", 
+       StyleBox["\"GMT\"", FontColor -> GrayLevel[0.5]]}],
+     RowBox[{"DateObject", "[", 
+       RowBox[{
+         RowBox[{"{", 
+           
+           RowBox[{"2018", ",", "1", ",", "1", ",", "3", ",", "0", ",", 
+             "0.`"}], "}"}], ",", "\"Instant\"", ",", "\"Gregorian\"", ",", 
+         "0.`"}], "]"}]},
+    "DateObject",
+    Editable->False], ",", 
+   TemplateBox[{RowBox[{"\"Tue 2 Jan 2018 04:00:00\"", 
+       StyleBox["\"GMT\"", FontColor -> GrayLevel[0.5]]}],
+     RowBox[{"DateObject", "[", 
+       RowBox[{
+         RowBox[{"{", 
+           
+           RowBox[{"2018", ",", "1", ",", "2", ",", "4", ",", "0", ",", 
+             "0.`"}], "}"}], ",", "\"Instant\"", ",", "\"Gregorian\"", ",", 
+         "0.`"}], "]"}]},
+    "DateObject",
+    Editable->False], ",", "\"\<Days\>\"", ",", 
+   TemplateBox[{"100000",RowBox[{
+       SuperscriptBox["\"m\"", "3"]}],"meters cubed",SuperscriptBox[
+     "\"Meters\"", "3"]},
+    "Quantity"], ",", 
+   TemplateBox[{"5000",RowBox[{
+       SuperscriptBox["\"m\"", "3"], "\[NegativeMediumSpace]", "\"/\"", 
+       "\[InvisibleSpace]", "\"day\""}],"meters cubed per day",FractionBox[
+      SuperscriptBox["\"Meters\"", "3"], "\"Days\""]},
+    "Quantity"], ",", 
+   TemplateBox[{"540000",RowBox[{
+       SuperscriptBox["\"m\"", "3"]}],"meters cubed",SuperscriptBox[
+     "\"Meters\"", "3"]},
+    "Quantity"]}], "]"}]], "Input",
+ CellChangeTimes->{{3.729435350459013*^9, 
+  3.7294353683077974`*^9}},ExpressionUUID->"ec50f490-aed0-4259-90bf-\
+a708ecdbb889"],
+
+Cell[BoxData[
+ RowBox[{"\[LeftAssociation]", 
+  RowBox[{
+   TemplateBox[{RowBox[{"\"Tue 2 Jan 2018 03:00:00\"", 
+       StyleBox["\"GMT\"", FontColor -> GrayLevel[0.5]]}],
+     RowBox[{"DateObject", "[", 
+       RowBox[{
+         RowBox[{"{", 
+           
+           RowBox[{"2018", ",", "1", ",", "2", ",", "3", ",", "0", ",", 
+             "0.`"}], "}"}], ",", "\"Instant\"", ",", "\"Gregorian\"", ",", 
+         "0.`"}], "]"}]},
+    "DateObject",
+    Editable->False], "\[Rule]", 
+   TemplateBox[{"105000",RowBox[{
+       SuperscriptBox["\"m\"", "3"]}],"meters cubed",SuperscriptBox[
+     "\"Meters\"", "3"]},
+    "Quantity"]}], "\[RightAssociation]"}]], "Output",
+ CellChangeTimes->{{3.729435351955162*^9, 
+  3.7294353692498918`*^9}},ExpressionUUID->"05fce765-3089-4ee6-a7a1-\
+6f8805d0eb8e"]
 }, Open  ]]
 }, Open  ]]
 }, Open  ]],
@@ -27614,174 +28633,191 @@ Cell[1168, 37, 409, 9, 28, "Input",ExpressionUUID->"7a718389-f050-406a-b8f1-c628
 Cell[CellGroupData[{
 Cell[1602, 50, 152, 3, 67, "Section",ExpressionUUID->"f1376e8f-bb0f-4b90-a79c-2ce85b7e7e53"],
 Cell[1757, 55, 786, 22, 82, "Text",ExpressionUUID->"5fc089ae-9e3d-443a-aefc-0cab57c301e9"],
-Cell[2546, 79, 300, 7, 48, "Input",ExpressionUUID->"45781270-c5ca-4607-887c-4056342c490f"],
-Cell[2849, 88, 282, 8, 28, "Input",ExpressionUUID->"a436811d-8bd3-4140-b410-9bd74fc8f551"],
-Cell[3134, 98, 519, 12, 28, "Input",ExpressionUUID->"da0dd498-4f05-4f4b-99b7-b73cfbf347f5"],
-Cell[3656, 112, 419, 11, 28, "Input",ExpressionUUID->"04433de8-a203-4f3e-94c1-67face339df5"],
+Cell[2546, 79, 360, 9, 48, "Input",ExpressionUUID->"45781270-c5ca-4607-887c-4056342c490f"],
+Cell[2909, 90, 282, 8, 28, "Input",ExpressionUUID->"a436811d-8bd3-4140-b410-9bd74fc8f551"],
+Cell[3194, 100, 519, 12, 28, "Input",ExpressionUUID->"da0dd498-4f05-4f4b-99b7-b73cfbf347f5"],
+Cell[3716, 114, 419, 11, 28, "Input",ExpressionUUID->"04433de8-a203-4f3e-94c1-67face339df5"],
 Cell[CellGroupData[{
-Cell[4100, 127, 199, 4, 28, "Input",ExpressionUUID->"f44fa0f9-c047-4b37-bef3-9cfc79bb9ab5"],
-Cell[4302, 133, 57829, 1163, 224, "Output",ExpressionUUID->"634dbf75-5e1b-40f0-9695-eae5d15656cb"]
+Cell[4160, 129, 199, 4, 28, "Input",ExpressionUUID->"f44fa0f9-c047-4b37-bef3-9cfc79bb9ab5"],
+Cell[4362, 135, 57829, 1163, 224, "Output",ExpressionUUID->"634dbf75-5e1b-40f0-9695-eae5d15656cb"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[62168, 1301, 199, 4, 28, "Input",ExpressionUUID->"dcc06ef9-f67d-4de3-9afc-de5eec416549"],
-Cell[62370, 1307, 59672, 1251, 180, "Output",ExpressionUUID->"89b58603-c806-4fcf-a880-d8d1a6e90ba7"]
+Cell[62228, 1303, 199, 4, 28, "Input",ExpressionUUID->"dcc06ef9-f67d-4de3-9afc-de5eec416549"],
+Cell[62430, 1309, 59672, 1251, 180, "Output",ExpressionUUID->"89b58603-c806-4fcf-a880-d8d1a6e90ba7"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[122079, 2563, 952, 22, 48, "Input",ExpressionUUID->"bff157c2-d547-4c51-85c7-01e02b4087f4"],
-Cell[123034, 2587, 359, 7, 41, "Output",ExpressionUUID->"22a44e5f-d160-4b0d-9efe-96473b066095"]
+Cell[122139, 2565, 952, 22, 48, "Input",ExpressionUUID->"bff157c2-d547-4c51-85c7-01e02b4087f4"],
+Cell[123094, 2589, 359, 7, 41, "Output",ExpressionUUID->"22a44e5f-d160-4b0d-9efe-96473b066095"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[123430, 2599, 341, 9, 28, "Input",ExpressionUUID->"478aa9b0-25d4-4d5d-b654-ee2cb6279575"],
-Cell[123774, 2610, 404, 12, 32, "Output",ExpressionUUID->"648c7723-ffed-418c-b0de-a131b3f019db"]
+Cell[123490, 2601, 341, 9, 28, "Input",ExpressionUUID->"478aa9b0-25d4-4d5d-b654-ee2cb6279575"],
+Cell[123834, 2612, 404, 12, 32, "Output",ExpressionUUID->"648c7723-ffed-418c-b0de-a131b3f019db"]
 }, Open  ]],
-Cell[124193, 2625, 908, 23, 48, "Input",ExpressionUUID->"764beb07-a798-4ce4-92dc-11c7a0c2b814"],
-Cell[125104, 2650, 779, 20, 67, "Input",ExpressionUUID->"95b04de4-909b-43bc-b01c-6a5123713a53"],
+Cell[124253, 2627, 908, 23, 48, "Input",ExpressionUUID->"764beb07-a798-4ce4-92dc-11c7a0c2b814"],
+Cell[125164, 2652, 779, 20, 67, "Input",ExpressionUUID->"95b04de4-909b-43bc-b01c-6a5123713a53"],
 Cell[CellGroupData[{
-Cell[125908, 2674, 305, 7, 28, "Input",ExpressionUUID->"cad7e481-bfca-4af0-8b7d-f23e00a9a525"],
-Cell[126216, 2683, 2155, 60, 71, "Output",ExpressionUUID->"3b211bb3-793d-45df-8b34-cf9578b97f5c"]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[128408, 2748, 382, 11, 28, "Input",ExpressionUUID->"f4ce4dfc-9f3d-44ec-a8cf-b8d07d17c17e"],
-Cell[128793, 2761, 556, 14, 32, "Output",ExpressionUUID->"21e04bc4-4ffe-4d6d-b64e-01908f57c4d3"]
-}, Open  ]],
-Cell[129364, 2778, 893, 25, 28, "Input",ExpressionUUID->"6de3ba93-b088-4157-9c5b-a4d7e092dcaa"],
-Cell[CellGroupData[{
-Cell[130282, 2807, 307, 7, 28, "Input",ExpressionUUID->"bc83f445-dca6-487a-aed2-adc427424913"],
-Cell[130592, 2816, 399, 11, 32, "Output",ExpressionUUID->"7a139ccb-65f1-4993-9bc1-7f793b0ec237"]
+Cell[125968, 2676, 305, 7, 28, "Input",ExpressionUUID->"cad7e481-bfca-4af0-8b7d-f23e00a9a525"],
+Cell[126276, 2685, 2155, 60, 71, "Output",ExpressionUUID->"3b211bb3-793d-45df-8b34-cf9578b97f5c"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[131028, 2832, 193, 4, 28, "Input",ExpressionUUID->"f3d6fa28-60c9-43a5-890b-6e327c99fd7c"],
-Cell[131224, 2838, 589, 17, 32, "Output",ExpressionUUID->"f988f121-6b0c-425a-873c-6e43a9e89141"]
+Cell[128468, 2750, 382, 11, 28, "Input",ExpressionUUID->"f4ce4dfc-9f3d-44ec-a8cf-b8d07d17c17e"],
+Cell[128853, 2763, 556, 14, 32, "Output",ExpressionUUID->"21e04bc4-4ffe-4d6d-b64e-01908f57c4d3"]
+}, Open  ]],
+Cell[129424, 2780, 893, 25, 28, "Input",ExpressionUUID->"6de3ba93-b088-4157-9c5b-a4d7e092dcaa"],
+Cell[CellGroupData[{
+Cell[130342, 2809, 307, 7, 28, "Input",ExpressionUUID->"bc83f445-dca6-487a-aed2-adc427424913"],
+Cell[130652, 2818, 399, 11, 32, "Output",ExpressionUUID->"7a139ccb-65f1-4993-9bc1-7f793b0ec237"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[131850, 2860, 195, 4, 28, "Input",ExpressionUUID->"b60939d8-3031-477e-b25e-67a9d9d0e065"],
-Cell[132048, 2866, 301, 9, 32, "Output",ExpressionUUID->"afa38049-625c-435f-acc0-22f19585e384"]
+Cell[131088, 2834, 193, 4, 28, "Input",ExpressionUUID->"f3d6fa28-60c9-43a5-890b-6e327c99fd7c"],
+Cell[131284, 2840, 589, 17, 32, "Output",ExpressionUUID->"f988f121-6b0c-425a-873c-6e43a9e89141"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[132386, 2880, 195, 4, 28, "Input",ExpressionUUID->"f67c630d-aa18-4a90-bb79-afcc6cbe9d91"],
-Cell[132584, 2886, 589, 17, 32, "Output",ExpressionUUID->"5e9d2285-b5a1-4874-bae9-13f77eb0f286"]
+Cell[131910, 2862, 195, 4, 28, "Input",ExpressionUUID->"b60939d8-3031-477e-b25e-67a9d9d0e065"],
+Cell[132108, 2868, 301, 9, 32, "Output",ExpressionUUID->"afa38049-625c-435f-acc0-22f19585e384"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[133210, 2908, 844, 20, 28, "Input",ExpressionUUID->"7f01dda4-f9d3-427a-bccb-8809c700d18f"],
-Cell[134057, 2930, 1828, 56, 52, "Output",ExpressionUUID->"224e2b4f-438d-445f-9a4f-39cf4270b4ba"]
+Cell[132446, 2882, 195, 4, 28, "Input",ExpressionUUID->"f67c630d-aa18-4a90-bb79-afcc6cbe9d91"],
+Cell[132644, 2888, 589, 17, 32, "Output",ExpressionUUID->"5e9d2285-b5a1-4874-bae9-13f77eb0f286"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[135922, 2991, 1347, 33, 67, "Input",ExpressionUUID->"2e11d7b5-1168-4753-b028-f604d41699a7"],
-Cell[137272, 3026, 16356, 560, 356, "Output",ExpressionUUID->"4f26f702-d1ba-4afb-a5e0-0d6188e9cc7d"]
+Cell[133270, 2910, 844, 20, 28, "Input",ExpressionUUID->"7f01dda4-f9d3-427a-bccb-8809c700d18f"],
+Cell[134117, 2932, 1828, 56, 52, "Output",ExpressionUUID->"224e2b4f-438d-445f-9a4f-39cf4270b4ba"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[153665, 3591, 2515, 61, 86, "Input",ExpressionUUID->"176c2785-356d-4b1e-9070-51005934d3a4"],
-Cell[156183, 3654, 31398, 765, 698, "Output",ExpressionUUID->"6910a24e-c4bd-44ac-95d0-5f2f9af9bad0"]
+Cell[135982, 2993, 1347, 33, 67, "Input",ExpressionUUID->"2e11d7b5-1168-4753-b028-f604d41699a7"],
+Cell[137332, 3028, 16356, 560, 356, "Output",ExpressionUUID->"4f26f702-d1ba-4afb-a5e0-0d6188e9cc7d"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[187618, 4424, 169, 3, 53, "Subsection",ExpressionUUID->"320c3179-5c95-47b2-ba31-5eb20ac750c3"],
-Cell[187790, 4429, 466, 11, 28, "Input",ExpressionUUID->"0eede781-c6cc-4b71-ad90-f09171c42391"],
-Cell[CellGroupData[{
-Cell[188281, 4444, 157, 3, 28, "Input",ExpressionUUID->"4e1015f1-8a55-4f8e-ab8c-7bb90306c65c"],
-Cell[188441, 4449, 163, 3, 32, "Output",ExpressionUUID->"a9d3ee39-6005-4e16-808d-c20a48f32fe1"]
+Cell[153725, 3593, 2515, 61, 86, "Input",ExpressionUUID->"176c2785-356d-4b1e-9070-51005934d3a4"],
+Cell[156243, 3656, 31398, 765, 698, "Output",ExpressionUUID->"6910a24e-c4bd-44ac-95d0-5f2f9af9bad0"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[188641, 4457, 265, 7, 28, "Input",ExpressionUUID->"75955279-d5a9-4360-a282-e9ab5a06534e"],
-Cell[188909, 4466, 163, 3, 32, "Output",ExpressionUUID->"8d598e7c-b3d2-4a49-bb09-b8d22c196cc3"]
+Cell[187678, 4426, 169, 3, 53, "Subsection",ExpressionUUID->"320c3179-5c95-47b2-ba31-5eb20ac750c3"],
+Cell[187850, 4431, 466, 11, 28, "Input",ExpressionUUID->"0eede781-c6cc-4b71-ad90-f09171c42391"],
+Cell[CellGroupData[{
+Cell[188341, 4446, 157, 3, 28, "Input",ExpressionUUID->"4e1015f1-8a55-4f8e-ab8c-7bb90306c65c"],
+Cell[188501, 4451, 163, 3, 32, "Output",ExpressionUUID->"a9d3ee39-6005-4e16-808d-c20a48f32fe1"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[189109, 4474, 159, 3, 28, "Input",ExpressionUUID->"eee1a959-f85e-499e-b274-291f476f5904"],
-Cell[189271, 4479, 137, 3, 32, "Output",ExpressionUUID->"5bd00600-2cfd-44c1-8477-fb153d014a7e"]
+Cell[188701, 4459, 265, 7, 28, "Input",ExpressionUUID->"75955279-d5a9-4360-a282-e9ab5a06534e"],
+Cell[188969, 4468, 163, 3, 32, "Output",ExpressionUUID->"8d598e7c-b3d2-4a49-bb09-b8d22c196cc3"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[189445, 4487, 484, 11, 48, "Input",ExpressionUUID->"ac6365c5-213e-48b6-8c1b-8e30646472ec"],
-Cell[189932, 4500, 163, 3, 32, "Output",ExpressionUUID->"b54639d3-b39f-4547-8584-3f1bbd3f5664"]
+Cell[189169, 4476, 159, 3, 28, "Input",ExpressionUUID->"eee1a959-f85e-499e-b274-291f476f5904"],
+Cell[189331, 4481, 137, 3, 32, "Output",ExpressionUUID->"5bd00600-2cfd-44c1-8477-fb153d014a7e"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[190132, 4508, 665, 14, 48, "Input",ExpressionUUID->"92789b2c-858e-402e-9fe8-55297fa3834a"],
-Cell[190800, 4524, 1163, 29, 32, "Output",ExpressionUUID->"0fcd953f-59d6-48bc-b546-fd9aa0a0c8cf"]
+Cell[189505, 4489, 484, 11, 48, "Input",ExpressionUUID->"ac6365c5-213e-48b6-8c1b-8e30646472ec"],
+Cell[189992, 4502, 163, 3, 32, "Output",ExpressionUUID->"b54639d3-b39f-4547-8584-3f1bbd3f5664"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[190192, 4510, 665, 14, 48, "Input",ExpressionUUID->"92789b2c-858e-402e-9fe8-55297fa3834a"],
+Cell[190860, 4526, 1163, 29, 32, "Output",ExpressionUUID->"0fcd953f-59d6-48bc-b546-fd9aa0a0c8cf"]
 }, Open  ]]
 }, Closed]],
 Cell[CellGroupData[{
-Cell[192012, 4559, 185, 3, 37, "Subsection",ExpressionUUID->"12b5d1e3-cef3-4416-998d-8947c9eef7b4"],
-Cell[192200, 4564, 1161, 29, 67, "Input",ExpressionUUID->"b3fa3c07-65e5-4298-b079-3451023314d6"],
-Cell[193364, 4595, 979, 27, 67, "Input",ExpressionUUID->"9c9caecb-e190-4602-ac2c-0e423a6207a4"],
-Cell[194346, 4624, 2167, 57, 86, "Input",ExpressionUUID->"d8e56f0c-ef0b-4e41-8414-9fb87aff7428"],
+Cell[192072, 4561, 185, 3, 37, "Subsection",ExpressionUUID->"12b5d1e3-cef3-4416-998d-8947c9eef7b4"],
+Cell[192260, 4566, 1161, 29, 67, "Input",ExpressionUUID->"b3fa3c07-65e5-4298-b079-3451023314d6"],
+Cell[193424, 4597, 979, 27, 67, "Input",ExpressionUUID->"9c9caecb-e190-4602-ac2c-0e423a6207a4"],
+Cell[194406, 4626, 2167, 57, 86, "Input",ExpressionUUID->"d8e56f0c-ef0b-4e41-8414-9fb87aff7428"],
 Cell[CellGroupData[{
-Cell[196538, 4685, 258, 6, 28, "Input",ExpressionUUID->"48a03375-4511-47a3-bfa4-c6689227c0ac"],
-Cell[196799, 4693, 207, 5, 32, "Output",ExpressionUUID->"30f9002a-ff43-4fbd-8e3b-670533a5beaf"]
+Cell[196598, 4687, 258, 6, 28, "Input",ExpressionUUID->"48a03375-4511-47a3-bfa4-c6689227c0ac"],
+Cell[196859, 4695, 207, 5, 32, "Output",ExpressionUUID->"30f9002a-ff43-4fbd-8e3b-670533a5beaf"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[197043, 4703, 222, 5, 28, "Input",ExpressionUUID->"2ae705a7-091b-49d1-99be-fa9cb3a433c5"],
-Cell[197268, 4710, 194, 3, 32, "Output",ExpressionUUID->"c1e6facc-3e23-4527-a898-8e5fbdd22807"]
+Cell[197103, 4705, 222, 5, 28, "Input",ExpressionUUID->"2ae705a7-091b-49d1-99be-fa9cb3a433c5"],
+Cell[197328, 4712, 194, 3, 32, "Output",ExpressionUUID->"c1e6facc-3e23-4527-a898-8e5fbdd22807"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[197499, 4718, 197, 4, 28, "Input",ExpressionUUID->"e5ab1cd8-adca-42e5-aa3b-f5f1d8e89741"],
-Cell[197699, 4724, 201, 5, 32, "Output",ExpressionUUID->"963c4d80-17aa-428f-be4d-6e1c630bdc32"]
+Cell[197559, 4720, 197, 4, 28, "Input",ExpressionUUID->"e5ab1cd8-adca-42e5-aa3b-f5f1d8e89741"],
+Cell[197759, 4726, 201, 5, 32, "Output",ExpressionUUID->"963c4d80-17aa-428f-be4d-6e1c630bdc32"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[197937, 4734, 266, 6, 28, "Input",ExpressionUUID->"cee0a23f-2b58-43da-902d-2091074218dc"],
-Cell[198206, 4742, 1914, 40, 90, "Output",ExpressionUUID->"d10bf773-6beb-40bc-85dd-c6e1e13b4934"]
+Cell[197997, 4736, 266, 6, 28, "Input",ExpressionUUID->"cee0a23f-2b58-43da-902d-2091074218dc"],
+Cell[198266, 4744, 1914, 40, 90, "Output",ExpressionUUID->"d10bf773-6beb-40bc-85dd-c6e1e13b4934"]
 }, Open  ]],
-Cell[200135, 4785, 159, 3, 34, "Text",ExpressionUUID->"08604694-f231-4dca-bd86-c3bbc128bf16"],
+Cell[200195, 4787, 159, 3, 34, "Text",ExpressionUUID->"08604694-f231-4dca-bd86-c3bbc128bf16"],
 Cell[CellGroupData[{
-Cell[200319, 4792, 703, 17, 28, "Input",ExpressionUUID->"c63990a8-040b-4d5f-9554-9cd2579c5561"],
-Cell[201025, 4811, 6176, 129, 184, "Output",ExpressionUUID->"61f02e48-2232-4692-a3b7-aa7ae2e5abef"]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[207238, 4945, 650, 16, 28, "Input",ExpressionUUID->"716ad4e9-bb19-4b4d-b3d5-915832c4c7be"],
-Cell[207891, 4963, 8372, 178, 282, "Output",ExpressionUUID->"7947c2fc-9454-4442-a0fe-fa3ad8093d86"]
-}, Open  ]],
-Cell[216278, 5144, 1984, 46, 124, "Input",ExpressionUUID->"111dbda1-7f2f-41ba-aeff-92208b24df76"],
-Cell[CellGroupData[{
-Cell[218287, 5194, 157, 3, 28, "Input",ExpressionUUID->"35d74fc4-6c8c-4d7a-beb1-bfc39e254252"],
-Cell[218447, 5199, 26147, 547, 832, "Output",ExpressionUUID->"72ac160c-6299-4c22-ab42-486dc9c08e1d"]
+Cell[200379, 4794, 703, 17, 28, "Input",ExpressionUUID->"c63990a8-040b-4d5f-9554-9cd2579c5561"],
+Cell[201085, 4813, 6176, 129, 184, "Output",ExpressionUUID->"61f02e48-2232-4692-a3b7-aa7ae2e5abef"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[244631, 5751, 397, 9, 28, "Input",ExpressionUUID->"708ae9b6-e644-47cc-acc1-45b1d3122f0b"],
-Cell[245031, 5762, 346, 7, 42, "Output",ExpressionUUID->"298c9d15-3e20-473d-b738-4929eb165575"]
+Cell[207298, 4947, 650, 16, 28, "Input",ExpressionUUID->"716ad4e9-bb19-4b4d-b3d5-915832c4c7be"],
+Cell[207951, 4965, 8372, 178, 282, "Output",ExpressionUUID->"7947c2fc-9454-4442-a0fe-fa3ad8093d86"]
 }, Open  ]],
-Cell[245392, 5772, 1095, 30, 48, "Input",ExpressionUUID->"3f65a62d-6fb1-4432-96e3-5a47770ff617"],
+Cell[216338, 5146, 1984, 46, 124, "Input",ExpressionUUID->"111dbda1-7f2f-41ba-aeff-92208b24df76"],
 Cell[CellGroupData[{
-Cell[246512, 5806, 547, 15, 28, "Input",ExpressionUUID->"88e1981e-eafb-454a-aa6b-9e80fb477215"],
-Cell[247062, 5823, 1508, 34, 76, "Output",ExpressionUUID->"69bda3b7-6f1f-475b-a128-ee4ba647f575"]
+Cell[218347, 5196, 157, 3, 28, "Input",ExpressionUUID->"35d74fc4-6c8c-4d7a-beb1-bfc39e254252"],
+Cell[218507, 5201, 26147, 547, 832, "Output",ExpressionUUID->"72ac160c-6299-4c22-ab42-486dc9c08e1d"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[244691, 5753, 397, 9, 28, "Input",ExpressionUUID->"708ae9b6-e644-47cc-acc1-45b1d3122f0b"],
+Cell[245091, 5764, 346, 7, 42, "Output",ExpressionUUID->"298c9d15-3e20-473d-b738-4929eb165575"]
+}, Open  ]],
+Cell[245452, 5774, 1095, 30, 48, "Input",ExpressionUUID->"3f65a62d-6fb1-4432-96e3-5a47770ff617"],
+Cell[CellGroupData[{
+Cell[246572, 5808, 547, 15, 28, "Input",ExpressionUUID->"88e1981e-eafb-454a-aa6b-9e80fb477215"],
+Cell[247122, 5825, 1508, 34, 76, "Output",ExpressionUUID->"69bda3b7-6f1f-475b-a128-ee4ba647f575"]
+}, Open  ]],
+Cell[248645, 5862, 822, 23, 28, "Input",ExpressionUUID->"e14699a2-6a75-4881-8781-7328731ee1b8"],
+Cell[CellGroupData[{
+Cell[249492, 5889, 511, 14, 31, "Input",ExpressionUUID->"fa64a9c9-b1a0-4943-b6ec-3486db741b87"],
+Cell[250006, 5905, 462, 9, 60, "Output",ExpressionUUID->"30f389de-b6e5-41f5-98bc-c13e53f5cd3d"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[250505, 5919, 1621, 46, 97, "Input",ExpressionUUID->"db89c432-d3a4-4904-af60-957e9aeba337"],
+Cell[252129, 5967, 18676, 486, 528, "Output",ExpressionUUID->"a5f9f05f-df43-433b-972e-3e30fdb1dc02"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[270842, 6458, 1637, 40, 42, "Input",ExpressionUUID->"31f76543-3174-4d27-84e1-76d36810334f"],
+Cell[272482, 6500, 11988, 309, 372, "Output",ExpressionUUID->"36498c69-b5d9-43d7-b86e-ff807342c2cc"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[284507, 6814, 1633, 40, 42, "Input",ExpressionUUID->"ec50f490-aed0-4259-90bf-a708ecdbb889"],
+Cell[286143, 6856, 795, 20, 47, "Output",ExpressionUUID->"05fce765-3089-4ee6-a7a1-6f8805d0eb8e"]
 }, Open  ]]
 }, Open  ]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[248631, 5864, 151, 3, 67, "Section",ExpressionUUID->"0f7c9409-870e-4206-937b-f7380c5efefd"],
+Cell[286999, 6883, 151, 3, 67, "Section",ExpressionUUID->"0f7c9409-870e-4206-937b-f7380c5efefd"],
 Cell[CellGroupData[{
-Cell[248807, 5871, 182, 3, 53, "Subsection",ExpressionUUID->"c3784527-4a9a-4494-820d-42ed967d1c57"],
-Cell[248992, 5876, 230, 6, 34, "Text",ExpressionUUID->"b29860b6-17f6-473d-9b6c-39b9eaba6801"],
+Cell[287175, 6890, 182, 3, 53, "Subsection",ExpressionUUID->"c3784527-4a9a-4494-820d-42ed967d1c57"],
+Cell[287360, 6895, 230, 6, 34, "Text",ExpressionUUID->"b29860b6-17f6-473d-9b6c-39b9eaba6801"],
 Cell[CellGroupData[{
-Cell[249247, 5886, 490, 14, 28, "Input",ExpressionUUID->"ec71adcc-a90b-4675-9463-ac7ebc1845cb"],
-Cell[249740, 5902, 750, 14, 21, "Message",ExpressionUUID->"6a945acc-67a2-4ffb-8742-ec8802380023"],
-Cell[250493, 5918, 138, 3, 32, "Output",ExpressionUUID->"643ba7cc-9363-43d4-8eb3-f675dd9aea8f"]
+Cell[287615, 6905, 490, 14, 28, "Input",ExpressionUUID->"ec71adcc-a90b-4675-9463-ac7ebc1845cb"],
+Cell[288108, 6921, 750, 14, 21, "Message",ExpressionUUID->"6a945acc-67a2-4ffb-8742-ec8802380023"],
+Cell[288861, 6937, 138, 3, 32, "Output",ExpressionUUID->"643ba7cc-9363-43d4-8eb3-f675dd9aea8f"]
 }, Open  ]],
-Cell[250646, 5924, 609, 16, 28, "Input",ExpressionUUID->"2de38633-3c10-48f8-9a24-0ec4d79c9316"],
+Cell[289014, 6943, 609, 16, 28, "Input",ExpressionUUID->"2de38633-3c10-48f8-9a24-0ec4d79c9316"],
 Cell[CellGroupData[{
-Cell[251280, 5944, 654, 17, 28, "Input",ExpressionUUID->"a777e697-9fe5-40d9-ba1b-a053e864329d"],
-Cell[251937, 5963, 895014, 16201, 124, "Output",ExpressionUUID->"48dc5c24-1b67-43be-826a-f3f831bda758"]
+Cell[289648, 6963, 654, 17, 28, "Input",ExpressionUUID->"a777e697-9fe5-40d9-ba1b-a053e864329d"],
+Cell[290305, 6982, 895014, 16201, 124, "Output",ExpressionUUID->"48dc5c24-1b67-43be-826a-f3f831bda758"]
 }, Open  ]],
-Cell[1146966, 22167, 1459, 32, 40, "Input",ExpressionUUID->"f48106b8-e58a-4d63-b2df-22021ba219ad"],
+Cell[1185334, 23186, 1459, 32, 40, "Input",ExpressionUUID->"f48106b8-e58a-4d63-b2df-22021ba219ad"],
 Cell[CellGroupData[{
-Cell[1148450, 22203, 392, 9, 28, "Input",ExpressionUUID->"fa38bf8b-e55c-4129-be1f-f607288b7673"],
-Cell[1148845, 22214, 133682, 2229, 102, "Output",ExpressionUUID->"bcfd79fa-5f39-4d7a-a298-84690a6187da"]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[1282564, 24448, 171, 3, 28, "Input",ExpressionUUID->"05263ecb-ce18-47fd-84dc-edef146dacf5"],
-Cell[1282738, 24453, 329, 7, 45, "Output",ExpressionUUID->"430dda6a-ede0-47c4-beeb-3cb376df772d"]
+Cell[1186818, 23222, 392, 9, 28, "Input",ExpressionUUID->"fa38bf8b-e55c-4129-be1f-f607288b7673"],
+Cell[1187213, 23233, 133682, 2229, 102, "Output",ExpressionUUID->"bcfd79fa-5f39-4d7a-a298-84690a6187da"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[1283104, 24465, 8573, 160, 272, "Input",ExpressionUUID->"35d0631d-7ce9-44c2-a257-0a5456d8f9e7"],
-Cell[1291680, 24627, 8304, 158, 177, "Output",ExpressionUUID->"26965442-6c5a-409b-b288-24383d43a689"]
+Cell[1320932, 25467, 171, 3, 28, "Input",ExpressionUUID->"05263ecb-ce18-47fd-84dc-edef146dacf5"],
+Cell[1321106, 25472, 329, 7, 45, "Output",ExpressionUUID->"430dda6a-ede0-47c4-beeb-3cb376df772d"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[1300021, 24790, 392, 9, 28, "Input",ExpressionUUID->"9a6522b2-40a2-44d4-a2c4-e3a796a5de07"],
-Cell[1300416, 24801, 133758, 2230, 102, "Output",ExpressionUUID->"28b430c7-dc5a-4680-8fb2-c5553f3500bb"]
+Cell[1321472, 25484, 8573, 160, 272, "Input",ExpressionUUID->"35d0631d-7ce9-44c2-a257-0a5456d8f9e7"],
+Cell[1330048, 25646, 8304, 158, 177, "Output",ExpressionUUID->"26965442-6c5a-409b-b288-24383d43a689"]
 }, Open  ]],
-Cell[1434189, 27034, 456, 12, 28, "Input",ExpressionUUID->"4aa9cc66-cd8d-473c-9315-6bf2649107ae"],
-Cell[1434648, 27048, 982, 28, 28, "Input",ExpressionUUID->"b2771b8b-eb1b-4473-a6e1-2e4731465b3b"],
-Cell[1435633, 27078, 527, 13, 28, "Input",ExpressionUUID->"43f076c4-7981-46ff-9650-ca55ef1031ed"],
-Cell[1436163, 27093, 198, 4, 28, "Input",ExpressionUUID->"68c736db-e7f9-4576-9656-9d8f03d5e839"],
 Cell[CellGroupData[{
-Cell[1436386, 27101, 991, 24, 86, "Input",ExpressionUUID->"09cfd17b-d085-4eea-96f5-accd257fd7b6"],
-Cell[1437380, 27127, 23814, 460, 474, "Output",ExpressionUUID->"507ced51-58af-43b1-973c-e3d43189a47e"]
+Cell[1338389, 25809, 392, 9, 28, "Input",ExpressionUUID->"9a6522b2-40a2-44d4-a2c4-e3a796a5de07"],
+Cell[1338784, 25820, 133758, 2230, 102, "Output",ExpressionUUID->"28b430c7-dc5a-4680-8fb2-c5553f3500bb"]
+}, Open  ]],
+Cell[1472557, 28053, 456, 12, 28, "Input",ExpressionUUID->"4aa9cc66-cd8d-473c-9315-6bf2649107ae"],
+Cell[1473016, 28067, 982, 28, 28, "Input",ExpressionUUID->"b2771b8b-eb1b-4473-a6e1-2e4731465b3b"],
+Cell[1474001, 28097, 527, 13, 28, "Input",ExpressionUUID->"43f076c4-7981-46ff-9650-ca55ef1031ed"],
+Cell[1474531, 28112, 198, 4, 28, "Input",ExpressionUUID->"68c736db-e7f9-4576-9656-9d8f03d5e839"],
+Cell[CellGroupData[{
+Cell[1474754, 28120, 991, 24, 86, "Input",ExpressionUUID->"09cfd17b-d085-4eea-96f5-accd257fd7b6"],
+Cell[1475748, 28146, 23814, 460, 474, "Output",ExpressionUUID->"507ced51-58af-43b1-973c-e3d43189a47e"]
 }, Open  ]]
 }, Closed]]
 }, Closed]]
