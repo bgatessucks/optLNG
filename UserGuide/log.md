@@ -36,7 +36,7 @@ val[pStart_, pEnd_, granularity_] = Module[{timeSteps},
 # Parameters
 
 |name|value|
-|---|------|
+|----|------|
 |daily production|3588|
 |limit load|110000|
 |cargo size|145000|

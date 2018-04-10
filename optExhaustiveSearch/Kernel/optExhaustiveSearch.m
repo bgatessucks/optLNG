@@ -21,9 +21,10 @@ Begin["`Private`"]
 calType = "Julian";
 tz = "Europe/London";
 
-vDate = DateObject[{2018, 1, 1}, TimeObject[{0, 0, 0}], CalendarType -> calType, TimeZone -> tz];
-periodStart = DateObject[{2018, 1, 1}, TimeObject[{0, 0, 0}], CalendarType -> calType, TimeZone -> tz];
-periodEnd = DateObject[{2019, 1, 1}, TimeObject[{0, 0, 0}], CalendarType -> calType, TimeZone -> tz];
+(* TODO: put back seconds ? *)
+vDate = DateObject[{2018, 1, 1}, TimeObject[{0, 0}], CalendarType -> calType, TimeZone -> tz];
+periodStart = DateObject[{2018, 1, 1}, TimeObject[{0, 0}], CalendarType -> calType, TimeZone -> tz];
+periodEnd = DateObject[{2019, 1, 1}, TimeObject[{0, 0}], CalendarType -> calType, TimeZone -> tz];
 
 $vesselSpec =
     <|
@@ -107,6 +108,7 @@ $market = Select[$terminalSpec, #Type=="Import and Re-gasification" &];
 
 
 (* Need to update the state of the world *)
+(* TODO: add forward curves and modify cashflows appropriately  *)
 cashflowTrip[v_, p_, Missing[]] := <|"Vessel" -> v, "Production" -> p, "Market" -> m, "cashflows"->Quantity[-Infinity, "USDollars"]|> (* TODO: really consider ? *)
 cashflowTrip[v_, Missing[], Missing[]] := <|"Vessel" -> v, "Production" -> p, "Market" -> m, "cashflows"->Quantity[-Infinity, "USDollars"]|> (* TODO: really consider ? *)
 cashflowTrip[v_, Missing[], m_] :=
@@ -158,7 +160,8 @@ makeProductionInventory[dateStart_, dateEnd_, granularity_, initialInventory_, p
     Module[ {rate, timeSteps, inventory},
         rate = UnitConvert[productionRate, QuantityUnit[initialInventory] / granularity];
         timeSteps = DateRange[DatePlus[dateStart, granularity], dateEnd, granularity];
-        inventory = AssociationThread[timeSteps, initialInventory + Accumulate[Quantity[1, granularity] ConstantArray[rate, Length[timeSteps]]]]
+        inventory = Clip[initialInventory + Accumulate[Quantity[1, granularity] ConstantArray[rate, Length[timeSteps]]], {0 maxInventory, maxInventory}];
+        AssociationThread[timeSteps, inventory]
     ]
 
 valuation[pStart_, pEnd_, granularity_] :=
