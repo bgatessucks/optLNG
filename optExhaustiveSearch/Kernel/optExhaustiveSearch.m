@@ -18,13 +18,13 @@ Begin["`Private`"]
 (*allPonds = Cases[Union[Flatten[Join[EntityClass["Ocean", "SevenSeas"][EntityProperty["Ocean", "BorderingBodiesOfWater"]], 
 	EntityClass["Ocean", "SevenSeas"][EntityProperty["Ocean", "Basins"]]], 1]], Entity[___]];*)
 
-calType = "Julian";
+calType = "Gregorian";
 tz = "Europe/London";
 
 (* TODO: put back seconds ? *)
-vDate = DateObject[{2018, 1, 1}, TimeObject[{0, 0}], CalendarType -> calType, TimeZone -> tz];
-periodStart = DateObject[{2018, 1, 1}, TimeObject[{0, 0}], CalendarType -> calType, TimeZone -> tz];
-periodEnd = DateObject[{2019, 1, 1}, TimeObject[{0, 0}], CalendarType -> calType, TimeZone -> tz];
+vDate = DateObject[{2018, 1, 1}, TimeObject[{0, 0, 0}], CalendarType -> calType, TimeZone -> tz];
+periodStart = DateObject[{2018, 1, 1}, TimeObject[{0, 0, 0}], CalendarType -> calType, TimeZone -> tz];
+periodEnd = DateObject[{2019, 1, 1}, TimeObject[{0, 0, 0}], CalendarType -> calType, TimeZone -> tz];
 
 $vesselSpec =
     <|
@@ -161,14 +161,43 @@ makeProductionInventory[dateStart_, dateEnd_, granularity_, initialInventory_, p
         rate = UnitConvert[productionRate, QuantityUnit[initialInventory] / granularity];
         timeSteps = DateRange[DatePlus[dateStart, granularity], dateEnd, granularity];
         inventory = Clip[initialInventory + Accumulate[Quantity[1, granularity] ConstantArray[rate, Length[timeSteps]]], {0 maxInventory, maxInventory}];
-        AssociationThread[timeSteps, inventory]
+        TimeSeries[AssociationThread[timeSteps, inventory], ResamplingMethod -> {"Interpolation", InterpolationOrder -> 0},
+        	 CalendarType -> calType, TimeZone -> tz]
+    ]
+
+
+makeDecisions[v_, p_, m_] :=
+    Module[ {lV, lP, lM, decisions},
+        {lV, lP, lM} = With[ {len = Max[Length[#] & /@ {v, p, m}]},
+                           PadRight[#, len, Missing[]] & /@ {v, p, m}
+                       ];
+        decisions = (Sort /@ 
+          Flatten[Outer[(Apply[Join, #] & /@ Transpose[{#1, #2}]) &, 
+            Flatten[Outer[(Apply[Join, #] & /@ Transpose[{#1, #2}]) &, 
+              Permutations[<|"Vessel" -> #|> & /@ lV], 
+              Permutations[<|"Production" -> #|> & /@ lP], 1, 1], 1 ], 
+            Permutations[<|"Market" -> #|> & /@ lM], 1, 1], 1]) // DeleteDuplicates;
+        decisions
     ]
 
 valuation[pStart_, pEnd_, granularity_] :=
-    Module[ {timeSteps},
+    Module[ {timeSteps, decisions},
+        (* pEnd should be inclusive, but see:  
+        https://mathematica.stackexchange.com/questions/167731/different-behaviour-of-daterange-between-11-2-and-11-3 *)
         timeSteps = DateRange[DatePlus[pStart, granularity], pEnd, granularity];
+        $production = Module[ {local = #},
+                          AppendTo[local, "Inventory Plan" ->  makeProductionInventory[pStart, pEnd, granularity, 
+                              local["Inventory"], local["Daily Production"], local["Total Terminal Storage Capacity"]]];
+                          local
+                      ] & /@ $production;
+                  
+        decisions = makeDecisions[Normal[Keys[$vessel]], Normal[Keys[$production]], Normal[Keys[$market]]];
+        
         
     ]
+
+(* STATUS: finish casting the production inventory into a TimeSeries, then add it to the valuation *)
+(* STATUS: choose the optimal decision update logs *)
 
 End[];
 

@@ -26,7 +26,7 @@ val[pStart_, pEnd_, granularity_] = Module[{timeSteps},
     updateProductionInventory;
     While[vDate < pEnd,
       makeDecision;
-      updateLogPlanAndCashflows;
+      updateLogPlanAndCashflows; ⟵
       updateProductionInventory;
       vDate = earliestDateIdleVessel;
     ]
