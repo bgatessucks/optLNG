@@ -111,7 +111,6 @@ $market = Select[$terminalSpec, #Type=="Import and Re-gasification" &];
 
 
 (* Need to update the state of the world *)
-(* TODO: add forward curves and modify cashflows appropriately  *)
 cashflowTrip[v_, Missing[], Missing[], updateQ_, startDay_, endDay_, granularity_] := 
 	<|"Vessel" -> v, "Production" -> Missing[], "Market" -> Missing[], "cashflows" -> Quantity[0, "USDollars"]|>
 cashflowTrip[v_, p_, Missing[], updateQ_, startDay_, endDay_, granularity_] :=
@@ -121,9 +120,9 @@ cashflowTrip[v_, p_, Missing[], updateQ_, startDay_, endDay_, granularity_] :=
         toLoadTripTime = GeoDistance[{lV["Position"], lP["LatLong"]}, UnitSystem -> "NauticalMiles"] / UnitConvert[lV["Speed"], "NauticalMiles"/"Days"];
         loadingVolume = Min[lV["Capacity"] - lV["Inventory"], lP["Inventory"]];
         loadingTime = loadingVolume / lV["Maximum loading rate"];
+        cashflow = -loadingVolume * lP["Price"][startDay + toLoadTripTime] - lV["DailyFixedCost"] (toLoadTripTime + loadingTime);
         lV["Position"] = lP["LatLong"];
         lV["Inventory"] = lV["Inventory"] + loadingVolume;
-        cashflow = - lV["DailyFixedCost"] (toLoadTripTime + loadingTime);
         
         If[updateQ,  
         	$vessel[v]["Position"] = lP["LatLong"];
@@ -148,7 +147,7 @@ cashflowTrip[v_, Missing[], m_, updateQ_, startDay_, endDay_, granularity_] :=
     	
     	lV["Position"] = lM["LatLong"];
     	
-    	cashflow = - lV["DailyFixedCost"] (toDischargeTripTime + dischargingTime) + dischargeVolume lM["Price"];
+    	cashflow = - lV["DailyFixedCost"] (toDischargeTripTime + dischargingTime) + dischargeVolume lM["Price"][startDay + toDischargeTripTime];
     	
     	If[updateQ,  
         	$vessel[v]["Position"] = lP["LatLong"];
@@ -179,7 +178,9 @@ cashflowTrip[v_, p_, m_, updateQ_, startDay_, endDay_, granularity_] :=
     	lV["Position"] = lM["LatLong"];
     	lV["Inventory"] = lV["Inventory"] - dischargeVolume;
     	
-    	cashflow = - lV["DailyFixedCost"] (toLoadTripTime + loadingTime + toDischargeTripTime + dischargingTime) + dischargeVolume lM["Price"];
+    	cashflow = - lV["DailyFixedCost"] (toLoadTripTime + loadingTime + toDischargeTripTime + dischargingTime) 
+    	           - lP["Price"][startDay + toLoadTripTime] 
+    	           + dischargeVolume lM["Price"][startDay + toLoadTripTime + loadingTime + toDischargeTripTime];
     	
     	If[updateQ,  
         	$vessel[v]["Position"] = lP["LatLong"];
@@ -239,11 +240,26 @@ plotPlan[plan_List] :=
             Arrow @@@ paths}], GeoRange -> "World", ImageSize -> Full]
     ]
 
+
+makeRandomForwardCurve[dates_, mean_, stdev_] :=
+    TimeSeries[Transpose[{dates, Quantity[RandomReal[NormalDistribution[mean, stdev]],  "USDollars"/"Meters"^3] & /@ Range[Length[dates]]}], 
+    	ResamplingMethod -> {"Interpolation", InterpolationOrder -> 0}, CalendarType -> calType, TimeZone -> tz]
+
+
 valuation[pStart_, pEnd_, granularity_] :=
     Module[ {timeSteps, day, log=Association[], decisions, optimalDecision},
         (* pEnd should be inclusive, but see:  
         https://mathematica.stackexchange.com/questions/167731/different-behaviour-of-daterange-between-11-2-and-11-3 *)
         timeSteps = DateRange[DatePlus[pStart, granularity], pEnd, granularity];
+        SeedRandom[123];
+        $production = Map[Function[asso, Association[KeyValueMap[
+        	If[#1 == "Price", 
+        	  #1 -> makeRandomForwardCurve[timeSteps, RandomReal[{1, 5}], RandomReal[{0.2, 1.2}]], 
+        	  #1 -> #2 ] &, asso]]][#] &, $production];
+        $market = Map[Function[asso, Association[KeyValueMap[
+        	If[#1 == "Price", 
+        	  #1 -> makeRandomForwardCurve[timeSteps, RandomReal[{1, 5}], RandomReal[{0.2, 1.2}]], 
+        	  #1 -> #2 ] &, asso]]][#] &, $market];    
         day = pStart;
         (*Echo[$vessel, "Vessels"];
         Echo[$production, "Production"];
@@ -263,15 +279,14 @@ valuation[pStart_, pEnd_, granularity_] :=
         log[day] = <|"cashflows" -> cashflowPlan["cashflows"], "plan" -> optimalDecision|>;
         (*Echo[$vessel, "Vessels"];
         Echo[$production, "Production"];*)
-        
-        
         log
+        
         
     ]
 
-(* STATUS: finish casting the production inventory into a TimeSeries, 
+(* Done: finish casting the production inventory into a TimeSeries, 
    then add it to the valuation *)
-(* STATUS: choose the optimal decision update logs *)
+(* Done: choose the optimal decision update logs *)
 (* STATUS: add forward curves to production/markets *)
 (* Market storage capacity: what to do with it ? Can it be useful and how ? *)
 
