@@ -26,7 +26,7 @@ tz = "Europe/London";
 
 (* TODO: put back seconds ? *)
 vDate = DateObject[{2018, 1, 1}, TimeObject[{0, 0, 0}], CalendarType -> calType, TimeZone -> tz];
-periodStart = DateObject[{2018, 1, 1}, TimeObject[{0, 0, 0}], CalendarType -> calType, TimeZone -> tz];
+periodStart = DateObject[{2017, 1, 1}, TimeObject[{0, 0, 0}], CalendarType -> calType, TimeZone -> tz];
 periodEnd = DateObject[{2019, 1, 1}, TimeObject[{0, 0, 0}], CalendarType -> calType, TimeZone -> tz];
 
 $vesselSpec =
@@ -104,8 +104,23 @@ $terminalSpec =
         "Price" -> Quantity[3.9 , "USDollars" / ("Meters")^3]|>
     |>;    
     
+
+makeProductionInventory[dateStart_, dateEnd_, granularity_, initialInventory_, productionRate_, maxInventory_] :=
+    Module[ {rate, timeSteps, inventory},
+        rate = UnitConvert[productionRate, QuantityUnit[initialInventory] / granularity];
+        timeSteps = DateRange[DatePlus[dateStart, granularity], dateEnd, granularity];
+        inventory = Clip[initialInventory + Accumulate[Quantity[1, granularity] ConstantArray[rate, Length[timeSteps]]], {0 maxInventory, maxInventory}];
+        TimeSeries[AssociationThread[timeSteps, inventory], ResamplingMethod -> {"Interpolation", InterpolationOrder -> 0},
+        	 CalendarType -> calType, TimeZone -> tz]
+    ]
+    
 $vessel = $vesselSpec   
 $production = Select[$terminalSpec, #Type=="Liquification and Export" &];
+$production = Module[ {local = #},
+                          AppendTo[local, "Inventory Plan" ->  makeProductionInventory[periodStart, periodEnd, "Months", 
+                              local["Inventory"], local["Daily Production"], local["Total Terminal Storage Capacity"]]];
+                          local
+                      ] & /@ $production;
 $market = Select[$terminalSpec, #Type=="Import and Re-gasification" &];
 
 
@@ -207,15 +222,6 @@ cashflowTrip[v_, p_, m_, updateQ_, day_, endDay_, granularity_] :=
 cashflowPlan[plan_List, updateQ_, startDay_, endDay_, granularity_] := 
 	<|"cashflows" -> Total[cashflowTrip[Sequence @@ #, updateQ, startDay, endDay, granularity]["cashflows"] & /@ plan]|>
 
-makeProductionInventory[dateStart_, dateEnd_, granularity_, initialInventory_, productionRate_, maxInventory_] :=
-    Module[ {rate, timeSteps, inventory},
-        rate = UnitConvert[productionRate, QuantityUnit[initialInventory] / granularity];
-        timeSteps = DateRange[DatePlus[dateStart, granularity], dateEnd, granularity];
-        inventory = Clip[initialInventory + Accumulate[Quantity[1, granularity] ConstantArray[rate, Length[timeSteps]]], {0 maxInventory, maxInventory}];
-        TimeSeries[AssociationThread[timeSteps, inventory], ResamplingMethod -> {"Interpolation", InterpolationOrder -> 0},
-        	 CalendarType -> calType, TimeZone -> tz]
-    ]
-
 
 possibleDecisions[v_, p_, m_] :=
     Module[ {lV, lP, lM, decisions},
@@ -274,9 +280,14 @@ valuation[pStart_, pEnd_, granularity_] :=
         (*Echo[$vessel, "Vessels"];
         Echo[$production, "Production"];
         Echo["Updating production sites"];*)
-        $production = Module[ {local = #},
+        (*$production = Module[ {local = #},
                           AppendTo[local, "Inventory Plan" ->  makeProductionInventory[day, pEnd, granularity, 
                               local["Inventory"], local["Daily Production"], local["Total Terminal Storage Capacity"]]];
+                          local
+                      ] & /@ $production;*)
+        $production = Module[ {local = #},
+                          local["Inventory Plan"] = makeProductionInventory[day, pEnd, granularity, 
+                              local["Inventory"], local["Daily Production"], local["Total Terminal Storage Capacity"]];
                           local
                       ] & /@ $production;
         (*Echo[$production, "Production"];
