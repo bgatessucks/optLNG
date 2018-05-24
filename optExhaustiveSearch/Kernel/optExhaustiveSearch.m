@@ -36,7 +36,7 @@ $vesselSpec =
         "Capacity" -> Quantity[20000, ("Meters")^3],
         "Maximum loading rate" -> Quantity[ 1250, ("Meters")^3 / "Days"],
         "Maximum discharge rate" -> Quantity[1250, ("Meters")^3 / "Days"],
-        "Boil-off rate" -> 0.12,
+        "Boil-off rate" -> Quantity[0.12, 1 / "Days"],
         "Position" -> GeoPosition[{58.97`, 5.71`}],
         "Inventory" -> Quantity[0, ("Meters")^3],
         "DailyFixedCost" -> Quantity[100, "USDollars" / "Days" ]|>,
@@ -45,7 +45,7 @@ $vesselSpec =
         "Capacity" -> Quantity[30000, ("Meters")^3],
         "Maximum loading rate" -> Quantity[2000, ("Meters")^3 / "Days"],
         "Maximum discharge rate" -> Quantity[2500, ("Meters")^3 / "Days"],
-        "Boil-off rate" -> 0.19,
+        "Boil-off rate" -> Quantity[0.19, 1 / "Days"],
         "Position" -> GeoPosition[{58.97`, 5.71`}],
         "Inventory" -> Quantity[0, ("Meters")^3],
         "DailyFixedCost" -> Quantity[150, "USDollars" / "Days" ]|>,
@@ -54,7 +54,7 @@ $vesselSpec =
         "Capacity" -> Quantity[75000, ("Meters")^3],
         "Maximum loading rate" -> Quantity[1000, ("Meters")^3 / "Days"],
         "Maximum discharge rate" -> Quantity[1000, ("Meters")^3 / "Days"],
-        "Boil-off rate" -> 0.15,
+        "Boil-off rate" -> Quantity[0.15, 1 / "Days"],
         "Position" -> GeoPosition[{58.97`, 5.71`}],
         "Inventory" -> Quantity[0, ("Meters")^3],
         "DailyFixedCost" -> Quantity[200, "USDollars" / "Days" ]|>,
@@ -62,7 +62,7 @@ $vesselSpec =
         "Capacity" -> Quantity[216100, ("Meters")^3],
         "Maximum loading rate" -> Quantity[2600 , ("Meters")^3 / "Days"],
         "Maximum discharge rate" -> Quantity[1300, ("Meters")^3 / "Days"],
-        "Boil-off rate" -> 0, "Position" -> GeoPosition[{58.97`, 5.71`}],
+        "Boil-off rate" -> Quantity[0, 1 / "Days"], "Position" -> GeoPosition[{58.97`, 5.71`}],
         "Speed" -> Quantity[16.7, "NauticalMiles" / "Hours"],
         "Inventory" -> Quantity[0, ("Meters")^3],
         "DailyFixedCost" -> Quantity[ 250, "USDollars" / "Days" ]|>
@@ -111,82 +111,96 @@ $market = Select[$terminalSpec, #Type=="Import and Re-gasification" &];
 
 
 (* Need to update the state of the world *)
-cashflowTrip[v_, Missing[], Missing[], updateQ_, startDay_, endDay_, granularity_] := 
+(* TODO: units of boiloff rate vs trip times *)
+cashflowTrip[v_, Missing[], Missing[], updateQ_, day_, endDay_, granularity_] := 
 	<|"Vessel" -> v, "Production" -> Missing[], "Market" -> Missing[], "cashflows" -> Quantity[0, "USDollars"]|>
-cashflowTrip[v_, p_, Missing[], updateQ_, startDay_, endDay_, granularity_] :=
-    Module[ {lV, lP, toLoadTripTime, loadingVolume, loadingTime, cashflow},
+cashflowTrip[v_, p_, Missing[], updateQ_, day_, endDay_, granularity_] :=
+    Module[ {lV, lP, toLoadTripTime, boiloff, loadingVolume, loadingTime, cashflow},
         lV = $vessel[v];
         lP = $production[p];
         toLoadTripTime = GeoDistance[{lV["Position"], lP["LatLong"]}, UnitSystem -> "NauticalMiles"] / UnitConvert[lV["Speed"], "NauticalMiles"/"Days"];
-        loadingVolume = Min[lV["Capacity"] - lV["Inventory"], lP["Inventory"]];
+        boiloff = lV["Inventory"] Power[(Quantity[1.0, QuantityUnit[lV["Boil-off rate"]]] - lV["Boil-off rate"]), 
+        	                            UnitConvert[toLoadTripTime, 1 / QuantityUnit[lV["Boil-off rate"]]]];
+        lV["Inventory"] = lV["Inventory"] - boiloff;
+        loadingVolume = Min[lV["Capacity"] - lV["Inventory"], lP["Inventory Plan"][day + toLoadTripTime]];
         loadingTime = loadingVolume / lV["Maximum loading rate"];
-        cashflow = -loadingVolume * lP["Price"][startDay + toLoadTripTime] - lV["DailyFixedCost"] (toLoadTripTime + loadingTime);
+        
         lV["Position"] = lP["LatLong"];
         lV["Inventory"] = lV["Inventory"] + loadingVolume;
+        
+        cashflow = -loadingVolume lP["Price"][day + toLoadTripTime] - lV["DailyFixedCost"] (toLoadTripTime + loadingTime);
         
         If[updateQ,  
         	$vessel[v]["Position"] = lP["LatLong"];
         	$vessel[v]["Inventory"] = $vessel[v]["Inventory"] + loadingVolume;
         	$production[p]["Inventory"] = $production[p]["Inventory"] - loadingVolume;
-        	$production[p]["Inventory Plan"] = makeProductionInventory[startDay + (toLoadTripTime + loadingTime), endDay, granularity, 
+        	$production[p]["Inventory Plan"] = makeProductionInventory[day + (toLoadTripTime + loadingTime), endDay, granularity, 
                               $production[p]["Inventory"], $production[p]["Daily Production"], $production[p]["Total Terminal Storage Capacity"]];, 
           0];
         
         <|"Vessel" -> lV, "Production" -> lP, "Market" -> Missing[], "cashflows" -> cashflow|>
     ]
-cashflowTrip[v_, Missing[], m_, updateQ_, startDay_, endDay_, granularity_] :=
-    Module[ {lV, lP, lM, toDischargeTripTime, dischargeVolume, dischargingTime, cashflow},
+cashflowTrip[v_, Missing[], m_, updateQ_, day_, endDay_, granularity_] :=
+    Module[ {lV, lP, lM, toDischargeTripTime, boiloff, dischargeVolume, dischargingTime, cashflow},
         lV = $vessel[v];
    		lP = Missing[];
     	lM = $market[m];
  		
     	toDischargeTripTime = GeoDistance[{lV["Position"], lM["LatLong"]}, UnitSystem -> "NauticalMiles"] / UnitConvert[lV["Speed"], "NauticalMiles"/"Days"];
-    	dischargeVolume = Min[lV["Inventory"] Power[(1.0 - lV["Boil-off rate"]), QuantityMagnitude[toDischargeTripTime]], 
-    		lM["Total Terminal Storage Capacity"]];
+    	boiloff = lV["Inventory"] Power[(Quantity[1.0, QuantityUnit[lV["Boil-off rate"]]] - lV["Boil-off rate"]), 
+        	                            UnitConvert[toDischargeTripTime, 1 / QuantityUnit[lV["Boil-off rate"]]]];
+    	lV["Inventory"] = lV["Inventory"] - boiloff;
+    	dischargeVolume = Min[lV["Inventory"], lM["Total Terminal Storage Capacity"]];
     	dischargingTime = dischargeVolume / lV["Maximum discharge rate"];
     	
     	lV["Position"] = lM["LatLong"];
+    	lV["Inventory"] = lV["Inventory"] - dischargeVolume;
     	
-    	cashflow = - lV["DailyFixedCost"] (toDischargeTripTime + dischargingTime) + dischargeVolume lM["Price"][startDay + toDischargeTripTime];
+    	cashflow = - lV["DailyFixedCost"] (toDischargeTripTime + dischargingTime) + dischargeVolume lM["Price"][day + toDischargeTripTime];
     	
     	If[updateQ,  
-        	$vessel[v]["Position"] = lP["LatLong"];
-        	$vessel[v]["Inventory"] = $vessel[v]["Inventory"] + loadingVolume;
+        	$vessel[v]["Position"] = lM["LatLong"];
+        	$vessel[v]["Inventory"] = $vessel[v]["Inventory"] - dischargeVolume;
         	$market[m]["Total Terminal Storage Capacity"] = $market[m]["Total Terminal Storage Capacity"] + dischargeVolume;, 
           0];
     	
    		<|"Vessel" -> lV, "Production" -> lP, "Market" -> lM, "cashflows" -> cashflow|>
     ]  
-cashflowTrip[v_, p_, m_, updateQ_, startDay_, endDay_, granularity_] :=
-    Module[ {lV, lP, lM, toLoadTripTime, loadingVolume, loadingTime, toDischargeTripTime, dischargeVolume, dischargingTime, cashflow},
+cashflowTrip[v_, p_, m_, updateQ_, day_, endDay_, granularity_] :=
+    Module[ {lV, lP, lM, toLoadTripTime, boiloff, loadingVolume, loadingTime, toDischargeTripTime, dischargeVolume, dischargingTime, cashflow},
     	lV = $vessel[v];
     	lP = $production[p];
     	lM = $market[m];
     	
     	toLoadTripTime = GeoDistance[{lV["Position"], lP["LatLong"]}, UnitSystem -> "NauticalMiles"] / UnitConvert[lV["Speed"], "NauticalMiles"/"Days"];
-    	loadingVolume = Min[lV["Capacity"] - lV["Inventory"], lP["Inventory"]];
+    	boiloff = lV["Inventory"] Power[(Quantity[1.0, QuantityUnit[lV["Boil-off rate"]]] - lV["Boil-off rate"]), 
+        	                            UnitConvert[toLoadTripTime, 1 / QuantityUnit[lV["Boil-off rate"]]]];
+         lV["Inventory"] =  lV["Inventory"] - boiloff;	                            
+    	loadingVolume = Min[lV["Capacity"] - lV["Inventory"], lP["Inventory Plan"][day + toLoadTripTime]];
     	loadingTime = loadingVolume / lV["Maximum loading rate"];
     	
     	lV["Position"] = lP["LatLong"];
  		lV["Inventory"] = lV["Inventory"] + loadingVolume;
  		
     	toDischargeTripTime = GeoDistance[{lV["Position"], lM["LatLong"]}, UnitSystem -> "NauticalMiles"] / UnitConvert[lV["Speed"], "NauticalMiles"/"Days"];
-    	dischargeVolume = Min[lV["Inventory"] Power[(1.0 - lV["Boil-off rate"]), QuantityMagnitude[toDischargeTripTime]], 
-    		lM["Total Terminal Storage Capacity"]];
+    	boiloff = lV["Inventory"] Power[(Quantity[1.0, QuantityUnit[lV["Boil-off rate"]]] - lV["Boil-off rate"]), 
+        	                            UnitConvert[toDischargeTripTime, 1 / QuantityUnit[lV["Boil-off rate"]]]];
+        lV["Inventory"] = lV["Inventory"] - boiloff;
+    	dischargeVolume = Min[lV["Inventory"], lM["Total Terminal Storage Capacity"]];
     	dischargingTime = dischargeVolume / lV["Maximum discharge rate"];
     	
     	lV["Position"] = lM["LatLong"];
     	lV["Inventory"] = lV["Inventory"] - dischargeVolume;
     	
     	cashflow = - lV["DailyFixedCost"] (toLoadTripTime + loadingTime + toDischargeTripTime + dischargingTime) 
-    	           - lP["Price"][startDay + toLoadTripTime] 
-    	           + dischargeVolume lM["Price"][startDay + toLoadTripTime + loadingTime + toDischargeTripTime];
+    	           - loadingVolume lP["Price"][day + toLoadTripTime] 
+    	           + dischargeVolume lM["Price"][day + toLoadTripTime + loadingTime + toDischargeTripTime];
     	
     	If[updateQ,  
-        	$vessel[v]["Position"] = lP["LatLong"];
-        	$vessel[v]["Inventory"] = $vessel[v]["Inventory"] + loadingVolume;
+        	$vessel[v]["Position"] = lV["LatLong"];
+        	$vessel[v]["Inventory"] = lV["Inventory"];
         	$production[p]["Inventory"] = $production[p]["Inventory"] - loadingVolume;
-        	$production[p]["Inventory Plan"] = makeProductionInventory[startDay + (toLoadTripTime + loadingTime), endDay, granularity, 
+        	$production[p]["Inventory Plan"] = makeProductionInventory[day + (toLoadTripTime + loadingTime), endDay, granularity, 
                               $production[p]["Inventory"], $production[p]["Daily Production"], $production[p]["Total Terminal Storage Capacity"]];
             $market[m]["Total Terminal Storage Capacity"] = $market[m]["Total Terminal Storage Capacity"] + dischargeVolume;, 
           0];
@@ -287,7 +301,8 @@ valuation[pStart_, pEnd_, granularity_] :=
 (* Done: finish casting the production inventory into a TimeSeries, 
    then add it to the valuation *)
 (* Done: choose the optimal decision update logs *)
-(* STATUS: add forward curves to production/markets *)
+(* Done: add forward curves to production/markets *)
+(* STATUS: fix boiloff in cashflows *)
 (* Market storage capacity: what to do with it ? Can it be useful and how ? *)
 
 End[];
