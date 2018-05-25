@@ -105,6 +105,11 @@ $terminalSpec =
     |>;    
     
 
+makeRandomForwardCurve[dates_, mean_, stdev_] :=
+    TimeSeries[Transpose[{dates, Quantity[RandomReal[NormalDistribution[mean, stdev]],  "USDollars"/"Meters"^3] & /@ Range[Length[dates]]}], 
+    	ResamplingMethod -> {"Interpolation", InterpolationOrder -> 0}, CalendarType -> calType, TimeZone -> tz]
+
+
 makeProductionInventory[dateStart_, dateEnd_, granularity_, initialInventory_, productionRate_, maxInventory_] :=
     Module[ {rate, timeSteps, inventory},
         rate = UnitConvert[productionRate, QuantityUnit[initialInventory] / granularity];
@@ -116,25 +121,33 @@ makeProductionInventory[dateStart_, dateEnd_, granularity_, initialInventory_, p
     
 $vessel = $vesselSpec   
 $production = Select[$terminalSpec, #Type=="Liquification and Export" &];
+$market = Select[$terminalSpec, #Type=="Import and Re-gasification" &];
+
+(* Initialize quantities for testing *)
 $production = Module[ {local = #},
                           AppendTo[local, "Inventory Plan" ->  makeProductionInventory[periodStart, periodEnd, "Months", 
                               local["Inventory"], local["Daily Production"], local["Total Terminal Storage Capacity"]]];
                           local
                       ] & /@ $production;
-$market = Select[$terminalSpec, #Type=="Import and Re-gasification" &];
+$production = Map[Function[asso, Association[KeyValueMap[
+        	If[#1 == "Price", 
+        	  #1 -> makeRandomForwardCurve[DateRange[periodStart, periodEnd, {1, "Month"}], RandomReal[{1, 5}], RandomReal[{0.2, 1.2}]], 
+        	  #1 -> #2 ] &, asso]]][#] &, $production];
+        $market = Map[Function[asso, Association[KeyValueMap[
+        	If[#1 == "Price", 
+        	  #1 -> makeRandomForwardCurve[DateRange[periodStart, periodEnd, {1, "Month"}], RandomReal[{1, 5}], RandomReal[{0.2, 1.2}]], 
+        	  #1 -> #2 ] &, asso]]][#] &, $market];    
 
 
 cashflowTrip[v_, Missing[], Missing[], updateQ_, day_, endDay_, granularity_] :=
-    <|"StartState" -> <|"Vessel" -> v, "Production" -> Missing[], "Market" -> Missing[]|>,
-      "EndState" -> <|"Vessel" -> v, "Production" -> Missing[], "Market" -> Missing[]|>,  
-      "cashflows" -> Quantity[0, "USDollars"]|>
+    <|"cashflows" -> Quantity[0, "USDollars"]|>
 cashflowTrip[v_, p_, Missing[], updateQ_, day_, endDay_, granularity_] :=
     Module[ {lV, lP, toLoadTripTime, boiloff, loadingVolume, loadingTime, cashflow},
         lV = $vessel[v];
         lP = $production[p];
         toLoadTripTime = GeoDistance[{lV["Position"], lP["LatLong"]}, UnitSystem -> "NauticalMiles"] / UnitConvert[lV["Speed"], "NauticalMiles"/"Days"];
-        boiloff = lV["Inventory"] Power[(Quantity[1.0, QuantityUnit[lV["Boil-off rate"]]] - lV["Boil-off rate"]), 
-                                        UnitConvert[toLoadTripTime, 1 / QuantityUnit[lV["Boil-off rate"]]]];
+        boiloff = lV["Inventory"] Power[1 - QuantityMagnitude[lV["Boil-off rate"]], 
+        	                            QuantityMagnitude[UnitConvert[toLoadTripTime, 1 / QuantityUnit[lV["Boil-off rate"]]]]];                                
         lV["Inventory"] = lV["Inventory"] - boiloff;
         loadingVolume = Min[lV["Capacity"] - lV["Inventory"], lP["Inventory Plan"][day + toLoadTripTime]];
         loadingTime = loadingVolume / lV["Maximum loading rate"];
@@ -150,9 +163,7 @@ cashflowTrip[v_, p_, Missing[], updateQ_, day_, endDay_, granularity_] :=
                               $production[p]["Inventory"], $production[p]["Daily Production"], $production[p]["Total Terminal Storage Capacity"]];,
             0
         ];
-        <|"StartState" -> <|"Vessel" -> v, "Production" -> p, "Market" -> Missing[]|>, 
-          "EndState" -> <|"Vessel" -> lV, "Production" -> lP, "Market" -> Missing[]|>, 
-          "cashflows" -> cashflow|>
+        <|"cashflows" -> cashflow|>
     ]
 cashflowTrip[v_, Missing[], m_, updateQ_, day_, endDay_, granularity_] :=
     Module[ {lV, lP, lM, toDischargeTripTime, boiloff, dischargeVolume, dischargingTime, cashflow},
@@ -160,8 +171,8 @@ cashflowTrip[v_, Missing[], m_, updateQ_, day_, endDay_, granularity_] :=
         lP = Missing[];
         lM = $market[m];
         toDischargeTripTime = GeoDistance[{lV["Position"], lM["LatLong"]}, UnitSystem -> "NauticalMiles"] / UnitConvert[lV["Speed"], "NauticalMiles"/"Days"];
-        boiloff = lV["Inventory"] Power[(Quantity[1.0, QuantityUnit[lV["Boil-off rate"]]] - lV["Boil-off rate"]), 
-                                        UnitConvert[toDischargeTripTime, 1 / QuantityUnit[lV["Boil-off rate"]]]];
+        boiloff = lV["Inventory"] Power[1 - QuantityMagnitude[lV["Boil-off rate"]], 
+        	                            QuantityMagnitude[UnitConvert[toDischargeTripTime, 1 / QuantityUnit[lV["Boil-off rate"]]]]];
         lV["Inventory"] = lV["Inventory"] - boiloff;
         dischargeVolume = Min[lV["Inventory"], lM["Total Terminal Storage Capacity"]];
         dischargingTime = dischargeVolume / lV["Maximum discharge rate"];
@@ -175,9 +186,7 @@ cashflowTrip[v_, Missing[], m_, updateQ_, day_, endDay_, granularity_] :=
             $market[m]["Total Terminal Storage Capacity"] = $market[m]["Total Terminal Storage Capacity"] + dischargeVolume;,
             0
         ];
-        <|"StartState" -> <|"Vessel" -> v, "Production" -> Missing[], "Market" -> m|>, 
-          "EndState" -> <|"Vessel" -> lV, "Production" -> Missing[], "Market" -> lM|>,
-          "cashflows" -> cashflow|>
+        <|"cashflows" -> cashflow|>
     ]  
 cashflowTrip[v_, p_, m_, updateQ_, day_, endDay_, granularity_] :=
     Module[ {lV, lP, lM, toLoadTripTime, boiloff, loadingVolume, loadingTime, toDischargeTripTime, dischargeVolume, dischargingTime, cashflow},
@@ -185,8 +194,8 @@ cashflowTrip[v_, p_, m_, updateQ_, day_, endDay_, granularity_] :=
         lP = $production[p];
         lM = $market[m];
         toLoadTripTime = GeoDistance[{lV["Position"], lP["LatLong"]}, UnitSystem -> "NauticalMiles"] / UnitConvert[lV["Speed"], "NauticalMiles"/"Days"];
-        boiloff = lV["Inventory"] Power[(Quantity[1.0, QuantityUnit[lV["Boil-off rate"]]] - lV["Boil-off rate"]), 
-                                        UnitConvert[toLoadTripTime, 1 / QuantityUnit[lV["Boil-off rate"]]]];
+        boiloff = lV["Inventory"] Power[1 - QuantityMagnitude[lV["Boil-off rate"]], 
+        	                            QuantityMagnitude[UnitConvert[toLoadTripTime, 1 / QuantityUnit[lV["Boil-off rate"]]]]];            
         lV["Inventory"] =  lV["Inventory"] - boiloff;
         loadingVolume = Min[lV["Capacity"] - lV["Inventory"], lP["Inventory Plan"][day + toLoadTripTime]];
         loadingTime = loadingVolume / lV["Maximum loading rate"];
@@ -194,8 +203,8 @@ cashflowTrip[v_, p_, m_, updateQ_, day_, endDay_, granularity_] :=
         lV["Inventory"] = lV["Inventory"] + loadingVolume;
         lP["Inventory"] = lP["Inventory"] - loadingVolume;
         toDischargeTripTime = GeoDistance[{lV["Position"], lM["LatLong"]}, UnitSystem -> "NauticalMiles"] / UnitConvert[lV["Speed"], "NauticalMiles"/"Days"];
-        boiloff = lV["Inventory"] Power[(Quantity[1.0, QuantityUnit[lV["Boil-off rate"]]] - lV["Boil-off rate"]), 
-                                        UnitConvert[toDischargeTripTime, 1 / QuantityUnit[lV["Boil-off rate"]]]];
+        boiloff = lV["Inventory"] Power[1 - QuantityMagnitude[lV["Boil-off rate"]], 
+        	                            QuantityMagnitude[UnitConvert[toDischargeTripTime, 1 / QuantityUnit[lV["Boil-off rate"]]]]];
         lV["Inventory"] = lV["Inventory"] - boiloff;
         dischargeVolume = Min[lV["Inventory"], lM["Total Terminal Storage Capacity"]];
         dischargingTime = dischargeVolume / lV["Maximum discharge rate"];
@@ -214,9 +223,7 @@ cashflowTrip[v_, p_, m_, updateQ_, day_, endDay_, granularity_] :=
             $market[m]["Total Terminal Storage Capacity"] = $market[m]["Total Terminal Storage Capacity"] + dischargeVolume;,
             0
         ];
-        <|"StartState" -> <|"Vessel" -> v, "Production" -> p, "Market" -> m|>, 
-          "EndState" -> <|"Vessel" -> lV, "Production" -> lP, "Market" -> lM|>,
-          "cashflows" -> cashflow|>
+        <|"cashflows" -> cashflow|>
     ]
 
 cashflowPlan[plan_List, updateQ_, startDay_, endDay_, granularity_] := 
@@ -256,10 +263,6 @@ plotPlan[plan_List] :=
             Arrow @@@ paths}], GeoRange -> "World", ImageSize -> Full]
     ]
 
-
-makeRandomForwardCurve[dates_, mean_, stdev_] :=
-    TimeSeries[Transpose[{dates, Quantity[RandomReal[NormalDistribution[mean, stdev]],  "USDollars"/"Meters"^3] & /@ Range[Length[dates]]}], 
-    	ResamplingMethod -> {"Interpolation", InterpolationOrder -> 0}, CalendarType -> calType, TimeZone -> tz]
 
 
 valuation[pStart_, pEnd_, granularity_] :=
