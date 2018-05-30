@@ -124,6 +124,7 @@ $production = Select[$terminalSpec, #Type=="Liquification and Export" &];
 $market = Select[$terminalSpec, #Type=="Import and Re-gasification" &];
 
 (* Initialize quantities for testing *)
+SeedRandom[123987]
 $production = Module[ {local = #},
                           AppendTo[local, "Inventory Plan" ->  makeProductionInventory[periodStart, periodEnd, "Months", 
                               local["Inventory"], local["Daily Production"], local["Total Terminal Storage Capacity"]]];
@@ -131,12 +132,12 @@ $production = Module[ {local = #},
                       ] & /@ $production;
 $production = Map[Function[asso, Association[KeyValueMap[
         	If[#1 == "Price", 
-        	  #1 -> makeRandomForwardCurve[DateRange[periodStart, periodEnd, {1, "Month"}], RandomReal[{1, 5}], RandomReal[{0.2, 1.2}]], 
+        	  #1 -> makeRandomForwardCurve[DateRange[periodStart, periodEnd, {1, "Month"}], RandomReal[{1.2, 2.3}], RandomReal[{0.2,0.3}]], 
         	  #1 -> #2 ] &, asso]]][#] &, $production];
-        $market = Map[Function[asso, Association[KeyValueMap[
-        	If[#1 == "Price", 
-        	  #1 -> makeRandomForwardCurve[DateRange[periodStart, periodEnd, {1, "Month"}], RandomReal[{1, 5}], RandomReal[{0.2, 1.2}]], 
-        	  #1 -> #2 ] &, asso]]][#] &, $market];    
+$market = Map[Function[asso, Association[KeyValueMap[
+	If[#1 == "Price", 
+	  #1 -> makeRandomForwardCurve[DateRange[periodStart, periodEnd, {1, "Month"}], RandomReal[{3.4, 4.5}], RandomReal[{0.2, 0.4}]], 
+	  #1 -> #2 ] &, asso]]][#] &, $market];    
 
 
 cashflowTrip[v_, Missing[], Missing[], updateQ_, day_, endDay_, granularity_] :=
@@ -308,11 +309,10 @@ valuation[pStart_, pEnd_, granularity_] :=
         
     ]
 
-(* Done: finish casting the production inventory into a TimeSeries, 
-   then add it to the valuation *)
+(* Done: finish casting the production inventory into a TimeSeries, then add it to the valuation *)
 (* Done: choose the optimal decision update logs *)
 (* Done: add forward curves to production/markets *)
-(* STATUS: fix boiloff in cashflows *)
+(* Done: fix boiloff in cashflows *)
 (* Market storage capacity: what to do with it ? Can it be useful and how ? *)
 
 End[];
