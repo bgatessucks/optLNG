@@ -231,8 +231,13 @@ cashflowTrip[v_, p_, m_, updateQ_, day_, endDay_, granularity_] :=
         <|"cashflows" -> cashflow, "tripCompletionDate" -> (day + toLoadTripTime + loadingTime + toDischargeTripTime + dischargingTime)|>
     ]
 
-cashflowPlan[plan_List, updateQ_, startDay_, endDay_, granularity_] := 
-	<|"cashflows" -> Total[cashflowTrip[Sequence @@ #, updateQ, startDay, endDay, granularity]["cashflows"] & /@ plan]|>
+cashflowPlan[plan_List, updateQ_, startDay_, endDay_, granularity_] :=
+    Module[ {local, cashflow, relevantDates},
+        local = cashflowTrip[Sequence @@ #, updateQ, startDay, endDay, granularity] & /@ plan;
+        cashflow = Total[#["cashflows"] & /@ local];
+        relevantDates = Sort[#["tripCompletionDate"] & /@ local];
+        <|"cashflows" -> cashflow, "relevantDates" -> relevantDates|>
+    ]
 
 
 possibleDecisions[v_, p_, m_] :=
