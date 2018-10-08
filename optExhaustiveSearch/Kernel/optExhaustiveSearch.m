@@ -107,6 +107,13 @@ $terminalSpec =
     |>;    
     
 
+$states = <|"Date" -> DateObject[{2018, 1, 1}, TimeObject[{0, 0, 0}], CalendarType -> calType, TimeZone -> tz], 
+            "Vessel" -> <||>,
+            "Production" -> <||>, 
+            "Market" -> <||>
+          |>;
+
+
 makeRandomForwardCurve[dates_, mean_, stdev_] :=
     TimeSeries[Transpose[{dates, Quantity[RandomReal[NormalDistribution[mean, stdev]],  "USDollars"/"Meters"^3] & /@ Range[Length[dates]]}], 
     	ResamplingMethod -> {"Interpolation", InterpolationOrder -> 0}, CalendarType -> calType, TimeZone -> tz]
@@ -311,9 +318,12 @@ valuationOneDay[valuationDate_, pEnd_, granularity_, vessel_, production_, marke
         decisions = possibleDecisions[Normal[Keys[vessel]], Normal[Keys[$production]], Normal[Keys[$market]]][[1]];
         optimalDecision = First[decisions[[Ordering[cashflowPlan[#, False, valuationDate, pEnd, granularity] & /@ decisions, -1]]]];
         cashflow = cashflowPlan[{Values[optimalDecision]}, True, valuationDate, pEnd, granularity];
-        output = Join[log, <|valuationDate -> <|"cashflows" -> cashflow["cashflows"], "plan" -> optimalDecision|>|>];
+        output = Join[log, <|valuationDate -> <|"cashflows" -> cashflow["cashflows"], 
+        	                                    "plan" -> optimalDecision|>, 
+        	                                    "relevantDates" -> cashflow["relevantDates"]|>];
         output
     ]
+
 
 (* Done: finish casting the production inventory into a TimeSeries, then add it to the valuation *)
 (* Done: choose the optimal decision update logs *)
@@ -321,6 +331,7 @@ valuationOneDay[valuationDate_, pEnd_, granularity_, vessel_, production_, marke
 (* Done: fix boiloff in cashflows *)
 (* Market storage capacity: what to do with it ? Can it be useful and how ? *)
 (* Status: update production/vessel after decision *)
+(* Status: clarify strategy and implementation: flag for busy/available vessel ? *)
 
 End[];
 
