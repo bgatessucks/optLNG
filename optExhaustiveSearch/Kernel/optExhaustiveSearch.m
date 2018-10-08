@@ -10,7 +10,9 @@ $terminalSpec::usage
 $production::usage
 cashflowTrip::usage
 cashflowPlan::usage
+valuationOneDay::usage
 valuation::usage
+makeRandomForwardCurve::usage
 makeProductionInventory::usage
 possibleDecisions::usage
 plotPlan::usage
@@ -105,6 +107,13 @@ $terminalSpec =
     |>;    
     
 
+$states = <|"Date" -> DateObject[{2018, 1, 1}, TimeObject[{0, 0, 0}], CalendarType -> calType, TimeZone -> tz], 
+            "Vessel" -> <||>,
+            "Production" -> <||>, 
+            "Market" -> <||>
+          |>;
+
+
 makeRandomForwardCurve[dates_, mean_, stdev_] :=
     TimeSeries[Transpose[{dates, Quantity[RandomReal[NormalDistribution[mean, stdev]],  "USDollars"/"Meters"^3] & /@ Range[Length[dates]]}], 
     	ResamplingMethod -> {"Interpolation", InterpolationOrder -> 0}, CalendarType -> calType, TimeZone -> tz]
@@ -119,12 +128,14 @@ makeProductionInventory[dateStart_, dateEnd_, granularity_, initialInventory_, p
         	 CalendarType -> calType, TimeZone -> tz]
     ]
     
+    
 $vessel = $vesselSpec   
 $production = Select[$terminalSpec, #Type=="Liquification and Export" &];
 $market = Select[$terminalSpec, #Type=="Import and Re-gasification" &];
 
+
 (* Initialize quantities for testing *)
-SeedRandom[123987]
+(*SeedRandom[123987]
 $production = Module[ {local = #},
                           AppendTo[local, "Inventory Plan" ->  makeProductionInventory[periodStart, periodEnd, "Months", 
                               local["Inventory"], local["Daily Production"], local["Total Terminal Storage Capacity"]]];
@@ -138,10 +149,10 @@ $market = Map[Function[asso, Association[KeyValueMap[
 	If[#1 == "Price", 
 	  #1 -> makeRandomForwardCurve[DateRange[periodStart, periodEnd, {1, "Month"}], RandomReal[{3.4, 4.5}], RandomReal[{0.2, 0.4}]], 
 	  #1 -> #2 ] &, asso]]][#] &, $market];    
-
+*)
 
 cashflowTrip[v_, Missing[], Missing[], updateQ_, day_, endDay_, granularity_] :=
-    <|"cashflows" -> Quantity[0, "USDollars"]|>
+    <|"cashflows" -> Quantity[0, "USDollars"], "tripCompletionDate" -> day|>
 cashflowTrip[v_, p_, Missing[], updateQ_, day_, endDay_, granularity_] :=
     Module[ {lV, lP, toLoadTripTime, boiloff, loadingVolume, loadingTime, cashflow},
         lV = $vessel[v];
@@ -164,7 +175,7 @@ cashflowTrip[v_, p_, Missing[], updateQ_, day_, endDay_, granularity_] :=
                               $production[p]["Inventory"], $production[p]["Daily Production"], $production[p]["Total Terminal Storage Capacity"]];,
             0
         ];
-        <|"cashflows" -> cashflow|>
+        <|"cashflows" -> cashflow, "tripCompletionDate" -> (day + toLoadTripTime + loadingTime)|>
     ]
 cashflowTrip[v_, Missing[], m_, updateQ_, day_, endDay_, granularity_] :=
     Module[ {lV, lP, lM, toDischargeTripTime, boiloff, dischargeVolume, dischargingTime, cashflow},
@@ -187,7 +198,7 @@ cashflowTrip[v_, Missing[], m_, updateQ_, day_, endDay_, granularity_] :=
             $market[m]["Total Terminal Storage Capacity"] = $market[m]["Total Terminal Storage Capacity"] + dischargeVolume;,
             0
         ];
-        <|"cashflows" -> cashflow|>
+        <|"cashflows" -> cashflow, "tripCompletionDate" -> (day + toDischargeTripTime + dischargingTime)|>
     ]  
 cashflowTrip[v_, p_, m_, updateQ_, day_, endDay_, granularity_] :=
     Module[ {lV, lP, lM, toLoadTripTime, boiloff, loadingVolume, loadingTime, toDischargeTripTime, dischargeVolume, dischargingTime, cashflow},
@@ -224,11 +235,16 @@ cashflowTrip[v_, p_, m_, updateQ_, day_, endDay_, granularity_] :=
             $market[m]["Total Terminal Storage Capacity"] = $market[m]["Total Terminal Storage Capacity"] + dischargeVolume;,
             0
         ];
-        <|"cashflows" -> cashflow|>
+        <|"cashflows" -> cashflow, "tripCompletionDate" -> (day + toLoadTripTime + loadingTime + toDischargeTripTime + dischargingTime)|>
     ]
 
-cashflowPlan[plan_List, updateQ_, startDay_, endDay_, granularity_] := 
-	<|"cashflows" -> Total[cashflowTrip[Sequence @@ #, updateQ, startDay, endDay, granularity]["cashflows"] & /@ plan]|>
+cashflowPlan[plan_List, updateQ_, startDay_, endDay_, granularity_] :=
+    Module[ {local, cashflow, relevantDates},
+        local = cashflowTrip[Sequence @@ #, updateQ, startDay, endDay, granularity] & /@ plan;
+        cashflow = Total[#["cashflows"] & /@ local];
+        relevantDates = Sort[#["tripCompletionDate"] & /@ local];
+        <|"cashflows" -> cashflow, "relevantDates" -> relevantDates|>
+    ]
 
 
 possibleDecisions[v_, p_, m_] :=
@@ -265,13 +281,12 @@ plotPlan[plan_List] :=
     ]
 
 
-
-valuation[pStart_, pEnd_, granularity_] :=
-    Module[ {timeSteps, day, log=Association[], decisions, optimalDecision},
+valuation[pStart_, pEnd_, granularity_, vessel_, production_, market_] :=
+    Module[ {timeSteps, day, local, log=Association[], decisions, optimalDecision, cashflow},
         (* pEnd should be inclusive, but see:  
         https://mathematica.stackexchange.com/questions/167731/different-behaviour-of-daterange-between-11-2-and-11-3 *)
         timeSteps = DateRange[DatePlus[pStart, granularity], pEnd, granularity];
-        SeedRandom[123];
+        (*SeedRandom[123];
         $production = Map[Function[asso, Association[KeyValueMap[
         	If[#1 == "Price", 
         	  #1 -> makeRandomForwardCurve[timeSteps, RandomReal[{1, 5}], RandomReal[{0.2, 1.2}]], 
@@ -279,41 +294,44 @@ valuation[pStart_, pEnd_, granularity_] :=
         $market = Map[Function[asso, Association[KeyValueMap[
         	If[#1 == "Price", 
         	  #1 -> makeRandomForwardCurve[timeSteps, RandomReal[{1, 5}], RandomReal[{0.2, 1.2}]], 
-        	  #1 -> #2 ] &, asso]]][#] &, $market];    
+        	  #1 -> #2 ] &, asso]]][#] &, $market];    *)
         day = pStart;
-        (*Echo[$vessel, "Vessels"];
-        Echo[$production, "Production"];
-        Echo["Updating production sites"];*)
-        (*$production = Module[ {local = #},
-                          AppendTo[local, "Inventory Plan" ->  makeProductionInventory[day, pEnd, granularity, 
-                              local["Inventory"], local["Daily Production"], local["Total Terminal Storage Capacity"]]];
-                          local
-                      ] & /@ $production;*)
-        $production = Module[ {local = #},
-                          local["Inventory Plan"] = makeProductionInventory[day, pEnd, granularity, 
-                              local["Inventory"], local["Daily Production"], local["Total Terminal Storage Capacity"]];
-                          local
-                      ] & /@ $production;
-        (*Echo[$production, "Production"];
-        Echo["Finding optimal decision"];*)
-        decisions = possibleDecisions[Normal[Keys[$vessel]], Normal[Keys[$production]], Normal[Keys[$market]]];
-        optimalDecision = First[decisions[[Ordering[cashflowPlan[#, False, day, pEnd, granularity] & /@ decisions, -1]]]];
-        (*Echo[optimalDecision, "optimalDecision"];
-        Echo["Updating states"];*)
-        cashflowPlan[optimalDecision, True, day, pEnd, granularity];
-        log[day] = <|"cashflows" -> cashflowPlan["cashflows"], "plan" -> optimalDecision|>;
-        (*Echo[$vessel, "Vessels"];
-        Echo[$production, "Production"];*)
-        log
-        
+        local = valuationOneDay[day, pEnd, granularity, $vessel, $production, $market, log]
         
     ]
+
+
+valuationOneDay[valuationDate_, pEnd_, granularity_, vessel_, production_, market_, log_] :=
+    Module[ { decisions, optimalDecision, cashflow, output},
+            (* pEnd should be inclusive, but see:  
+            https://mathematica.stackexchange.com/questions/167731/different-behaviour-of-daterange-between-11-2-and-11-3 *)
+        $production = Map[Function[asso, Association[KeyValueMap[
+            If[ #1 == "Price",
+                #1 -> Select[#2, #[[1]] <= valuationDate &][[1, 2]],
+                #1 -> #2
+            ] &, asso]]][#] &, production];
+        $market = Map[Function[asso, Association[KeyValueMap[
+            If[ #1 == "Price",
+                #1 -> Select[#2, #[[1]] <= valuationDate &][[1, 2]],
+                #1 -> #2
+            ] &, asso]]][#] &, market];
+        decisions = possibleDecisions[Normal[Keys[vessel]], Normal[Keys[$production]], Normal[Keys[$market]]][[1]];
+        optimalDecision = First[decisions[[Ordering[cashflowPlan[#, False, valuationDate, pEnd, granularity] & /@ decisions, -1]]]];
+        cashflow = cashflowPlan[{Values[optimalDecision]}, True, valuationDate, pEnd, granularity];
+        output = Join[log, <|valuationDate -> <|"cashflows" -> cashflow["cashflows"], 
+        	                                    "plan" -> optimalDecision|>, 
+        	                                    "relevantDates" -> cashflow["relevantDates"]|>];
+        output
+    ]
+
 
 (* Done: finish casting the production inventory into a TimeSeries, then add it to the valuation *)
 (* Done: choose the optimal decision update logs *)
 (* Done: add forward curves to production/markets *)
 (* Done: fix boiloff in cashflows *)
 (* Market storage capacity: what to do with it ? Can it be useful and how ? *)
+(* Status: update production/vessel after decision *)
+(* Status: clarify strategy and implementation: flag for busy/available vessel ? *)
 
 End[];
 

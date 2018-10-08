@@ -16,6 +16,16 @@
   - allow for re-routing of vessels once they are shipping to a given market ?
   - during a decision, as a first approximation all vessels are busy; it could be that some terminals can accommodate multiple vessels, in which case another decision can start before the remaining vessels of the current decision have terminated their trips.
   - make prices a time series
+  - input: price simulations for all production sites and markets. They are a list of 2 elements: the valuation date and a `TimeSeries` representing the forward curve.
+
+  - Generate a forward curve for each date of the optimization period<br/>
+    On each date, identify the best possible action<br/>
+    Update the log according to the best action for the day<br/>
+    Update cashflows relative to that day. The concept of rolling intrinsic is very different as cashflows are not immediate; they will be negative at all dates except for the unloading dates.<br/>
+    Implement a flag (for vessel/production/market) to be used for _locking_ a plan until its completion.  
+
+    At each valuation date, the system `$production` and `$market` are updated with the corresponding forward curves, which will be used to calculate the cashflows.
+  - Current strategy: execute the best plan at each date when there are vessels available.
 
 # Pseudo code
 
