@@ -190,12 +190,12 @@ cashflowTrip[v_, Missing[], m_, updateQ_, day_, endDay_, granularity_] :=
         dischargingTime = dischargeVolume / lV["Maximum discharge rate"];
         lV["Position"] = lM["LatLong"];
         lV["Inventory"] = lV["Inventory"] - dischargeVolume;
-        lM["Total Terminal Storage Capacity"] = lM["Total Terminal Storage Capacity"] + dischargeVolume;
+        (*lM["Total Terminal Storage Capacity"] = lM["Total Terminal Storage Capacity"] + dischargeVolume;*)
         cashflow = - lV["DailyFixedCost"] (toDischargeTripTime + dischargingTime) + dischargeVolume lM["Price"][day + toDischargeTripTime];
         If[ updateQ,
             $vessel[v]["Position"] = lM["LatLong"];
             $vessel[v]["Inventory"] = $vessel[v]["Inventory"] - dischargeVolume;
-            $market[m]["Total Terminal Storage Capacity"] = $market[m]["Total Terminal Storage Capacity"] + dischargeVolume;,
+            (*$market[m]["Total Terminal Storage Capacity"] = $market[m]["Total Terminal Storage Capacity"] + dischargeVolume;*),
             0
         ];
         <|"cashflows" -> cashflow, "tripCompletionDate" -> (day + toDischargeTripTime + dischargingTime)|>
@@ -222,7 +222,7 @@ cashflowTrip[v_, p_, m_, updateQ_, day_, endDay_, granularity_] :=
         dischargingTime = dischargeVolume / lV["Maximum discharge rate"];
         lV["Position"] = lM["LatLong"];
         lV["Inventory"] = lV["Inventory"] - dischargeVolume;
-        lM["Total Terminal Storage Capacity"] = lM["Total Terminal Storage Capacity"] + dischargeVolume;
+        (*lM["Total Terminal Storage Capacity"] = lM["Total Terminal Storage Capacity"] + dischargeVolume;*)
         cashflow = - lV["DailyFixedCost"] (toLoadTripTime + loadingTime + toDischargeTripTime + dischargingTime) 
                    - loadingVolume lP["Price"][day + toLoadTripTime] 
                    + dischargeVolume lM["Price"][day + toLoadTripTime + loadingTime + toDischargeTripTime];
@@ -232,7 +232,7 @@ cashflowTrip[v_, p_, m_, updateQ_, day_, endDay_, granularity_] :=
             $production[p]["Inventory"] = $production[p]["Inventory"] - loadingVolume;
             $production[p]["Inventory Plan"] = makeProductionInventory[day + (toLoadTripTime + loadingTime), endDay, granularity, 
                               $production[p]["Inventory"], $production[p]["Daily Production"], $production[p]["Total Terminal Storage Capacity"]];
-            $market[m]["Total Terminal Storage Capacity"] = $market[m]["Total Terminal Storage Capacity"] + dischargeVolume;,
+            (*$market[m]["Total Terminal Storage Capacity"] = $market[m]["Total Terminal Storage Capacity"] + dischargeVolume;*),
             0
         ];
         <|"cashflows" -> cashflow, "tripCompletionDate" -> (day + toLoadTripTime + loadingTime + toDischargeTripTime + dischargingTime)|>
@@ -247,7 +247,7 @@ cashflowPlan[plan_List, updateQ_, startDay_, endDay_, granularity_] :=
     ]
 
 
-possibleDecisions[v_, p_, m_] :=
+possiblePlans[v_, p_, m_] :=
     Module[ {lV, lP, lM, decisions},
         {lV, lP, lM} = With[ {len = Max[Length[#] & /@ {v, p, m}]},
                            PadRight[#, len, Missing[]] & /@ {v, p, m}
@@ -260,6 +260,7 @@ possibleDecisions[v_, p_, m_] :=
             Permutations[<|"Market" -> #|> & /@ lM], 1, 1], 1]) // DeleteDuplicates;
         decisions
     ]
+(*possibleDecisions[v_, p_, m_] := Tuples[{v, Union[p, {Missing[]}], Union[m, {Missing[]}]}]*)
 
 
 plotPlan[plan_List] :=
@@ -296,32 +297,42 @@ valuation[pStart_, pEnd_, granularity_, vessel_, production_, market_] :=
         	  #1 -> makeRandomForwardCurve[timeSteps, RandomReal[{1, 5}], RandomReal[{0.2, 1.2}]], 
         	  #1 -> #2 ] &, asso]]][#] &, $market];    *)
         day = pStart;
-        local = valuationOneDay[day, pEnd, granularity, $vessel, $production, $market, log]
+        local = valuationOneDay[day, pEnd, granularity, vessel, production, market, log]
         
     ]
 
 
 valuationOneDay[valuationDate_, pEnd_, granularity_, vessel_, production_, market_, log_] :=
-    Module[ { decisions, optimalDecision, cashflow, output},
-            (* pEnd should be inclusive, but see:  
-            https://mathematica.stackexchange.com/questions/167731/different-behaviour-of-daterange-between-11-2-and-11-3 *)
-        $production = Map[Function[asso, Association[KeyValueMap[
+    Module[ 
+    	{$productionLocal, $marketLocal, plans, optimalPlan, cashflow, relevantDates, output},
+        (* pEnd should be inclusive, but see:  
+        https://mathematica.stackexchange.com/questions/167731/different-behaviour-of-daterange-between-11-2-and-11-3 *)
+        $productionLocal = Map[Function[asso, Association[KeyValueMap[
             If[ #1 == "Price",
                 #1 -> Select[#2, #[[1]] <= valuationDate &][[1, 2]],
                 #1 -> #2
             ] &, asso]]][#] &, production];
-        $market = Map[Function[asso, Association[KeyValueMap[
+        $marketLocal = Map[Function[asso, Association[KeyValueMap[
             If[ #1 == "Price",
                 #1 -> Select[#2, #[[1]] <= valuationDate &][[1, 2]],
                 #1 -> #2
             ] &, asso]]][#] &, market];
-        decisions = possibleDecisions[Normal[Keys[vessel]], Normal[Keys[$production]], Normal[Keys[$market]]][[1]];
-        optimalDecision = First[decisions[[Ordering[cashflowPlan[#, False, valuationDate, pEnd, granularity] & /@ decisions, -1]]]];
-        cashflow = cashflowPlan[{Values[optimalDecision]}, True, valuationDate, pEnd, granularity];
+        plans = possiblePlans[Normal[Keys[vessel]], Normal[Keys[$productionLocal]], Normal[Keys[$marketLocal]]];
+        $vessel = vessel;
+        $production = $productionLocal;
+        $market = $marketLocal;
+        optimalPlan = First[plans[[Ordering[cashflowPlan[#, False, valuationDate, pEnd, granularity] & /@ plans, -1]]]];
+        cashflow = cashflowPlan[Values[optimalPlan], True, valuationDate, pEnd, granularity];
+        relevantDates = cashflow["relevantDates"];
+        
+        (* Update states *)
+        
+        
         output = Join[log, <|valuationDate -> <|"cashflows" -> cashflow["cashflows"], 
-        	                                    "plan" -> optimalDecision|>, 
-        	                                    "relevantDates" -> cashflow["relevantDates"]|>];
+                                                "plan" -> optimalPlan|>, 
+                                                "relevantDates" -> relevantDates|>];
         output
+        
     ]
 
 

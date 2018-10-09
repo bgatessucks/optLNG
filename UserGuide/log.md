@@ -27,6 +27,13 @@
     At each valuation date, the system `$production` and `$market` are updated with the corresponding forward curves, which will be used to calculate the cashflows.
   - Current strategy: execute the best plan at each date when there are vessels available.
 
+  - What to do with terminal capacity for markets ? Zero it after vessel unloading ?
+  - Boil-off of empty vessel ? 
+
+## States
+
+  - `$states` is an `Association` index by dates.
+
 # Pseudo code
 
 ```mathematica
