@@ -152,7 +152,7 @@ $market = Map[Function[asso, Association[KeyValueMap[
 *)
 
 cashflowTrip[v_, Missing[], Missing[], updateQ_, day_, endDay_, granularity_] :=
-    <|"cashflows" -> Quantity[0, "USDollars"], "tripCompletionDate" -> day|>
+    <|"cashflows" -> -$vessel[v]["DailyFixedCost"] Quantity[1, "Days"], "tripCompletionDate" -> day|>
 cashflowTrip[v_, p_, Missing[], updateQ_, day_, endDay_, granularity_] :=
     Module[ {lV, lP, toLoadTripTime, boiloff, loadingVolume, loadingTime, cashflow},
         lV = $vessel[v];
