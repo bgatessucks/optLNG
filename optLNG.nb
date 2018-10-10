@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[   1823393,      35423]
-NotebookOptionsPosition[   1806147,      35131]
-NotebookOutlinePosition[   1806490,      35146]
-CellTagsIndexPosition[   1806447,      35143]
+NotebookDataLength[   1833291,      35591]
+NotebookOptionsPosition[   1815016,      35287]
+NotebookOutlinePosition[   1815359,      35302]
+CellTagsIndexPosition[   1815316,      35299]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -13217,133 +13217,80 @@ Cell[BoxData[
  CellChangeTimes->{{3.7389290608662977`*^9, 3.738929139340273*^9}, {
   3.738987975661066*^9, 3.738987983867246*^9}, {3.748090648604139*^9, 
   3.748090654570735*^9}},
- CellLabel->"In[58]:=",ExpressionUUID->"04627f38-3d07-4d25-9acf-a1fd0af9e8d1"],
+ CellLabel->"In[26]:=",ExpressionUUID->"04627f38-3d07-4d25-9acf-a1fd0af9e8d1"],
 
 Cell[BoxData[
  TemplateBox[{
   "InterpolatingFunction","dmval",
    "\"Input value \\!\\(\\*RowBox[{\\\"{\\\", RowBox[{\\\"-\\\", \
 \\\"3725398800\\\"}], \\\"}\\\"}]\\) lies outside the range of data in the \
-interpolating function. Extrapolation will be used.\"",2,58,61,
-   25893407129956946621,"Local"},
+interpolating function. Extrapolation will be used.\"",2,26,5,
+   25893438200787745842,"Local"},
   "MessageTemplate"]], "Message", "MSG",
  CellChangeTimes->{
   3.7480916217774467`*^9, {3.748091810280295*^9, 3.7480918380810747`*^9}, 
-   3.748091888472113*^9, 3.7480923535832396`*^9},
+   3.748091888472113*^9, 3.7480923535832396`*^9, 3.7480931334532876`*^9},
  CellLabel->
   "During evaluation of \
-In[58]:=",ExpressionUUID->"c5c8875d-40e7-41ca-aa8f-eda4a93abaa7"],
+In[26]:=",ExpressionUUID->"5ded5978-1611-424a-b4ee-a2d07c10183d"],
 
 Cell[BoxData[
  TemplateBox[{
   "InterpolatingFunction","dmval",
    "\"Input value \\!\\(\\*RowBox[{\\\"{\\\", RowBox[{\\\"-\\\", \
 \\\"3724707600\\\"}], \\\"}\\\"}]\\) lies outside the range of data in the \
-interpolating function. Extrapolation will be used.\"",2,58,62,
-   25893407129956946621,"Local"},
+interpolating function. Extrapolation will be used.\"",2,26,6,
+   25893438200787745842,"Local"},
   "MessageTemplate"]], "Message", "MSG",
  CellChangeTimes->{
   3.7480916217774467`*^9, {3.748091810280295*^9, 3.7480918380810747`*^9}, 
-   3.748091888472113*^9, 3.7480923538032455`*^9},
+   3.748091888472113*^9, 3.7480923535832396`*^9, 3.7480931337042923`*^9},
  CellLabel->
   "During evaluation of \
-In[58]:=",ExpressionUUID->"5b485f13-f053-4ecf-9e5f-199065136946"],
+In[26]:=",ExpressionUUID->"14908a55-d517-4a09-ae17-f64dce77992c"],
 
 Cell[BoxData[
  TemplateBox[{
   "InterpolatingFunction","dmval",
    "\"Input value \\!\\(\\*RowBox[{\\\"{\\\", RowBox[{\\\"-\\\", \
 \\\"3725398800\\\"}], \\\"}\\\"}]\\) lies outside the range of data in the \
-interpolating function. Extrapolation will be used.\"",2,58,63,
-   25893407129956946621,"Local"},
+interpolating function. Extrapolation will be used.\"",2,26,7,
+   25893438200787745842,"Local"},
   "MessageTemplate"]], "Message", "MSG",
  CellChangeTimes->{
   3.7480916217774467`*^9, {3.748091810280295*^9, 3.7480918380810747`*^9}, 
-   3.748091888472113*^9, 3.7480923540332503`*^9},
+   3.748091888472113*^9, 3.7480923535832396`*^9, 3.7480931339462976`*^9},
  CellLabel->
   "During evaluation of \
-In[58]:=",ExpressionUUID->"b45339cb-9df1-425b-b795-a6e3aa3f056e"],
+In[26]:=",ExpressionUUID->"60636705-0ef6-4b26-a42c-bd313ce811fd"],
 
 Cell[BoxData[
  TemplateBox[{
   "General","stop",
    "\"Further output of \\!\\(\\*StyleBox[RowBox[{\\\"InterpolatingFunction\\\
 \", \\\"::\\\", \\\"dmval\\\"}], \\\"MessageName\\\"]\\) will be suppressed \
-during this calculation.\"",2,58,64,25893407129956946621,"Local"},
+during this calculation.\"",2,26,8,25893438200787745842,"Local"},
   "MessageTemplate"]], "Message", "MSG",
  CellChangeTimes->{
   3.7480916217774467`*^9, {3.748091810280295*^9, 3.7480918380810747`*^9}, 
-   3.748091888472113*^9, 3.7480923541132517`*^9},
+   3.748091888472113*^9, 3.7480923535832396`*^9, 3.7480931340262995`*^9},
  CellLabel->
   "During evaluation of \
-In[58]:=",ExpressionUUID->"612977cd-7229-4369-b92a-2466fddcbf7a"],
+In[26]:=",ExpressionUUID->"08ead7b0-fc6d-479c-a71e-5d9923c7efe4"],
 
 Cell[BoxData[
  RowBox[{"\[LeftAssociation]", 
   RowBox[{
-   RowBox[{
-    TemplateBox[{RowBox[{
-        StyleBox[
-        "\"Day: \"", FontColor -> GrayLevel[0.5], FontWeight -> Plain], 
-        "\"Mon 1 Jan 2018\""}],RowBox[{"DateObject", "[", 
-        RowBox[{
-          RowBox[{"{", 
-            RowBox[{"2018", ",", "1", ",", "1"}], "}"}], ",", "\"Day\"", ",", 
-          "\"Gregorian\"", ",", "\"Europe/London\""}], "]"}]},
-     "DateObject",
-     Editable->False], "\[Rule]", 
-    RowBox[{"\[LeftAssociation]", 
-     RowBox[{
-      RowBox[{"\<\"cashflows\"\>", "\[Rule]", 
-       TemplateBox[{InterpretationBox[
-          TagBox[
-           InterpretationBox[
-           "\"108\[ThinSpace]373.11\"", 108373.10537477542`, AutoDelete -> 
-            True], NumberForm[#, {Infinity, 2}, DigitBlock -> 3, 
-            NumberSeparator -> "\[ThinSpace]"]& ], 108373.10537477542`, 
-          Selectable -> False],RowBox[{
-           FormBox["\"$\"", TraditionalForm], "\[VeryThinSpace]"}],
-         "US dollars","\"USDollars\""},
-        "QuantityPrefix"]}], ",", 
-      RowBox[{"\<\"plan\"\>", "\[Rule]", 
-       RowBox[{"{", 
-        RowBox[{
-         RowBox[{"\[LeftAssociation]", 
-          RowBox[{
-           RowBox[{"\<\"Vessel\"\>", "\[Rule]", "\<\"Leissner\"\>"}], ",", 
-           
-           RowBox[{"\<\"Production\"\>", 
-            "\[Rule]", "\<\"PNG LNG Terminal Papua New Guinea\"\>"}], ",", 
-           
-           RowBox[{"\<\"Market\"\>", 
-            "\[Rule]", "\<\"Rudong Jiangsu LNG Terminal China\"\>"}]}], 
-          "\[RightAssociation]"}], ",", 
-         RowBox[{"\[LeftAssociation]", 
-          RowBox[{
-           RowBox[{"\<\"Vessel\"\>", "\[Rule]", "\<\"Tembek\"\>"}], ",", 
-           RowBox[{"\<\"Production\"\>", "\[Rule]", 
-            RowBox[{"Missing", "[", "]"}]}], ",", 
-           RowBox[{"\<\"Market\"\>", "\[Rule]", 
-            RowBox[{"Missing", "[", "]"}]}]}], "\[RightAssociation]"}], ",", 
-         RowBox[{"\[LeftAssociation]", 
-          RowBox[{
-           RowBox[{"\<\"Vessel\"\>", "\[Rule]", "\<\"TGE\"\>"}], ",", 
-           RowBox[{"\<\"Production\"\>", "\[Rule]", "\<\"Golden Pass\"\>"}], 
-           ",", 
-           
-           RowBox[{"\<\"Market\"\>", 
-            "\[Rule]", "\<\"Arun LNG Terminal and Plant Indonesia\"\>"}]}], 
-          "\[RightAssociation]"}], ",", 
-         RowBox[{"\[LeftAssociation]", 
-          RowBox[{
-           RowBox[{"\<\"Vessel\"\>", "\[Rule]", "\<\"WSD50\"\>"}], ",", 
-           RowBox[{"\<\"Production\"\>", "\[Rule]", 
-            RowBox[{"Missing", "[", "]"}]}], ",", 
-           
-           RowBox[{"\<\"Market\"\>", 
-            "\[Rule]", "\<\"Gate LNG Terminal Netherland\"\>"}]}], 
-          "\[RightAssociation]"}]}], "}"}]}]}], "\[RightAssociation]"}]}], 
-   ",", 
+   RowBox[{"\<\"cashflows\"\>", "\[Rule]", 
+    TemplateBox[{InterpretationBox[
+       TagBox[
+        InterpretationBox[
+        "\"108\[ThinSpace]373.11\"", 108373.10537477542`, AutoDelete -> True],
+         NumberForm[#, {Infinity, 2}, DigitBlock -> 3, NumberSeparator -> 
+         "\[ThinSpace]"]& ], 108373.10537477542`, Selectable -> False],RowBox[{
+        FormBox["\"$\"", TraditionalForm], "\[VeryThinSpace]"}],"US dollars",
+      "\"USDollars\""},
+     "QuantityPrefix"]}], ",", 
    RowBox[{"\<\"relevantDates\"\>", "\[Rule]", 
     RowBox[{"{", 
      RowBox[{
@@ -13394,8 +13341,217 @@ Cell[BoxData[
    3.7480906046247416`*^9}, {3.7480906415624347`*^9, 3.748090651495428*^9}, 
    3.748090692561534*^9, 3.748091448337104*^9, {3.7480915467499447`*^9, 
    3.7480915668599553`*^9}, 3.7480916221394825`*^9, {3.7480918107173386`*^9, 
-   3.7480918384811144`*^9}, 3.748091895262792*^9, 3.7480924140355625`*^9},
- CellLabel->"Out[58]=",ExpressionUUID->"6891e7a7-38cc-4e11-bad5-575914a3b165"]
+   3.7480918384811144`*^9}, 3.748091895262792*^9, 3.7480924140355625`*^9, 
+   3.7480931939256144`*^9},
+ CellLabel->"Out[26]=",ExpressionUUID->"ff159328-37f3-4da6-90fa-80ba30c08b60"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"valuationOneDay", "[", 
+   RowBox[{
+   "ds", ",", "de", ",", "\"\<Days\>\"", ",", "LNGVessels", ",", 
+    "LNGProduction", ",", "LNGMarket", ",", " ", 
+    RowBox[{"<|", "|>"}]}], "]"}], " "}]], "Input",
+ CellLabel->"In[27]:=",ExpressionUUID->"d8cbc014-95c4-406c-814a-fba4efd39d9a"],
+
+Cell[BoxData[
+ TemplateBox[{
+  "InterpolatingFunction","dmval",
+   "\"Input value \\!\\(\\*RowBox[{\\\"{\\\", RowBox[{\\\"-\\\", \
+\\\"3725398800\\\"}], \\\"}\\\"}]\\) lies outside the range of data in the \
+interpolating function. Extrapolation will be used.\"",2,27,9,
+   25893438200787745842,"Local"},
+  "MessageTemplate"]], "Message", "MSG",
+ CellChangeTimes->{3.748093994826132*^9},
+ CellLabel->
+  "During evaluation of \
+In[27]:=",ExpressionUUID->"b985cba8-774d-4544-9e37-3e850f49ffad"],
+
+Cell[BoxData[
+ TemplateBox[{
+  "InterpolatingFunction","dmval",
+   "\"Input value \\!\\(\\*RowBox[{\\\"{\\\", RowBox[{\\\"-\\\", \
+\\\"3724707600\\\"}], \\\"}\\\"}]\\) lies outside the range of data in the \
+interpolating function. Extrapolation will be used.\"",2,27,10,
+   25893438200787745842,"Local"},
+  "MessageTemplate"]], "Message", "MSG",
+ CellChangeTimes->{3.7480939949961348`*^9},
+ CellLabel->
+  "During evaluation of \
+In[27]:=",ExpressionUUID->"24ca5da7-e609-4241-af03-ae4eaf7e9fd9"],
+
+Cell[BoxData[
+ TemplateBox[{
+  "Transpose","tperm",
+   "\"Permutation \\!\\(\\*RowBox[{\\\"{\\\", \
+RowBox[{TemplateBox[List[RowBox[List[StyleBox[\\\"\\\\\\\"Day: \\\\\\\"\\\", \
+Rule[FontColor, GrayLevel[0.5`]], Rule[FontWeight, Plain]], \\\"\\\\\\\"Mon 1 \
+Jan 2018\\\\\\\"\\\"]], RowBox[List[\\\"DateObject\\\", \\\"[\\\", \
+RowBox[List[RowBox[List[\\\"{\\\", RowBox[List[\\\"2018\\\", \\\",\\\", \\\"1\
+\\\", \\\",\\\", \\\"1\\\"]], \\\"}\\\"]], \\\",\\\", \\\"\\\\\\\"Day\\\\\\\"\
+\\\", \\\",\\\", \\\"\\\\\\\"Gregorian\\\\\\\"\\\", \\\",\\\", \
+\\\"\\\\\\\"Europe/London\\\\\\\"\\\"]], \\\"]\\\"]]], \\\"DateObject\\\", \
+Rule[Editable, False]], \\\",\\\", TemplateBox[List[RowBox[List[StyleBox[\\\"\
+\\\\\\\"Day: \\\\\\\"\\\", Rule[FontColor, GrayLevel[0.5`]], Rule[FontWeight, \
+Plain]], \\\"\\\\\\\"Mon 15 Jan 2018\\\\\\\"\\\"]], \
+RowBox[List[\\\"DateObject\\\", \\\"[\\\", RowBox[List[RowBox[List[\\\"{\\\", \
+RowBox[List[\\\"2018\\\", \\\",\\\", \\\"1\\\", \\\",\\\", \\\"15\\\"]], \
+\\\"}\\\"]], \\\",\\\", \\\"\\\\\\\"Day\\\\\\\"\\\", \\\",\\\", \
+\\\"\\\\\\\"Gregorian\\\\\\\"\\\", \\\",\\\", \\\"\\\\\\\"Europe/London\\\\\\\
+\"\\\"]], \\\"]\\\"]]], \\\"DateObject\\\", Rule[Editable, False]], \
+\\\",\\\", TemplateBox[List[RowBox[List[StyleBox[\\\"\\\\\\\"Day: \
+\\\\\\\"\\\", Rule[FontColor, GrayLevel[0.5`]], Rule[FontWeight, Plain]], \
+\\\"\\\\\\\"Tue 20 Feb 2018\\\\\\\"\\\"]], RowBox[List[\\\"DateObject\\\", \\\
+\"[\\\", RowBox[List[RowBox[List[\\\"{\\\", RowBox[List[\\\"2018\\\", \\\",\\\
+\", \\\"2\\\", \\\",\\\", \\\"20\\\"]], \\\"}\\\"]], \\\",\\\", \
+\\\"\\\\\\\"Day\\\\\\\"\\\", \\\",\\\", \\\"\\\\\\\"Gregorian\\\\\\\"\\\", \\\
+\",\\\", \\\"\\\\\\\"Europe/London\\\\\\\"\\\"]], \\\"]\\\"]]], \
+\\\"DateObject\\\", Rule[Editable, False]], \\\",\\\", \
+TemplateBox[List[RowBox[List[StyleBox[\\\"\\\\\\\"Day: \\\\\\\"\\\", \
+Rule[FontColor, GrayLevel[0.5`]], Rule[FontWeight, Plain]], \\\"\\\\\\\"Wed \
+21 Feb 2018\\\\\\\"\\\"]], RowBox[List[\\\"DateObject\\\", \\\"[\\\", \
+RowBox[List[RowBox[List[\\\"{\\\", RowBox[List[\\\"2018\\\", \\\",\\\", \\\"2\
+\\\", \\\",\\\", \\\"21\\\"]], \\\"}\\\"]], \\\",\\\", \
+\\\"\\\\\\\"Day\\\\\\\"\\\", \\\",\\\", \\\"\\\\\\\"Gregorian\\\\\\\"\\\", \\\
+\",\\\", \\\"\\\\\\\"Europe/London\\\\\\\"\\\"]], \\\"]\\\"]]], \
+\\\"DateObject\\\", Rule[Editable, False]]}], \\\"}\\\"}]\\) is longer than \
+the dimensions \\!\\(\\*RowBox[{\\\"{\\\", \\\"4\\\", \\\"}\\\"}]\\) of the \
+expression.\"",2,27,11,25893438200787745842,"Local"},
+  "MessageTemplate"]], "Message", "MSG",
+ CellChangeTimes->{3.74809399524614*^9},
+ CellLabel->
+  "During evaluation of \
+In[27]:=",ExpressionUUID->"1fc8391c-1778-46e6-8b75-c41fc0c33026"],
+
+Cell[BoxData[
+ TemplateBox[{
+  "Transpose","tperm",
+   "\"Permutation \\!\\(\\*RowBox[{\\\"{\\\", \
+RowBox[{TemplateBox[List[RowBox[List[StyleBox[\\\"\\\\\\\"Day: \\\\\\\"\\\", \
+Rule[FontColor, GrayLevel[0.5`]], Rule[FontWeight, Plain]], \\\"\\\\\\\"Mon 1 \
+Jan 2018\\\\\\\"\\\"]], RowBox[List[\\\"DateObject\\\", \\\"[\\\", \
+RowBox[List[RowBox[List[\\\"{\\\", RowBox[List[\\\"2018\\\", \\\",\\\", \\\"1\
+\\\", \\\",\\\", \\\"1\\\"]], \\\"}\\\"]], \\\",\\\", \\\"\\\\\\\"Day\\\\\\\"\
+\\\", \\\",\\\", \\\"\\\\\\\"Gregorian\\\\\\\"\\\", \\\",\\\", \
+\\\"\\\\\\\"Europe/London\\\\\\\"\\\"]], \\\"]\\\"]]], \\\"DateObject\\\", \
+Rule[Editable, False]], \\\",\\\", TemplateBox[List[RowBox[List[StyleBox[\\\"\
+\\\\\\\"Day: \\\\\\\"\\\", Rule[FontColor, GrayLevel[0.5`]], Rule[FontWeight, \
+Plain]], \\\"\\\\\\\"Mon 15 Jan 2018\\\\\\\"\\\"]], \
+RowBox[List[\\\"DateObject\\\", \\\"[\\\", RowBox[List[RowBox[List[\\\"{\\\", \
+RowBox[List[\\\"2018\\\", \\\",\\\", \\\"1\\\", \\\",\\\", \\\"15\\\"]], \
+\\\"}\\\"]], \\\",\\\", \\\"\\\\\\\"Day\\\\\\\"\\\", \\\",\\\", \
+\\\"\\\\\\\"Gregorian\\\\\\\"\\\", \\\",\\\", \\\"\\\\\\\"Europe/London\\\\\\\
+\"\\\"]], \\\"]\\\"]]], \\\"DateObject\\\", Rule[Editable, False]], \
+\\\",\\\", TemplateBox[List[RowBox[List[StyleBox[\\\"\\\\\\\"Day: \
+\\\\\\\"\\\", Rule[FontColor, GrayLevel[0.5`]], Rule[FontWeight, Plain]], \
+\\\"\\\\\\\"Tue 20 Feb 2018\\\\\\\"\\\"]], RowBox[List[\\\"DateObject\\\", \\\
+\"[\\\", RowBox[List[RowBox[List[\\\"{\\\", RowBox[List[\\\"2018\\\", \\\",\\\
+\", \\\"2\\\", \\\",\\\", \\\"20\\\"]], \\\"}\\\"]], \\\",\\\", \
+\\\"\\\\\\\"Day\\\\\\\"\\\", \\\",\\\", \\\"\\\\\\\"Gregorian\\\\\\\"\\\", \\\
+\",\\\", \\\"\\\\\\\"Europe/London\\\\\\\"\\\"]], \\\"]\\\"]]], \
+\\\"DateObject\\\", Rule[Editable, False]], \\\",\\\", \
+TemplateBox[List[RowBox[List[StyleBox[\\\"\\\\\\\"Day: \\\\\\\"\\\", \
+Rule[FontColor, GrayLevel[0.5`]], Rule[FontWeight, Plain]], \\\"\\\\\\\"Wed \
+21 Feb 2018\\\\\\\"\\\"]], RowBox[List[\\\"DateObject\\\", \\\"[\\\", \
+RowBox[List[RowBox[List[\\\"{\\\", RowBox[List[\\\"2018\\\", \\\",\\\", \\\"2\
+\\\", \\\",\\\", \\\"21\\\"]], \\\"}\\\"]], \\\",\\\", \
+\\\"\\\\\\\"Day\\\\\\\"\\\", \\\",\\\", \\\"\\\\\\\"Gregorian\\\\\\\"\\\", \\\
+\",\\\", \\\"\\\\\\\"Europe/London\\\\\\\"\\\"]], \\\"]\\\"]]], \
+\\\"DateObject\\\", Rule[Editable, False]]}], \\\"}\\\"}]\\) is longer than \
+the dimensions \\!\\(\\*RowBox[{\\\"{\\\", \\\"4\\\", \\\"}\\\"}]\\) of the \
+expression.\"",2,27,12,25893438200787745842,"Local"},
+  "MessageTemplate"]], "Message", "MSG",
+ CellChangeTimes->{3.748093995356142*^9},
+ CellLabel->
+  "During evaluation of \
+In[27]:=",ExpressionUUID->"e2890828-6995-4740-879e-bc87e86018b7"],
+
+Cell[BoxData[
+ TemplateBox[{
+  "Transpose","tperm",
+   "\"Permutation \\!\\(\\*RowBox[{\\\"{\\\", \
+RowBox[{TemplateBox[List[RowBox[List[StyleBox[\\\"\\\\\\\"Day: \\\\\\\"\\\", \
+Rule[FontColor, GrayLevel[0.5`]], Rule[FontWeight, Plain]], \\\"\\\\\\\"Mon 1 \
+Jan 2018\\\\\\\"\\\"]], RowBox[List[\\\"DateObject\\\", \\\"[\\\", \
+RowBox[List[RowBox[List[\\\"{\\\", RowBox[List[\\\"2018\\\", \\\",\\\", \\\"1\
+\\\", \\\",\\\", \\\"1\\\"]], \\\"}\\\"]], \\\",\\\", \\\"\\\\\\\"Day\\\\\\\"\
+\\\", \\\",\\\", \\\"\\\\\\\"Gregorian\\\\\\\"\\\", \\\",\\\", \
+\\\"\\\\\\\"Europe/London\\\\\\\"\\\"]], \\\"]\\\"]]], \\\"DateObject\\\", \
+Rule[Editable, False]], \\\",\\\", TemplateBox[List[RowBox[List[StyleBox[\\\"\
+\\\\\\\"Day: \\\\\\\"\\\", Rule[FontColor, GrayLevel[0.5`]], Rule[FontWeight, \
+Plain]], \\\"\\\\\\\"Mon 15 Jan 2018\\\\\\\"\\\"]], \
+RowBox[List[\\\"DateObject\\\", \\\"[\\\", RowBox[List[RowBox[List[\\\"{\\\", \
+RowBox[List[\\\"2018\\\", \\\",\\\", \\\"1\\\", \\\",\\\", \\\"15\\\"]], \
+\\\"}\\\"]], \\\",\\\", \\\"\\\\\\\"Day\\\\\\\"\\\", \\\",\\\", \
+\\\"\\\\\\\"Gregorian\\\\\\\"\\\", \\\",\\\", \\\"\\\\\\\"Europe/London\\\\\\\
+\"\\\"]], \\\"]\\\"]]], \\\"DateObject\\\", Rule[Editable, False]], \
+\\\",\\\", TemplateBox[List[RowBox[List[StyleBox[\\\"\\\\\\\"Day: \
+\\\\\\\"\\\", Rule[FontColor, GrayLevel[0.5`]], Rule[FontWeight, Plain]], \
+\\\"\\\\\\\"Tue 20 Feb 2018\\\\\\\"\\\"]], RowBox[List[\\\"DateObject\\\", \\\
+\"[\\\", RowBox[List[RowBox[List[\\\"{\\\", RowBox[List[\\\"2018\\\", \\\",\\\
+\", \\\"2\\\", \\\",\\\", \\\"20\\\"]], \\\"}\\\"]], \\\",\\\", \
+\\\"\\\\\\\"Day\\\\\\\"\\\", \\\",\\\", \\\"\\\\\\\"Gregorian\\\\\\\"\\\", \\\
+\",\\\", \\\"\\\\\\\"Europe/London\\\\\\\"\\\"]], \\\"]\\\"]]], \
+\\\"DateObject\\\", Rule[Editable, False]], \\\",\\\", \
+TemplateBox[List[RowBox[List[StyleBox[\\\"\\\\\\\"Day: \\\\\\\"\\\", \
+Rule[FontColor, GrayLevel[0.5`]], Rule[FontWeight, Plain]], \\\"\\\\\\\"Wed \
+21 Feb 2018\\\\\\\"\\\"]], RowBox[List[\\\"DateObject\\\", \\\"[\\\", \
+RowBox[List[RowBox[List[\\\"{\\\", RowBox[List[\\\"2018\\\", \\\",\\\", \\\"2\
+\\\", \\\",\\\", \\\"21\\\"]], \\\"}\\\"]], \\\",\\\", \
+\\\"\\\\\\\"Day\\\\\\\"\\\", \\\",\\\", \\\"\\\\\\\"Gregorian\\\\\\\"\\\", \\\
+\",\\\", \\\"\\\\\\\"Europe/London\\\\\\\"\\\"]], \\\"]\\\"]]], \
+\\\"DateObject\\\", Rule[Editable, False]]}], \\\"}\\\"}]\\) is longer than \
+the dimensions \\!\\(\\*RowBox[{\\\"{\\\", \\\"4\\\", \\\"}\\\"}]\\) of the \
+expression.\"",2,27,13,25893438200787745842,"Local"},
+  "MessageTemplate"]], "Message", "MSG",
+ CellChangeTimes->{3.7480939954761443`*^9},
+ CellLabel->
+  "During evaluation of \
+In[27]:=",ExpressionUUID->"3a2f2591-e079-47a6-82cf-928e131bcaaf"],
+
+Cell[BoxData[
+ TemplateBox[{
+  "General","stop",
+   "\"Further output of \\!\\(\\*StyleBox[RowBox[{\\\"Transpose\\\", \\\"::\\\
+\", \\\"tperm\\\"}], \\\"MessageName\\\"]\\) will be suppressed during this \
+calculation.\"",2,27,14,25893438200787745842,"Local"},
+  "MessageTemplate"]], "Message", "MSG",
+ CellChangeTimes->{3.748093995516145*^9},
+ CellLabel->
+  "During evaluation of \
+In[27]:=",ExpressionUUID->"2f4f580b-edd0-4891-8f91-0a2743f8776e"],
+
+Cell[BoxData[
+ TemplateBox[{
+  "InterpolatingFunction","dmval",
+   "\"Input value \\!\\(\\*RowBox[{\\\"{\\\", RowBox[{\\\"-\\\", \
+\\\"3725398800\\\"}], \\\"}\\\"}]\\) lies outside the range of data in the \
+interpolating function. Extrapolation will be used.\"",2,27,15,
+   25893438200787745842,"Local"},
+  "MessageTemplate"]], "Message", "MSG",
+ CellChangeTimes->{3.7480939956861486`*^9},
+ CellLabel->
+  "During evaluation of \
+In[27]:=",ExpressionUUID->"ab613437-03df-427d-bf2b-2f52e062a12a"],
+
+Cell[BoxData[
+ TemplateBox[{
+  "General","stop",
+   "\"Further output of \\!\\(\\*StyleBox[RowBox[{\\\"InterpolatingFunction\\\
+\", \\\"::\\\", \\\"dmval\\\"}], \\\"MessageName\\\"]\\) will be suppressed \
+during this calculation.\"",2,27,16,25893438200787745842,"Local"},
+  "MessageTemplate"]], "Message", "MSG",
+ CellChangeTimes->{3.7480939957861533`*^9},
+ CellLabel->
+  "During evaluation of \
+In[27]:=",ExpressionUUID->"bc57b2bb-ce26-4ea6-8138-b7611b4dcbde"],
+
+Cell[BoxData["$Aborted"], "Output",
+ CellChangeTimes->{3.748094003766329*^9},
+ CellLabel->"Out[27]=",ExpressionUUID->"cfda310c-a55f-474c-8d58-c1115379fb42"]
 }, Open  ]]
 }, Open  ]],
 
@@ -35376,52 +35532,64 @@ Cell[585086, 13199, 297, 5, 32, "Output",ExpressionUUID->"5b8a1aa1-0369-498e-acc
 }, Open  ]],
 Cell[CellGroupData[{
 Cell[585420, 13209, 483, 10, 28, "Input",ExpressionUUID->"04627f38-3d07-4d25-9acf-a1fd0af9e8d1"],
-Cell[585906, 13221, 596, 13, 21, "Message",ExpressionUUID->"c5c8875d-40e7-41ca-aa8f-eda4a93abaa7"],
-Cell[586505, 13236, 596, 13, 21, "Message",ExpressionUUID->"5b485f13-f053-4ecf-9e5f-199065136946"],
-Cell[587104, 13251, 596, 13, 21, "Message",ExpressionUUID->"b45339cb-9df1-425b-b795-a6e3aa3f056e"],
-Cell[587703, 13266, 563, 12, 21, "Message",ExpressionUUID->"612977cd-7229-4369-b92a-2466fddcbf7a"],
-Cell[588269, 13280, 5226, 117, 142, "Output",ExpressionUUID->"6891e7a7-38cc-4e11-bad5-575914a3b165"]
+Cell[585906, 13221, 619, 13, 21, "Message",ExpressionUUID->"5ded5978-1611-424a-b4ee-a2d07c10183d"],
+Cell[586528, 13236, 619, 13, 21, "Message",ExpressionUUID->"14908a55-d517-4a09-ae17-f64dce77992c"],
+Cell[587150, 13251, 619, 13, 21, "Message",ExpressionUUID->"60636705-0ef6-4b26-a42c-bd313ce811fd"],
+Cell[587772, 13266, 586, 12, 21, "Message",ExpressionUUID->"08ead7b0-fc6d-479c-a71e-5d9923c7efe4"],
+Cell[588361, 13280, 3033, 65, 45, "Output",ExpressionUUID->"ff159328-37f3-4da6-90fa-80ba30c08b60"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[591431, 13350, 317, 7, 28, "Input",ExpressionUUID->"d8cbc014-95c4-406c-814a-fba4efd39d9a"],
+Cell[591751, 13359, 492, 11, 21, "Message",ExpressionUUID->"b985cba8-774d-4544-9e37-3e850f49ffad"],
+Cell[592246, 13372, 495, 11, 21, "Message",ExpressionUUID->"24ca5da7-e609-4241-af03-ae4eaf7e9fd9"],
+Cell[592744, 13385, 2679, 41, 51, "Message",ExpressionUUID->"1fc8391c-1778-46e6-8b75-c41fc0c33026"],
+Cell[595426, 13428, 2680, 41, 51, "Message",ExpressionUUID->"e2890828-6995-4740-879e-bc87e86018b7"],
+Cell[598109, 13471, 2682, 41, 51, "Message",ExpressionUUID->"3a2f2591-e079-47a6-82cf-928e131bcaaf"],
+Cell[600794, 13514, 448, 10, 21, "Message",ExpressionUUID->"2f4f580b-edd0-4891-8f91-0a2743f8776e"],
+Cell[601245, 13526, 495, 11, 21, "Message",ExpressionUUID->"ab613437-03df-427d-bf2b-2f52e062a12a"],
+Cell[601743, 13539, 462, 10, 21, "Message",ExpressionUUID->"bc57b2bb-ce26-4ea6-8138-b7611b4dcbde"],
+Cell[602208, 13551, 156, 2, 32, "Output",ExpressionUUID->"cfda310c-a55f-474c-8d58-c1115379fb42"]
 }, Open  ]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[593544, 13403, 151, 3, 67, "Section",ExpressionUUID->"0f7c9409-870e-4206-937b-f7380c5efefd"],
+Cell[602413, 13559, 151, 3, 67, "Section",ExpressionUUID->"0f7c9409-870e-4206-937b-f7380c5efefd"],
 Cell[CellGroupData[{
-Cell[593720, 13410, 182, 3, 53, "Subsection",ExpressionUUID->"c3784527-4a9a-4494-820d-42ed967d1c57"],
-Cell[593905, 13415, 230, 6, 34, "Text",ExpressionUUID->"b29860b6-17f6-473d-9b6c-39b9eaba6801"],
+Cell[602589, 13566, 182, 3, 53, "Subsection",ExpressionUUID->"c3784527-4a9a-4494-820d-42ed967d1c57"],
+Cell[602774, 13571, 230, 6, 34, "Text",ExpressionUUID->"b29860b6-17f6-473d-9b6c-39b9eaba6801"],
 Cell[CellGroupData[{
-Cell[594160, 13425, 490, 14, 28, "Input",ExpressionUUID->"ec71adcc-a90b-4675-9463-ac7ebc1845cb"],
-Cell[594653, 13441, 750, 14, 21, "Message",ExpressionUUID->"6a945acc-67a2-4ffb-8742-ec8802380023"],
-Cell[595406, 13457, 138, 3, 32, "Output",ExpressionUUID->"643ba7cc-9363-43d4-8eb3-f675dd9aea8f"]
+Cell[603029, 13581, 490, 14, 28, "Input",ExpressionUUID->"ec71adcc-a90b-4675-9463-ac7ebc1845cb"],
+Cell[603522, 13597, 750, 14, 21, "Message",ExpressionUUID->"6a945acc-67a2-4ffb-8742-ec8802380023"],
+Cell[604275, 13613, 138, 3, 32, "Output",ExpressionUUID->"643ba7cc-9363-43d4-8eb3-f675dd9aea8f"]
 }, Open  ]],
-Cell[595559, 13463, 609, 16, 28, "Input",ExpressionUUID->"2de38633-3c10-48f8-9a24-0ec4d79c9316"],
+Cell[604428, 13619, 609, 16, 28, "Input",ExpressionUUID->"2de38633-3c10-48f8-9a24-0ec4d79c9316"],
 Cell[CellGroupData[{
-Cell[596193, 13483, 654, 17, 28, "Input",ExpressionUUID->"a777e697-9fe5-40d9-ba1b-a053e864329d"],
-Cell[596850, 13502, 895014, 16201, 124, "Output",ExpressionUUID->"48dc5c24-1b67-43be-826a-f3f831bda758"]
+Cell[605062, 13639, 654, 17, 28, "Input",ExpressionUUID->"a777e697-9fe5-40d9-ba1b-a053e864329d"],
+Cell[605719, 13658, 895014, 16201, 124, "Output",ExpressionUUID->"48dc5c24-1b67-43be-826a-f3f831bda758"]
 }, Open  ]],
-Cell[1491879, 29706, 1459, 32, 40, "Input",ExpressionUUID->"f48106b8-e58a-4d63-b2df-22021ba219ad"],
+Cell[1500748, 29862, 1459, 32, 40, "Input",ExpressionUUID->"f48106b8-e58a-4d63-b2df-22021ba219ad"],
 Cell[CellGroupData[{
-Cell[1493363, 29742, 392, 9, 28, "Input",ExpressionUUID->"fa38bf8b-e55c-4129-be1f-f607288b7673"],
-Cell[1493758, 29753, 133682, 2229, 102, "Output",ExpressionUUID->"bcfd79fa-5f39-4d7a-a298-84690a6187da"]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[1627477, 31987, 171, 3, 28, "Input",ExpressionUUID->"05263ecb-ce18-47fd-84dc-edef146dacf5"],
-Cell[1627651, 31992, 329, 7, 45, "Output",ExpressionUUID->"430dda6a-ede0-47c4-beeb-3cb376df772d"]
+Cell[1502232, 29898, 392, 9, 28, "Input",ExpressionUUID->"fa38bf8b-e55c-4129-be1f-f607288b7673"],
+Cell[1502627, 29909, 133682, 2229, 102, "Output",ExpressionUUID->"bcfd79fa-5f39-4d7a-a298-84690a6187da"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[1628017, 32004, 8573, 160, 272, "Input",ExpressionUUID->"35d0631d-7ce9-44c2-a257-0a5456d8f9e7"],
-Cell[1636593, 32166, 8304, 158, 177, "Output",ExpressionUUID->"26965442-6c5a-409b-b288-24383d43a689"]
+Cell[1636346, 32143, 171, 3, 28, "Input",ExpressionUUID->"05263ecb-ce18-47fd-84dc-edef146dacf5"],
+Cell[1636520, 32148, 329, 7, 45, "Output",ExpressionUUID->"430dda6a-ede0-47c4-beeb-3cb376df772d"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[1644934, 32329, 392, 9, 28, "Input",ExpressionUUID->"9a6522b2-40a2-44d4-a2c4-e3a796a5de07"],
-Cell[1645329, 32340, 133758, 2230, 102, "Output",ExpressionUUID->"28b430c7-dc5a-4680-8fb2-c5553f3500bb"]
+Cell[1636886, 32160, 8573, 160, 272, "Input",ExpressionUUID->"35d0631d-7ce9-44c2-a257-0a5456d8f9e7"],
+Cell[1645462, 32322, 8304, 158, 177, "Output",ExpressionUUID->"26965442-6c5a-409b-b288-24383d43a689"]
 }, Open  ]],
-Cell[1779102, 34573, 456, 12, 28, "Input",ExpressionUUID->"4aa9cc66-cd8d-473c-9315-6bf2649107ae"],
-Cell[1779561, 34587, 982, 28, 28, "Input",ExpressionUUID->"b2771b8b-eb1b-4473-a6e1-2e4731465b3b"],
-Cell[1780546, 34617, 527, 13, 28, "Input",ExpressionUUID->"43f076c4-7981-46ff-9650-ca55ef1031ed"],
-Cell[1781076, 34632, 198, 4, 28, "Input",ExpressionUUID->"68c736db-e7f9-4576-9656-9d8f03d5e839"],
 Cell[CellGroupData[{
-Cell[1781299, 34640, 991, 24, 86, "Input",ExpressionUUID->"09cfd17b-d085-4eea-96f5-accd257fd7b6"],
-Cell[1782293, 34666, 23814, 460, 474, "Output",ExpressionUUID->"507ced51-58af-43b1-973c-e3d43189a47e"]
+Cell[1653803, 32485, 392, 9, 28, "Input",ExpressionUUID->"9a6522b2-40a2-44d4-a2c4-e3a796a5de07"],
+Cell[1654198, 32496, 133758, 2230, 102, "Output",ExpressionUUID->"28b430c7-dc5a-4680-8fb2-c5553f3500bb"]
+}, Open  ]],
+Cell[1787971, 34729, 456, 12, 28, "Input",ExpressionUUID->"4aa9cc66-cd8d-473c-9315-6bf2649107ae"],
+Cell[1788430, 34743, 982, 28, 28, "Input",ExpressionUUID->"b2771b8b-eb1b-4473-a6e1-2e4731465b3b"],
+Cell[1789415, 34773, 527, 13, 28, "Input",ExpressionUUID->"43f076c4-7981-46ff-9650-ca55ef1031ed"],
+Cell[1789945, 34788, 198, 4, 28, "Input",ExpressionUUID->"68c736db-e7f9-4576-9656-9d8f03d5e839"],
+Cell[CellGroupData[{
+Cell[1790168, 34796, 991, 24, 86, "Input",ExpressionUUID->"09cfd17b-d085-4eea-96f5-accd257fd7b6"],
+Cell[1791162, 34822, 23814, 460, 474, "Output",ExpressionUUID->"507ced51-58af-43b1-973c-e3d43189a47e"]
 }, Open  ]]
 }, Closed]]
 }, Closed]]

@@ -238,12 +238,16 @@ cashflowTrip[v_, p_, m_, updateQ_, day_, endDay_, granularity_] :=
         <|"cashflows" -> cashflow, "tripCompletionDate" -> (day + toLoadTripTime + loadingTime + toDischargeTripTime + dischargingTime)|>
     ]
 
-cashflowPlan[plan_List, updateQ_, startDay_, endDay_, granularity_] :=
+cashflowPlan[plan_List, updateQ_, startDay_, endDay_, granularity_, returnDatesQ_] :=
     Module[ {local, cashflow, relevantDates},
         local = cashflowTrip[Sequence @@ #, updateQ, startDay, endDay, granularity] & /@ plan;
         cashflow = Total[#["cashflows"] & /@ local];
         relevantDates = Sort[#["tripCompletionDate"] & /@ local];
-        <|"cashflows" -> cashflow, "relevantDates" -> relevantDates|>
+        (*relevantDates = Transpose[plan, Sort[#["tripCompletionDate"] & /@ local]];*)
+        If[ returnDatesQ,
+            <|"cashflows" -> cashflow, "relevantDates" -> Transpose[{plan, #["tripCompletionDate"] & /@ local}]|>,
+            <|"cashflows" -> cashflow|>
+        ]
     ]
 
 
@@ -260,7 +264,6 @@ possiblePlans[v_, p_, m_] :=
             Permutations[<|"Market" -> #|> & /@ lM], 1, 1], 1]) // DeleteDuplicates;
         decisions
     ]
-(*possibleDecisions[v_, p_, m_] := Tuples[{v, Union[p, {Missing[]}], Union[m, {Missing[]}]}]*)
 
 
 plotPlan[plan_List] :=
@@ -321,9 +324,9 @@ valuationOneDay[valuationDate_, pEnd_, granularity_, vessel_, production_, marke
         $vessel = vessel;
         $production = $productionLocal;
         $market = $marketLocal;
-        optimalPlan = First[plans[[Ordering[cashflowPlan[#, False, valuationDate, pEnd, granularity] & /@ plans, -1]]]];
-        cashflow = cashflowPlan[Values[optimalPlan], True, valuationDate, pEnd, granularity];
-        relevantDates = cashflow["relevantDates"];
+        optimalPlan = First[plans[[Ordering[cashflowPlan[#, False, valuationDate, pEnd, granularity, False] & /@ plans, -1]]]];
+        cashflow = cashflowPlan[Values[optimalPlan], True, valuationDate, pEnd, granularity, True];
+        (*relevantDates = cashflow["relevantDates"];
         
         (* Update states *)
         
@@ -331,7 +334,7 @@ valuationOneDay[valuationDate_, pEnd_, granularity_, vessel_, production_, marke
         output = Join[log, <|valuationDate -> <|"cashflows" -> cashflow["cashflows"], 
                                                 "plan" -> optimalPlan|>, 
                                                 "relevantDates" -> relevantDates|>];
-        output
+        output*) cashflow
         
     ]
 
@@ -343,6 +346,7 @@ valuationOneDay[valuationDate_, pEnd_, granularity_, vessel_, production_, marke
 (* Market storage capacity: what to do with it ? Can it be useful and how ? *)
 (* Status: update production/vessel after decision *)
 (* Status: clarify strategy and implementation: flag for busy/available vessel ? *)
+(* Status: include trips in relevant dates *)
 
 End[];
 
