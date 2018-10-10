@@ -16,6 +16,7 @@ makeRandomForwardCurve::usage
 makeProductionInventory::usage
 possibleDecisions::usage
 plotPlan::usage
+availableAssets::usage
 
 Begin["`Private`"]
 (* Implementation of the package *)
@@ -285,23 +286,38 @@ plotPlan[plan_List] :=
     ]
 
 
+availableAssets[date_] :=
+    Module[ {aux = Select[$states, #Date <= date &][-1], local},
+    	local = Cases[aux // Normal // Normal, Rule[k_, 1] :> k];
+    	{Select[local, MemberQ[Keys[$vessel], #] &], 
+    	 Select[local, MemberQ[Keys[$production], #] &],
+         Select[local, MemberQ[Keys[$market], #] &]
+        }
+    ]
+
+
 valuation[pStart_, pEnd_, granularity_, vessel_, production_, market_] :=
-    Module[ {timeSteps, day, local, log=Association[], decisions, optimalDecision, cashflow},
+    Module[ {aux, timeSteps, day, local, log = Association[]},
         (* pEnd should be inclusive, but see:  
         https://mathematica.stackexchange.com/questions/167731/different-behaviour-of-daterange-between-11-2-and-11-3 *)
         timeSteps = DateRange[DatePlus[pStart, granularity], pEnd, granularity];
-        (*SeedRandom[123];
-        $production = Map[Function[asso, Association[KeyValueMap[
-        	If[#1 == "Price", 
-        	  #1 -> makeRandomForwardCurve[timeSteps, RandomReal[{1, 5}], RandomReal[{0.2, 1.2}]], 
-        	  #1 -> #2 ] &, asso]]][#] &, $production];
-        $market = Map[Function[asso, Association[KeyValueMap[
-        	If[#1 == "Price", 
-        	  #1 -> makeRandomForwardCurve[timeSteps, RandomReal[{1, 5}], RandomReal[{0.2, 1.2}]], 
-        	  #1 -> #2 ] &, asso]]][#] &, $market];    *)
+        $states = Dataset[{Join[<|"Date" -> pStart|>,
+        	               AssociationThread[Keys[vessel] -> 1],
+        	               AssociationThread[Keys[production] -> 1],
+        	               AssociationThread[Keys[market] -> 1]]
+        	              }
+        	             ];
         day = pStart;
-        local = valuationOneDay[day, pEnd, granularity, vessel, production, market, log]
+        log = <||>;
+        (* Start of While loop here *)
+        (* While[day < pEnd, *)
         
+        aux = availableAssets[day];
+        vessel = vessel[[aux[[1]]]];
+        production = production[[aux[[2]]]];
+        market = market[[aux[[3]]]];
+        
+        local = valuationOneDay[day, pEnd, granularity, vessel, production, market, log]
     ]
 
 
@@ -326,7 +342,7 @@ valuationOneDay[valuationDate_, pEnd_, granularity_, vessel_, production_, marke
         $market = $marketLocal;
         optimalPlan = First[plans[[Ordering[cashflowPlan[#, False, valuationDate, pEnd, granularity, False] & /@ plans, -1]]]];
         cashflow = cashflowPlan[Values[optimalPlan], True, valuationDate, pEnd, granularity, True];
-        (*relevantDates = cashflow["relevantDates"];
+        relevantDates = cashflow["relevantDates"];
         
         (* Update states *)
         
@@ -334,8 +350,7 @@ valuationOneDay[valuationDate_, pEnd_, granularity_, vessel_, production_, marke
         output = Join[log, <|valuationDate -> <|"cashflows" -> cashflow["cashflows"], 
                                                 "plan" -> optimalPlan|>, 
                                                 "relevantDates" -> relevantDates|>];
-        output*) cashflow
-        
+        output   
     ]
 
 
