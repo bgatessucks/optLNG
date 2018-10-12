@@ -30,7 +30,9 @@
   - What to do with terminal capacity for markets ? Zero it after vessel unloading ?
   - Boil-off of empty vessel ?
   - Add `Missing[]` when making list of possible plans ?
-  - Need to update the status of each component of a trip/plan as soon as its role has completed
+  - Need to update the status of each component of a trip/plan as soon as its role has completed.
+  - Need to integrate possible plans and $states.
+  - Order of possible trips is also important.
 
 ## States
 

@@ -301,23 +301,24 @@ valuation[pStart_, pEnd_, granularity_, vessel_, production_, market_] :=
         (* pEnd should be inclusive, but see:  
         https://mathematica.stackexchange.com/questions/167731/different-behaviour-of-daterange-between-11-2-and-11-3 *)
         timeSteps = DateRange[DatePlus[pStart, granularity], pEnd, granularity];
-        $states = Dataset[{Join[<|"Date" -> pStart|>,
-        	               AssociationThread[Keys[vessel] -> 1],
-        	               AssociationThread[Keys[production] -> 1],
-        	               AssociationThread[Keys[market] -> 1]]
-        	              }
-        	             ];
+        $states = Dataset[{
+            Join[<|"Date" -> pStart|>, 
+                 AssociationThread[Keys[vessel] -> 1], 
+                 AssociationThread[Keys[production] -> 1], 
+                 AssociationThread[Keys[market] -> 1]
+                ]
+        }];
         day = pStart;
         log = <||>;
-        (* Start of While loop here *)
-        (* While[day < pEnd, *)
         
-        aux = availableAssets[day];
-        vessel = vessel[[aux[[1]]]];
-        production = production[[aux[[2]]]];
-        market = market[[aux[[3]]]];
-        
-        local = valuationOneDay[day, pEnd, granularity, vessel, production, market, log]
+        While[day < pEnd,
+        	  aux = availableAssets[day];
+   	          vessel = vessel[[aux[[1]]]];
+   	          (*production = production[[aux[[2]]]];
+   	          market = market[[aux[[3]]]];*)
+   	          local = valuationOneDay[day, pEnd, granularity, vessel, production, market, log];
+   	          day = pEnd;
+        ]
     ]
 
 
@@ -337,6 +338,9 @@ valuationOneDay[valuationDate_, pEnd_, granularity_, vessel_, production_, marke
                 #1 -> #2
             ] &, asso]]][#] &, market];
         plans = possiblePlans[Normal[Keys[vessel]], Normal[Keys[$productionLocal]], Normal[Keys[$marketLocal]]];
+        (* Filter the possible plans to keep only the ones which can be completed *)
+        
+        
         $vessel = vessel;
         $production = $productionLocal;
         $market = $marketLocal;
