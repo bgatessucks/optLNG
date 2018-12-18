@@ -33,6 +33,11 @@
   - Need to update the status of each component of a trip/plan as soon as its role has completed.
   - Need to integrate possible plans and $states.
   - Order of possible trips is also important.
+  - Criteria to define a trip acceptable:
+
+      - vessel available;
+      - production available by the time vessel reaches it;
+      - market available by the time vessel reaches it.
 
 ## States
 

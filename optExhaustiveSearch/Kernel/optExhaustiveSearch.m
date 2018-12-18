@@ -31,6 +31,7 @@ tz = "Europe/London";
 vDate = DateObject[{2018, 1, 1}, TimeObject[{0, 0, 0}], CalendarType -> calType, TimeZone -> tz];
 periodStart = DateObject[{2017, 1, 1}, TimeObject[{0, 0, 0}], CalendarType -> calType, TimeZone -> tz];
 periodEnd = DateObject[{2019, 1, 1}, TimeObject[{0, 0, 0}], CalendarType -> calType, TimeZone -> tz];
+$granularity = "Day";
 
 $vesselSpec =
     <|
@@ -107,12 +108,13 @@ $terminalSpec =
         "Price" -> Quantity[3.9 , "USDollars" / ("Meters")^3]|>
     |>;    
     
-
-$states = <|"Date" -> DateObject[{2018, 1, 1}, TimeObject[{0, 0, 0}], CalendarType -> calType, TimeZone -> tz], 
-            "Vessel" -> <||>,
-            "Production" -> <||>, 
-            "Market" -> <||>
-          |>;
+ 
+$states = Module[ {init, dr},
+              init = AssociationThread[
+                Flatten[{Keys[$vesselSpec], Keys[$terminalSpec]}] ->  ConstantArray[1, Length[Keys[$vesselSpec]] + Length[Keys[$terminalSpec]]]];
+              dr = DateRange[DatePlus[periodStart, {1, $granularity}], periodEnd, {1, $granularity}];
+              Dataset[AssociationThread[dr -> init]]
+          ]
 
 
 makeRandomForwardCurve[dates_, mean_, stdev_] :=
@@ -296,27 +298,31 @@ availableAssets[date_] :=
     ]
 
 
-valuation[pStart_, pEnd_, granularity_, vessel_, production_, market_] :=
-    Module[ {aux, timeSteps, day, local, log = Association[]},
+keyAvailableVessel[date_, vessels_Association] := KeyValueMap[If[#2 == 1, #1, Nothing] &, Normal[Select[$states, #Date == date &][[1]]][[Keys[vessels]]]]
+
+
+valuation[pStart_, pEnd_, granularity_, allVessel_Association, allProduction_Association, allMarket_Association] :=
+    Module[ {aux, timeSteps, day, vessel, local, log = Association[]},
         (* pEnd should be inclusive, but see:  
         https://mathematica.stackexchange.com/questions/167731/different-behaviour-of-daterange-between-11-2-and-11-3 *)
         timeSteps = DateRange[DatePlus[pStart, granularity], pEnd, granularity];
-        $states = Dataset[{
+        (*$states = Dataset[{
             Join[<|"Date" -> pStart|>, 
                  AssociationThread[Keys[vessel] -> 1], 
                  AssociationThread[Keys[production] -> 1], 
                  AssociationThread[Keys[market] -> 1]
                 ]
-        }];
+        }];*)
         day = pStart;
         log = <||>;
         
         While[day < pEnd,
-        	  aux = availableAssets[day];
-   	          vessel = vessel[[aux[[1]]]];
+        	  vessel = keyAvailableVessel[day, allVessel];	
+        	  (*aux = availableAssets[day];*)
+   	          (*vessel = vessel[[aux[[1]]]];*)
    	          (*production = production[[aux[[2]]]];
    	          market = market[[aux[[3]]]];*)
-   	          local = valuationOneDay[day, pEnd, granularity, vessel, production, market, log];
+   	          local = valuationOneDay[day, pEnd, granularity, vessel, allProduction, allMarket, log];
    	          day = pEnd;
         ]
     ]
